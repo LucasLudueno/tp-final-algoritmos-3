@@ -12,13 +12,13 @@ public class TestJugador {
 
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		Jugador jugador = new Jugador(BuenosAires,2,24);
+		Jugador jugador = new Jugador(BuenosAires,2,24,"novato");
 		
 		Assert.assertTrue(jugador.ciudad() == BuenosAires);
 		Assert.assertTrue(jugador.velocidad() == 2);
 		Assert.assertTrue(jugador.tiempo() == 24);
-		
-		
+		Assert.assertTrue(jugador.nivel() == "novato");
+				
 	}
 	
 	@Test
@@ -26,13 +26,12 @@ public class TestJugador {
 
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Ciudad Paris = new Ciudad("Paris",5,5);
-		Jugador jugador = new Jugador(BuenosAires,2,24);
+		Jugador jugador = new Jugador(BuenosAires,2,24,"novato");
 
 		jugador.introducirCiudad(Paris);
 		
 		Assert.assertTrue(jugador.ciudad() == Paris);
 		
-	}
-	
+	}	
 
 }

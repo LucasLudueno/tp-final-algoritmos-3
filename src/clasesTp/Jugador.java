@@ -5,12 +5,14 @@ public class Jugador {
 	private Ciudad ciudad;
 	private int tiempo;
 	private int velocidad;
+	private String nivel;
 	
-	public Jugador(Ciudad ciudad, int velocidad, int tiempo){
+	public Jugador(Ciudad ciudad, int velocidad, int tiempo, String nivel){
 		
 		this.ciudad = ciudad;
 		this.velocidad = velocidad;
 		this.tiempo = tiempo;
+		this.nivel = nivel;
 	}
 
 	public void introducirCiudad(Ciudad ciudad) {
@@ -42,6 +44,11 @@ public class Jugador {
 	public int velocidad() {
 		
 		return this.velocidad;
+	}
+
+	public String nivel() {
+		
+		return this.nivel;
 	}
 
 }
