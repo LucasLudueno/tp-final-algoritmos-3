@@ -5,29 +5,29 @@ public class Jugador {
 	private Ciudad ciudad;
 	private int tiempo;
 	private int velocidad;
-	private String nivel;
+	private String cargo;
 	
-	public Jugador(Ciudad ciudad, int velocidad, int tiempo, String nivel){
+	public Jugador(Ciudad ciudad, int velocidad, int tiempo, String cargo){
 		
 		this.ciudad = ciudad;
 		this.velocidad = velocidad;
 		this.tiempo = tiempo;
-		this.nivel = nivel;
+		this.cargo = cargo;
 	}
 
-	public void introducirCiudad(Ciudad ciudad) {
+	public void cambiarDeCiudad(Ciudad ciudad) {
 		this.ciudad = ciudad;
 		
 	}
 
 	public void viajar(Ciudad ciudad) {
 		
-		this.tiempo = this.tiempo - this.calculoDeTiempo(ciudad.distancia(this.ciudad));
-		this.introducirCiudad(ciudad);
+		this.tiempo = this.tiempo - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudad));
+		this.cambiarDeCiudad(ciudad);
 		
 	}
 
-	private int calculoDeTiempo(int distancia) {
+	private int calcularTiempoDeViaje(int distancia) {
 	
 		return (int)distancia/this.velocidad;
 	}
@@ -46,9 +46,9 @@ public class Jugador {
 		return this.velocidad;
 	}
 
-	public String nivel() {
+	public String cargo() {
 		
-		return this.nivel;
+		return this.cargo;
 	}
 
 }

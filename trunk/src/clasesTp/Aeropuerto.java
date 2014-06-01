@@ -2,38 +2,37 @@ package clasesTp;
 
 public class Aeropuerto {
 
-	private String pregunta_facil;
-	private String pregunta_medio;
-	private String pregunta_dificil;
+	private String pistaFacil;
+	private String pistaMedio;
+	private String pistaDificil;
 
 	public Aeropuerto (){
 		
-		this.pregunta_facil = "a";
-		this.pregunta_medio = "b";
-		this.pregunta_dificil = "c";
+		this.pistaFacil = "a";
+		this.pistaMedio = "b";
+		this.pistaDificil = "c";
 
 	}
 	
-	public String pregunta_facil() {
+	public String obtenerPistaFacil() {
 			
-		return this.pregunta_facil;
+		return this.pistaFacil;
 	}
 	
-	public String pregunta_medio() {
+	public String obtenerPistaMedio() {
 		
-		return this.pregunta_medio;
+		return this.pistaMedio;
 	}
 	
-	public String pregunta_dificil() {
+	public String obtenerPistaDificil() {
 		
-		return this.pregunta_dificil;
+		return this.pistaDificil;
 	}
 
-	public String devolverPregunta(Jugador jugador) {
+	public String devolverPista(Jugador jugador) {
 		
-		if (jugador.nivel() == "novato") return this.pregunta_facil();
-		if (jugador.nivel() == "detective") return this.pregunta_dificil();
+		if (jugador.cargo() == "novato") return this.obtenerPistaFacil();
+		if (jugador.cargo() == "detective") return this.obtenerPistaDificil();
 		return null;
 	}
-
 }

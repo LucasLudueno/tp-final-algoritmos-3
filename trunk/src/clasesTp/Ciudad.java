@@ -16,32 +16,31 @@ public class Ciudad {
 	}
 
 
-	public String nombre() {
+	public String obtenerNombre() {
 		
 		return this.nombre;
 	}
 
 
-	public int posicion_x() {
+	public int obtenerPosicion_x() {
 		
 		return this.posicion_x;
 	}
 
 
-	public int posicion_y() {
+	public int obtenerPosicion_y() {
 		
 		return this.posicion_y;
 	}
 
 
-	public int distancia(Ciudad ciudad) {
+	public int obtenerDistancia(Ciudad ciudad) {
 		
 		int diferencia_x = (this.posicion_x - ciudad.posicion_x)*(this.posicion_x - ciudad.posicion_x);
 		int diferencia_y = (this.posicion_y - ciudad.posicion_y)*(this.posicion_y - ciudad.posicion_y);
 		
 		return (int) Math.sqrt(diferencia_x + diferencia_y);
 						
-	
 	}
 
 	
