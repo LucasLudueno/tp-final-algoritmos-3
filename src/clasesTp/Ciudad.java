@@ -15,13 +15,10 @@ public class Ciudad {
 		
 	}
 
-
-	public String obtenerNombre() {
-		
+	public String obtenerNombre() { /* CONSIDERO QUE ESTE METODO NO VA, POR LO MENOS POR AHORA */
 		return this.nombre;
-	}
-
-
+	} 
+	
 	public int obtenerPosicion_x() {
 		
 		return this.posicion_x;
@@ -42,7 +39,5 @@ public class Ciudad {
 		return (int) Math.sqrt(diferencia_x + diferencia_y);
 						
 	}
-
-	
 
 }
