@@ -11,7 +11,7 @@ import junit.framework.Assert;
 public class TestTp{
 
 	@Test
-	public void deberiaNoVajarElTiempoSiViajoALaMismaCiudadQueEstoy(){
+	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta(){
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new Jugador(BuenosAires,2,24,"novato");
@@ -22,7 +22,7 @@ public class TestTp{
 	}
 
 	@Test
-	public void deberiaViajar(){
+	public void deberiaBajarElTiempoDelJugadorSiViajaAOtraCiudad(){
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Ciudad Paris = new Ciudad("Paris",5,5);
@@ -34,22 +34,22 @@ public class TestTp{
 	}
 	
 	@Test
-	public void deberiaDevolverLaPreguntaFacilSiElPersonajeEsUnNovato(){
+	public void elAeropuertoDeberiaDevolverLaPreguntaFacilSiElPersonajeEsUnNovato(){
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new Jugador(BuenosAires,2,24,"novato");
 		Aeropuerto aeropuerto = new Aeropuerto();
 		
-		Assert.assertTrue(aeropuerto.devolverPregunta(jugador) == "a");
+		Assert.assertTrue(aeropuerto.devolverPista(jugador) == "a");
 	}
 	
 	@Test
-	public void deberiaDevolverLaPreguntaDificilSiElPersonajeEsDetective(){
+	public void elAeropuertoDeberiaDevolverLaPreguntaDificilSiElPersonajeEsDetective(){
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new Jugador(BuenosAires,2,24,"detective");
 		Aeropuerto aeropuerto = new Aeropuerto();
 		
-		Assert.assertTrue(aeropuerto.devolverPregunta(jugador) == "c");
+		Assert.assertTrue(aeropuerto.devolverPista(jugador) == "c");
 	}
 
 }

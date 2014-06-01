@@ -7,11 +7,13 @@ import clasesTp.Aeropuerto;
 public class TestAeropuerto {
 
 	@Test
-	public void deberiaCrearseElAeropuertoConUnaPregunta() {
+	public void deberiaCrearseElAeropuertoConPistas() {
 		
 		Aeropuerto aeropuerto = new Aeropuerto();
 		
-		Assert.assertTrue(aeropuerto.pregunta_facil() != null);
+		Assert.assertTrue(aeropuerto.obtenerPistaFacil() != null);
+		Assert.assertTrue(aeropuerto.obtenerPistaDificil() != null);
+		Assert.assertTrue(aeropuerto.obtenerPistaMedio() != null);
 		
 	}
 
