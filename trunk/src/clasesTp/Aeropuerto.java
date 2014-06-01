@@ -4,35 +4,30 @@ public class Aeropuerto {
 
 	private String pistaFacil;
 	private String pistaMedio;
-	private String pistaDificil;
 
 	public Aeropuerto (){
 		
 		this.pistaFacil = "a";
 		this.pistaMedio = "b";
-		this.pistaDificil = "c";
 
 	}
 	
-	public String obtenerPistaFacil() {
-			
+	public String obtenerPistaFacil(){  /* CONSIDERO QUE ESTE METODO NO VA */
 		return this.pistaFacil;
 	}
 	
-	public String obtenerPistaMedio() {
+	public String obtenerPistaMedio(){ /* CONSIDERO QUE ESTE METODO NO VA */
+		return this.pistaFacil;
+	}
+	
+	public String devolverPista(JugadorNovato jugador) {
+		
+		return this.pistaFacil;
+	}
+	
+	public String devolverPista(JugadorDetective jugador){
 		
 		return this.pistaMedio;
 	}
 	
-	public String obtenerPistaDificil() {
-		
-		return this.pistaDificil;
-	}
-
-	public String devolverPista(Jugador jugador) {
-		
-		if (jugador.cargo() == "novato") return this.obtenerPistaFacil();
-		if (jugador.cargo() == "detective") return this.obtenerPistaDificil();
-		return null;
-	}
 }

@@ -5,14 +5,12 @@ public class Jugador {
 	private Ciudad ciudad;
 	private int tiempo;
 	private int velocidad;
-	private String cargo;
 	
-	public Jugador(Ciudad ciudad, int velocidad, int tiempo, String cargo){
+	public Jugador(Ciudad ciudad, int velocidad, int tiempo){
 		
 		this.ciudad = ciudad;
 		this.velocidad = velocidad;
 		this.tiempo = tiempo;
-		this.cargo = cargo;
 	}
 
 	public void cambiarDeCiudad(Ciudad ciudad) {
@@ -32,23 +30,13 @@ public class Jugador {
 		return (int)distancia/this.velocidad;
 	}
 
-	public int tiempo() {
+	public int obtenerTiempoRestante() {
 		return this.tiempo;
 	}
 
-	public Ciudad ciudad() {
+	public Ciudad obtenerCiudadActual() {
 		
 		return this.ciudad;
 	}
 
-	public int velocidad() {
-		
-		return this.velocidad;
-	}
-
-	public String cargo() {
-		
-		return this.cargo;
-	}
-
-}
+} 
