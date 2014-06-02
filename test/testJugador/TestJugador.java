@@ -1,6 +1,6 @@
 package testJugador;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 import clasesTp.Ciudad;
 import clasesTp.Jugador;
