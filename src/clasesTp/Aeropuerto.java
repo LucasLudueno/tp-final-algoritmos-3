@@ -1,6 +1,6 @@
 package clasesTp;
 
-public class Aeropuerto {
+public class Aeropuerto implements Lugar {
 
 	private String pistaFacil;
 	private String pistaMedio;
@@ -29,5 +29,9 @@ public class Aeropuerto {
 		
 		return this.pistaMedio;
 	}
-	
+
+	@Override
+	public Pista obtenerPista() {
+		return new Pista();
+	}	
 }
