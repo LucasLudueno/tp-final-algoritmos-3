@@ -8,7 +8,7 @@ import clasesTp.Jugador;
 import clasesTp.JugadorDetective;
 import clasesTp.JugadorNovato;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class TestTp{
 
