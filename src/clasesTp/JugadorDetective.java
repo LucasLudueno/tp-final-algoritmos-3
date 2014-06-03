@@ -6,4 +6,7 @@ public class JugadorDetective extends Jugador{
 		super(ciudad, velocidad, tiempo);
 	}
 	
+	public String obtenerPistaDe(Aeropuerto aeropuerto) {
+		return aeropuerto.devolverPista(this);
+	}
 }

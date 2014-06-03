@@ -38,9 +38,4 @@ public class Jugador {
 		
 		return this.ciudad;
 	}
-	
-	public Pista accederALugar(Lugar unLugar) {
-		return (unLugar.obtenerPista());
-	}
-
 } 
