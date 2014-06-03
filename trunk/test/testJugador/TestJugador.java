@@ -2,8 +2,12 @@ package testJugador;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import clasesTp.Aeropuerto;
 import clasesTp.Ciudad;
 import clasesTp.Jugador;
+import clasesTp.JugadorDetective;
+import clasesTp.JugadorNovato;
 
 public class TestJugador {
 
@@ -31,6 +35,24 @@ public class TestJugador {
 		
 		Assert.assertTrue(jugador.obtenerCiudadActual() == Paris);
 		
-	}	
+	}
+	
+	@Test
+	public void jugadorNovatoDebeObtenerUnaPistaFacilAlAccederAlAeropuerto() {
+		
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		JugadorNovato jugador = new JugadorNovato(BuenosAires,1,1);
+		
+		Assert.assertTrue(jugador.obtenerPistaDe(new Aeropuerto()) == "a");		
+	}
+	
+	@Test
+	public void jugadorDetectiveDebeObtenerUnaPistaMediaAlAccederAlAeropuerto() {
+		
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		JugadorDetective jugador = new JugadorDetective(BuenosAires,1,1);
+		
+		Assert.assertTrue(jugador.obtenerPistaDe(new Aeropuerto()) == "b");		
+	}
 
 }
