@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import clasesTp.Ciudad;
 
-public class TestCiudad {
+public class CiudadTest {
 	
 	@Test
 	public void deberiaCrearseLaCiudadConBuenosAiresComoNombreYPosicionIngresada(){

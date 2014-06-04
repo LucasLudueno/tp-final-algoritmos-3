@@ -6,7 +6,7 @@ import org.junit.Test;
 import clasesTp.Ciudad;
 import clasesTp.Jugador;
 
-public class TestJugador {
+public class JugadorTest {
 
 	@Test
 	public void deberiaCrearseElJugadorConLosParametrosIntroducidos() {
