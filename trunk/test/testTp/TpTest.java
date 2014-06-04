@@ -10,7 +10,7 @@ import clasesTp.JugadorNovato;
 
 import org.junit.Assert;
 
-public class TestTp{
+public class TpTest{
 
 	@Test
 	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta(){

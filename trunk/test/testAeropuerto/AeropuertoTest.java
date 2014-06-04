@@ -1,6 +1,6 @@
 package testAeropuerto;
 
-public class TestAeropuerto {
+public class AeropuertoTest {
 
 	
 } 
