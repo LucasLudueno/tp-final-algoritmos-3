@@ -3,7 +3,7 @@ package testPista;
 import org.junit.Assert;
 import org.junit.Test;
 
-import clasesTp.Pista;
+import modeloTp.Pista;
 
 public class PistaTest {
 	

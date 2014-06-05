@@ -3,7 +3,7 @@ package testCiudad;
 import org.junit.Assert;
 import org.junit.Test;
 
-import clasesTp.Ciudad;
+import modeloTp.Ciudad;
 
 public class CiudadTest {
 	
