@@ -2,9 +2,6 @@ package modeloTp;
 
 public class Aeropuerto extends Lugar {
 
-	private Pista pistaFacil;
-	private Pista pistaMedio;
-
 	public Aeropuerto (){
 		
 		this.pistaFacil = new Pista("a");
