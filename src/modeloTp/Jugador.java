@@ -4,23 +4,23 @@ public class Jugador {
 
 	private Ciudad ciudad;
 	private int tiempo;
-	private int velocidad;
+	protected int velocidad;
 	
-	public Jugador(Ciudad ciudad, int velocidad, int tiempo){
+	public Jugador(Ciudad ciudad){
 		
 		this.ciudad = ciudad;
-		this.velocidad = velocidad;
-		this.tiempo = tiempo;
+		this.tiempo = 24;
 	}
 
-	public void cambiarDeCiudad(Ciudad ciudad) {
+	private void cambiarDeCiudad(Ciudad ciudad) {
 		this.ciudad = ciudad;
 		
 	}
 
-	public void viajar(Ciudad ciudad) {
+	public void viajar(Ciudad ciudad) throws ExcepcionNoHayMasTiempo {
 		
-		this.tiempo = this.tiempo - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudad));
+		if( this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudad)) >= this.tiempo ) throw new ExcepcionNoHayMasTiempo();
+		else this.tiempo = this.tiempo - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudad));
 		this.cambiarDeCiudad(ciudad);
 		
 	}
