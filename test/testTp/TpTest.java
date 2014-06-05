@@ -1,13 +1,13 @@
 package testTp;
 
-import modeloTp.Aeropuerto;
-import modeloTp.Ciudad;
-import modeloTp.Jugador;
-import modeloTp.JugadorDetective;
-import modeloTp.JugadorNovato;
-
 import org.junit.Test;
 import org.junit.Assert;
+
+import clasesTp.Aeropuerto;
+import clasesTp.Ciudad;
+import clasesTp.Jugador;
+import clasesTp.JugadorDetective;
+import clasesTp.JugadorNovato;
 
 public class TpTest{
 
