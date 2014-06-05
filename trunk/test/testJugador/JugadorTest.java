@@ -1,10 +1,10 @@
 package testJugador;
 
-import modeloTp.Ciudad;
-import modeloTp.Jugador;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import clasesTp.Ciudad;
+import clasesTp.Jugador;
 
 public class JugadorTest {
 
