@@ -1,4 +1,4 @@
-package clasesTp;
+package modeloTp;
 
 public class Jugador {
 
