@@ -1,4 +1,4 @@
-package modeloTpTest;
+package modeloTp;
 
 import org.junit.Assert;
 import org.junit.Test;
