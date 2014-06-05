@@ -4,8 +4,8 @@ public class Pista {
 	
 	private String contenido;
 	
-	public Pista() {
-		contenido = "unTexto";
+	public Pista(String unTexto) {
+		contenido = unTexto;
 	}
 
 	public String obtenerContenido() {

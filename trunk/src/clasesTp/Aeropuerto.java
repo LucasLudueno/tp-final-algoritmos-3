@@ -1,22 +1,22 @@
 package clasesTp;
 
-public class Aeropuerto {
+public class Aeropuerto extends Lugar {
 
-	private String pistaFacil;
-	private String pistaMedio;
+	private Pista pistaFacil;
+	private Pista pistaMedio;
 
 	public Aeropuerto (){
 		
-		this.pistaFacil = "a";
-		this.pistaMedio = "b";
+		this.pistaFacil = new Pista("a");
+		this.pistaMedio = new Pista("b");
 
 	}
 	
 	public String devolverPista(JugadorNovato jugador) {
-		return this.pistaFacil;
+		return this.pistaFacil.obtenerContenido();
 	}
 	
 	public String devolverPista(JugadorDetective jugador){	
-		return this.pistaMedio;
+		return this.pistaMedio.obtenerContenido();
 	}
 }
