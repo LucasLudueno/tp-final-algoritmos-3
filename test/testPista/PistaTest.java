@@ -1,9 +1,9 @@
 package testPista;
 
+import modeloTp.Pista;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import clasesTp.Pista;
 
 public class PistaTest {
 	

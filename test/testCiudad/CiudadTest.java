@@ -1,8 +1,9 @@
 package testCiudad;
 
+import modeloTp.Ciudad;
+
 import org.junit.Assert;
 import org.junit.Test;
-import clasesTp.Ciudad;
 
 public class CiudadTest {
 	
