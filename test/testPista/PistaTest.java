@@ -10,7 +10,7 @@ public class PistaTest {
 	@Test
 	public void obtenerContenidoDePistaDeberiaDevolverUnTexto() {
 		
-		Pista pista = new Pista();
+		Pista pista = new Pista("unTexto");
 		
 		Assert.assertTrue(pista.obtenerContenido() == "unTexto");
 		
