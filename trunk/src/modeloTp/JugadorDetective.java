@@ -2,7 +2,14 @@ package modeloTp;
 
 public class JugadorDetective extends Jugador{
 
-	public JugadorDetective(Ciudad ciudad, int velocidad, int tiempo) {
-		super(ciudad, velocidad, tiempo);
+	public JugadorDetective(Ciudad ciudad) {
+		super(ciudad);
+		this.cambiarVelocidad();
 	}
+
+	private void cambiarVelocidad() {
+		this.velocidad = 2;
+		
+	}
+	
 }
