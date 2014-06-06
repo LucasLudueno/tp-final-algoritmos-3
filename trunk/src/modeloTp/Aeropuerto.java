@@ -2,18 +2,27 @@ package modeloTp;
 
 public class Aeropuerto extends Lugar {
 
-	public Aeropuerto (){
+	public Aeropuerto (Pista pistaFacil, Pista pistaMedia, Pista pistaDificil){
 		
-		this.pistaFacil = new Pista("a");
-		this.pistaMedio = new Pista("b");
+		this.pistaFacil = pistaFacil;
+		this.pistaMedia = pistaMedia;
+		this.pistaDificil = pistaDificil;
 
 	}
 	
-	public String devolverPista(JugadorNovato jugador) {
-		return this.pistaFacil.obtenerContenido();
+	public Pista devolverPista(JugadorNovato jugador) {
+		return this.pistaFacil;
 	}
 	
-	public String devolverPista(JugadorDetective jugador){	
-		return this.pistaMedio.obtenerContenido();
+	public Pista devolverPista(JugadorDetective jugador){	
+		return this.pistaMedia;
+	}
+	
+	public Pista devolverPista(JugadorInvestigador jugador){	
+		return this.pistaMedia;
+	}
+	
+	public Pista devolverPista(JugadorSargento jugador){	
+		return this.pistaDificil;
 	}
 }

@@ -2,25 +2,25 @@ package modeloTp;
 
 public class Jugador {
 
-	private Ciudad ciudad;
-	private int tiempo;
+	private Ciudad ciudadActual;
+	private int tiempoRestante;
 	protected int velocidad;
 	
 	public Jugador(Ciudad ciudad){
 		
-		this.ciudad = ciudad;
-		this.tiempo = 24;
+		this.ciudadActual = ciudad;
+		this.tiempoRestante = 154; 
 	}
 
 	private void cambiarDeCiudad(Ciudad ciudad) {
-		this.ciudad = ciudad;
+		this.ciudadActual = ciudad;
 		
 	}
 
 	public void viajar(Ciudad ciudad) throws ExcepcionNoHayMasTiempo {
 		
-		if( this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudad)) >= this.tiempo ) throw new ExcepcionNoHayMasTiempo();
-		else this.tiempo = this.tiempo - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudad));
+		if( this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual)) >= this.tiempoRestante ) throw new ExcepcionNoHayMasTiempo();
+		else this.tiempoRestante = this.tiempoRestante - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual));
 		this.cambiarDeCiudad(ciudad);
 		
 	}
@@ -31,11 +31,11 @@ public class Jugador {
 	}
 
 	public int obtenerTiempoRestante() {
-		return this.tiempo;
+		return this.tiempoRestante;
 	}
 
 	public Ciudad obtenerCiudadActual() {
 		
-		return this.ciudad;
+		return this.ciudadActual;
 	}
 } 

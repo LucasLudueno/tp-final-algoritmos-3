@@ -8,11 +8,12 @@ import modeloTp.Ciudad;
 public class CiudadTest {
 	
 	@Test
-	public void deberiaCrearseLaCiudadConBuenosAiresComoNombreYPosicionIngresada(){
+	public void deberiaCrearseLaCiudadConBuenosAiresComoNombreYPosicionYLugaresIngresados(){
 	
+		
 		Ciudad ciudad = new Ciudad("Buenos Aires",1,1);
 		
-	/*	Assert.assertTrue(ciudad.obtenerNombre() == "Buenos Aires"); */
+		Assert.assertTrue(ciudad.obtenerNombre() == "Buenos Aires");
 		Assert.assertTrue(ciudad.obtenerPosicion_x() == 1);
 		Assert.assertTrue(ciudad.obtenerPosicion_y() == 1);
 		
