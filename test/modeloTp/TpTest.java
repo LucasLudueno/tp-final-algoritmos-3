@@ -12,7 +12,7 @@ public class TpTest{
 	@Test
 	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta() throws ExcepcionNoHayMasTiempo{
 	
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		
 		jugador.viajar(BuenosAires);
@@ -23,8 +23,8 @@ public class TpTest{
 	@Test
 	public void deberiaBajarElTiempoDelJugadorSiViajaAOtraCiudad() throws ExcepcionNoHayMasTiempo{
 	
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		Ciudad Paris = new Ciudad("Paris",5,5);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad Paris = new Ciudad("Paris",5,5,null,null,null);
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		
 		jugador.viajar(Paris);
@@ -32,8 +32,19 @@ public class TpTest{
 		Assert.assertTrue(149 == jugador.obtenerTiempoRestante());
 	}
 	
-	/*
-	 * Faltaria agregarle todos los lugares a las ciudades como parametro.
+	@Test
+	public void deberiaDevolverLaPreguntaDelAeropuerto(){
+		Pista pistaFacilAeropuertoBsAs = new Pista("pistaFacilBsAs");
+		Pista pistaMediaAeropuertoBsAs = new Pista("pistaMediaBsAs");
+		Pista pistaDificilAeropuertoBsAs = new Pista("pistaDificilBsAs");
+		Lugar AeropuertoBuenosAires = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, AeropuertoBuenosAires,null,null);
+		JugadorNovato jugador = new JugadorNovato(BuenosAires);
+		
+		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,AeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
+		
+	}	
+	
 	 
 	@Test
 	public void deberianCambiarLasPistasDeLosLugaresSiCambioDeCiudad() throws ExcepcionNoHayMasTiempo{
@@ -44,23 +55,22 @@ public class TpTest{
 		Pista pistaMediaAeropuertoLondres = new Pista("pistaMediaLondres");
 		Pista pistaDificilAeropuertoLondres = new Pista("pistaDificilLondres");
 		
-		Lugar AeropuertoBuenosAires = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Lugar AeropuertoLondres = new Aeropuerto(pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, AeropuertoBuenosAires);
-		Ciudad Londres = new Ciudad("Londres",6,11, AeropuertoLondres);
+		Lugar aeropuertoBuenosAires = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
+		Lugar aeropuertoLondres = new Aeropuerto(pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null);
+		Ciudad Londres = new Ciudad("Londres",6,11, aeropuertoLondres,null,null);
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		
-		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPistaAeropuerto() == pistaFacilAeropuertoBsAs );
+		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
 		
 		jugador.viajar(Londres);
 		
-		Assert.assertTrue((jugador.obtenerCiudadActual()).obtenerPistaAeropuerto() == pistaFacilAeropuertoLondres );
+		Assert.assertTrue((jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoLondres) == pistaFacilAeropuertoLondres );
 		
 	}
 	
-	@Test
-		* Faltaria agregarle todos los lugares a las ciudades como parametro.
-		
+	
+	@Test		
 	public void deberianCambiarLasPistasDeLosLugaresDeUnaMismaCiudad(){
 		Pista pistaFacilAeropuertoBsAs = new Pista("pistaFacilBsAsAerop");
 		Pista pistaMediaAeropuertoBsAs = new Pista("pistaMediaBsAsAerop");
@@ -71,14 +81,14 @@ public class TpTest{
 		
 		Lugar aeropuertoBsAs = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
 		Lugar bolsaBsAs = new Aeropuerto(pistaFacilBolsaBsAs, pistaMediaBolsaBsAs, pistaDificilBolsaBsAs);
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,null);
 		
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		
-		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPistaAeropuerto() == pistaFacilAeropuertoBsAs );
-		Assert.assertTrue((jugador.obtenerCiudadActual()).obtenerPistaBolsa() == pistaFacilBolsaBsAs );
+		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBsAs) == pistaFacilAeropuertoBsAs );
+		Assert.assertTrue((jugador.obtenerCiudadActual()).obtenerPista(jugador,bolsaBsAs) == pistaFacilBolsaBsAs );
 		
-		Assert.assertFalse((jugador.obtenerCiudadActual()).obtenerPistaAeropuerto() == (jugador.obtenerCiudadActual()).obtenerPistaBolsa() );
+		Assert.assertFalse((jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBsAs) == (jugador.obtenerCiudadActual()).obtenerPista(jugador,bolsaBsAs) );
 	
-	*/
+	}
 }

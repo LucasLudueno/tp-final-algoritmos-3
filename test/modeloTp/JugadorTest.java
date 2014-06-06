@@ -14,7 +14,7 @@ public class JugadorTest {
 	public void deberiaCrearseElJugadorConLosParametrosIntroducidos() {
 
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		Jugador jugador = new Jugador(BuenosAires);
 		
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
@@ -25,8 +25,8 @@ public class JugadorTest {
 	@Test
 	public void deberiaCambiarseLaCiudadEnDondeEstaElJugador() throws ExcepcionNoHayMasTiempo {
 
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		Ciudad Paris = new Ciudad("Paris",5,5);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad Paris = new Ciudad("Paris",5,5,null,null,null);
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
 		
@@ -39,8 +39,8 @@ public class JugadorTest {
 	@Test(expected=ExcepcionNoHayMasTiempo.class)
 	public void deberiaLanzarLaExcepcionCuandoNoHayMasTiempoParaViajarYNoCambiarDeCiudad() throws ExcepcionNoHayMasTiempo {
 
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		Ciudad Paris = new Ciudad("Paris",5000,5000);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad Paris = new Ciudad("Paris",5000,5000,null,null,null);
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		
 		jugador.viajar(Paris);
