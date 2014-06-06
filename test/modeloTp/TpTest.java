@@ -3,12 +3,9 @@ package modeloTp;
 import org.junit.Test;
 import org.junit.Assert;
 
-import modeloTp.Aeropuerto;
 import modeloTp.Ciudad;
 import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.Jugador;
-import modeloTp.JugadorDetective;
-import modeloTp.JugadorNovato;
 
 public class TpTest{
 
@@ -35,32 +32,5 @@ public class TpTest{
 		Assert.assertTrue(149 == jugador.obtenerTiempoRestante());
 	}
 	
-	@Test
-	public void elAeropuertoDeberiaDevolverLaPistaFacilSiElPersonajeEsUnNovato(){
 	
-		Pista pistaFacil = new Pista("a");
-		Pista pistaMedia = new Pista("b");
-		Pista pistaDificil = new Pista("c");
-		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		JugadorNovato jugador = new JugadorNovato(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
-		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaFacil);
-	}
-	
-	@Test
-	public void elAeropuertoDeberiaDevolverLaPistaMedioSiElPersonajeEsDetective(){
-		
-		Pista pistaFacil = new Pista("a");
-		Pista pistaMedia = new Pista("b");
-		Pista pistaDificil = new Pista("c");
-		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		JugadorDetective jugador = new JugadorDetective(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
-		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
-	}
-
 }
