@@ -18,7 +18,7 @@ public class JugadorTest {
 		Jugador jugador = new Jugador(BuenosAires);
 		
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
-		Assert.assertTrue(jugador.obtenerTiempoRestante() == 24);
+		Assert.assertTrue(jugador.obtenerTiempoRestante() == 154);
 				
 	} 
 	
@@ -37,14 +37,15 @@ public class JugadorTest {
 	}
 	
 	@Test(expected=ExcepcionNoHayMasTiempo.class)
-	public void deberiaLanzarLaExcepcionCuandoNoHayMasTiempoParaViajar() throws ExcepcionNoHayMasTiempo {
+	public void deberiaLanzarLaExcepcionCuandoNoHayMasTiempoParaViajarYNoCambiarDeCiudad() throws ExcepcionNoHayMasTiempo {
 
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",10,10);
-		Ciudad Paris = new Ciudad("Paris",50,50);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad Paris = new Ciudad("Paris",5000,5000);
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		
 		jugador.viajar(Paris);
 		
+		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
 						
 	}
 }

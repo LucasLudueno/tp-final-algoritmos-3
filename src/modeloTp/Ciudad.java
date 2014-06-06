@@ -1,12 +1,13 @@
 package modeloTp;
 
+
 public class Ciudad {
 
 	private String nombre;
 	private int posicion_x;
 	private int posicion_y;
 	
-	
+
 	public Ciudad(String nombre, int posicion_x, int posicion_y){
 		
 		this.nombre = nombre;

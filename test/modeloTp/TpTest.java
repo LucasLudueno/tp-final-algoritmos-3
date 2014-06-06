@@ -20,7 +20,7 @@ public class TpTest{
 		
 		jugador.viajar(BuenosAires);
 		
-		Assert.assertEquals(24,jugador.obtenerTiempoRestante());
+		Assert.assertEquals(154,jugador.obtenerTiempoRestante());
 	}
 
 	@Test
@@ -32,27 +32,35 @@ public class TpTest{
 		
 		jugador.viajar(Paris);
 		
-		Assert.assertTrue(19 == jugador.obtenerTiempoRestante());
+		Assert.assertTrue(149 == jugador.obtenerTiempoRestante());
 	}
 	
 	@Test
 	public void elAeropuertoDeberiaDevolverLaPistaFacilSiElPersonajeEsUnNovato(){
 	
+		Pista pistaFacil = new Pista("a");
+		Pista pistaMedia = new Pista("b");
+		Pista pistaDificil = new Pista("c");
+		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto();
+		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
 		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == "a");
+		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaFacil);
 	}
 	
 	@Test
 	public void elAeropuertoDeberiaDevolverLaPistaMedioSiElPersonajeEsDetective(){
 		
+		Pista pistaFacil = new Pista("a");
+		Pista pistaMedia = new Pista("b");
+		Pista pistaDificil = new Pista("c");
+		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		JugadorDetective jugador = new JugadorDetective(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto();
+		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
 		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == "b");
+		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
 	}
 
 }

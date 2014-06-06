@@ -8,7 +8,7 @@ import modeloTp.Pista;
 public class PistaTest {
 	
 	@Test
-	public void obtenerContenidoDePistaDeberiaDevolverUnTexto() {
+	public void obtenerContenidoDePistaDeberiaDevolverElTextoIngresado() {
 		
 		Pista pista = new Pista("unTexto");
 		
