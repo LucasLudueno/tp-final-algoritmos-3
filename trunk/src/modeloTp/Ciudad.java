@@ -1,19 +1,26 @@
 package modeloTp;
 
+import java.util.ArrayList;
+
 
 public class Ciudad {
 
 	private String nombre;
 	private int posicion_x;
 	private int posicion_y;
+	private ArrayList<Lugar> lugares;
 	
 
-	public Ciudad(String nombre, int posicion_x, int posicion_y){
+	public Ciudad(String nombre, int posicion_x, int posicion_y,Lugar lugar1,Lugar lugar2,Lugar lugar3){
 		
 		this.nombre = nombre;
 		this.posicion_x = posicion_x;
 		this.posicion_y = posicion_y;
+		this.lugares = new ArrayList<Lugar>();
 		
+		this.lugares.add(lugar1);
+		this.lugares.add(lugar2);
+		this.lugares.add(lugar3);
 	}
 
 	public String obtenerNombre() { /* CONSIDERO QUE ESTE METODO NO VA, POR LO MENOS POR AHORA */
@@ -41,4 +48,16 @@ public class Ciudad {
 						
 	}
 
+	public int cantidadLugares() {
+		return this.lugares.size();
+	}
+
+	public Pista obtenerPista(Jugador jugador, Lugar lugar) {
+		
+		if (this.lugares.contains(lugar) == true)
+		return ((this.lugares.get(this.lugares.indexOf(lugar))).devolverPista((JugadorNovato) jugador));
+		
+		return null;
+	}	
+	
 }

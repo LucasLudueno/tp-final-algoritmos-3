@@ -12,7 +12,7 @@ public class AeropuertoTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
 		
@@ -26,7 +26,7 @@ public class AeropuertoTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorDetective jugador = new JugadorDetective(BuenosAires);
 		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
 		
@@ -40,7 +40,7 @@ public class AeropuertoTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorSargento jugador = new JugadorSargento(BuenosAires);
 		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
 		
@@ -54,7 +54,7 @@ public class AeropuertoTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorInvestigador jugador = new JugadorInvestigador(BuenosAires);
 		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
 		
