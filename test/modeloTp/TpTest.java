@@ -91,4 +91,31 @@ public class TpTest{
 		Assert.assertFalse((jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBsAs) == (jugador.obtenerCiudadActual()).obtenerPista(jugador,bolsaBsAs) );
 	
 	}
+	
+	@Test
+	public void obtenerPistaDeberiaBajarElTiempoDelJugadorIncrementandoseDeA1HoraCadaVezQueVuelveAEntrar(){
+		Pista pistaFacilAeropuertoBsAs = new Pista("pistaFacilBsAsAerop");
+		Pista pistaFacilBolsaBsAs = new Pista("pistaFacilBsAsBolsa");;
+		Pista pistaFacilBibliotecaBsAs = new Pista("pistaFacilBsAsBolsa");
+		
+		Lugar aeropuertoBsAs = new Aeropuerto(pistaFacilAeropuertoBsAs, null, null);
+		Lugar bolsaBsAs = new Bolsa(pistaFacilBolsaBsAs, null, null);
+		Lugar bibliotecaBsAs = new Biblioteca(pistaFacilBibliotecaBsAs, null, null);
+		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,bibliotecaBsAs);
+		JugadorNovato jugador = new JugadorNovato(buenosAires);
+		
+		Integer tiempoActualJugador = jugador.obtenerTiempoRestante();
+		buenosAires.obtenerPista(jugador,aeropuertoBsAs); // El jugador entra a un lugar por primera vez
+		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoActualJugador - 1) );
+		
+		tiempoActualJugador = jugador.obtenerTiempoRestante();
+		buenosAires.obtenerPista(jugador,bolsaBsAs); // El jugador entra a un lugar por segunda vez
+		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoActualJugador - 2) );
+		
+		tiempoActualJugador = jugador.obtenerTiempoRestante();
+		buenosAires.obtenerPista(jugador,bibliotecaBsAs); // El jugador entra a un lugar por tercera vez
+		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoActualJugador - 3) );
+		
+		
+	}
 }

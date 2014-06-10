@@ -54,9 +54,10 @@ public class Ciudad {
 
 	public Pista obtenerPista(Jugador jugador, Lugar lugar) {
 		
-		if (this.lugares.contains(lugar) == true)
-		return ((this.lugares.get(this.lugares.indexOf(lugar))).devolverPista((JugadorNovato) jugador));
-		
+		if (this.lugares.contains(lugar) == true){
+			jugador.restarTiempoPorEntrarALugar();
+			return ((this.lugares.get(this.lugares.indexOf(lugar))).devolverPista((JugadorNovato) jugador));
+		}
 		return null;
 	}	
 	
