@@ -7,7 +7,9 @@ public class Jugador {
 	private int tiempoPorEntrarALugar;
 	private int tiempoPorHeridaDeCuchillo;
 	private int tiempoPorHeridaDeBala;
+	private int tiempoPorDormir;
 	protected int velocidad;
+	
 	
 	public Jugador(Ciudad ciudad){
 		
@@ -16,10 +18,11 @@ public class Jugador {
 		this.tiempoPorEntrarALugar = 1;
 		this.tiempoPorHeridaDeCuchillo = 2;
 		this.tiempoPorHeridaDeBala = 4;
+		this.tiempoPorDormir = 8;
 	}
 
 	public void restarTiempoPorEntrarALugar(){
-		this.tiempoRestante = this.tiempoRestante - this.tiempoPorEntrarALugar ;
+		reducirTiempo(tiempoPorEntrarALugar);
 		this.tiempoPorEntrarALugar = this.tiempoPorEntrarALugar + 1;
 	}
 	
@@ -53,12 +56,23 @@ public class Jugador {
 
 	public void recibirCuchillazo() {
 		
-		this.tiempoRestante = this.tiempoRestante - this.tiempoPorHeridaDeCuchillo;
+		reducirTiempo(tiempoPorHeridaDeCuchillo);
 		
 	}
 
 	public void recibirBalazo() {
 		
-		this.tiempoRestante = this.tiempoRestante - this.tiempoPorHeridaDeBala;
+		reducirTiempo(tiempoPorHeridaDeBala);
+	}
+
+	public void dormir() {
+		
+		reducirTiempo(tiempoPorDormir);
+		
+	}
+	
+	private void reducirTiempo( Integer tiempo ){
+		
+		this.tiempoRestante = this.tiempoRestante - tiempo;
 	}
 } 
