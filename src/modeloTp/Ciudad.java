@@ -59,6 +59,11 @@ public class Ciudad {
 			return ((this.lugares.get(this.lugares.indexOf(lugar))).devolverPista((JugadorNovato) jugador));
 		}
 		return null;
+	}
+
+	public ArrayList<Lugar> obtenerLugares() {
+		
+		return this.lugares;
 	}	
 	
 }
