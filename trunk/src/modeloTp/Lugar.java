@@ -2,12 +2,14 @@ package modeloTp;
 
 public class Lugar {
 	
+	private String nombre;
 	private Pista pistaFacil;
 	private Pista pistaMedia;
 	private Pista pistaDificil;
 	
-	public Lugar(Pista pistaFacil, Pista pistaMedia, Pista pistaDificil){
+	public Lugar(String nombre, Pista pistaFacil, Pista pistaMedia, Pista pistaDificil){
 		
+		this.nombre = nombre;
 		this.pistaFacil = pistaFacil;
 		this.pistaMedia = pistaMedia;
 		this.pistaDificil = pistaDificil;
@@ -28,5 +30,10 @@ public class Lugar {
 	
 	public Pista devolverPista(JugadorSargento jugador){	
 		return this.pistaDificil;
+	}
+
+	public String obtenerNombre() {
+		
+		return this.nombre;
 	}	
 }
