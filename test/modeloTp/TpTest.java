@@ -37,11 +37,11 @@ public class TpTest{
 		Pista pistaFacilAeropuertoBsAs = new Pista("pistaFacilBsAs");
 		Pista pistaMediaAeropuertoBsAs = new Pista("pistaMediaBsAs");
 		Pista pistaDificilAeropuertoBsAs = new Pista("pistaDificilBsAs");
-		Lugar AeropuertoBuenosAires = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, AeropuertoBuenosAires,null,null);
+		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto",pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null);
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		
-		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,AeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
+		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
 		
 	}	
 	
@@ -55,8 +55,8 @@ public class TpTest{
 		Pista pistaMediaAeropuertoLondres = new Pista("pistaMediaLondres");
 		Pista pistaDificilAeropuertoLondres = new Pista("pistaDificilLondres");
 		
-		Lugar aeropuertoBuenosAires = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Lugar aeropuertoLondres = new Aeropuerto(pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
+		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
+		Lugar aeropuertoLondres = new Lugar("Aeropuerto", pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null);
 		Ciudad Londres = new Ciudad("Londres",6,11, aeropuertoLondres,null,null);
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
@@ -79,8 +79,8 @@ public class TpTest{
 		Pista pistaMediaBolsaBsAs = new Pista("pistaMediaBsAsBolsa");
 		Pista pistaDificilBolsaBsAs = new Pista("pistaDificilBsAsBolsa");
 		
-		Lugar aeropuertoBsAs = new Aeropuerto(pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Lugar bolsaBsAs = new Bolsa(pistaFacilBolsaBsAs, pistaMediaBolsaBsAs, pistaDificilBolsaBsAs);
+		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
+		Lugar bolsaBsAs = new Lugar("Bolsa", pistaFacilBolsaBsAs, pistaMediaBolsaBsAs, pistaDificilBolsaBsAs);
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,null);
 		
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
@@ -98,9 +98,9 @@ public class TpTest{
 		Pista pistaFacilBolsaBsAs = new Pista("pistaFacilBsAsBolsa");;
 		Pista pistaFacilBibliotecaBsAs = new Pista("pistaFacilBsAsBolsa");
 		
-		Lugar aeropuertoBsAs = new Aeropuerto(pistaFacilAeropuertoBsAs, null, null);
-		Lugar bolsaBsAs = new Bolsa(pistaFacilBolsaBsAs, null, null);
-		Lugar bibliotecaBsAs = new Biblioteca(pistaFacilBibliotecaBsAs, null, null);
+		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, null, null);
+		Lugar bolsaBsAs = new Lugar("Bolsa",pistaFacilBolsaBsAs, null, null);
+		Lugar bibliotecaBsAs = new Lugar("Biblioteca",pistaFacilBibliotecaBsAs, null, null);
 		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,bibliotecaBsAs);
 		JugadorNovato jugador = new JugadorNovato(buenosAires);
 		

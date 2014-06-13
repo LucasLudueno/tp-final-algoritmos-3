@@ -3,10 +3,18 @@ package modeloTp;
 import org.junit.Test;
 import org.junit.Assert;
 
-public class AeropuertoTest {
+public class LugarTest {
 
+	@Test 
+	public void elLugarDeberiaDevolverElNombreIngresado(){
+		
+		Lugar bolsa = new Lugar("bolsa", null, null, null);
+		
+		Assert.assertTrue( bolsa.obtenerNombre() == "bolsa" );
+	}
+	
 	@Test
-	public void elAeropuertoDeberiaDevolverLaPistaFacilSiElPersonajeEsNovato(){
+	public void elLugarDeberiaDevolverLaPistaFacilSiElPersonajeEsNovato(){
 	
 		Pista pistaFacil = new Pista("a");
 		Pista pistaMedia = new Pista("b");
@@ -14,13 +22,13 @@ public class AeropuertoTest {
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaFacil);
 	}
 	
 	@Test
-	public void elAeropuertoDeberiaDevolverLaPistaMedioSiElPersonajeEsDetective(){
+	public void elLugarDeberiaDevolverLaPistaMedioSiElPersonajeEsDetective(){
 		
 		Pista pistaFacil = new Pista("a");
 		Pista pistaMedia = new Pista("b");
@@ -28,13 +36,13 @@ public class AeropuertoTest {
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorDetective jugador = new JugadorDetective(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
 	}
 	
 	@Test
-	public void elAeropuertoDeberiaDevolverLaPistaFacilSiElPersonajeEsSargento(){
+	public void elLugarDeberiaDevolverLaPistaFacilSiElPersonajeEsSargento(){
 	
 		Pista pistaFacil = new Pista("a");
 		Pista pistaMedia = new Pista("b");
@@ -42,13 +50,13 @@ public class AeropuertoTest {
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorSargento jugador = new JugadorSargento(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaDificil);
 	}
 	
 	@Test
-	public void elAeropuertoDeberiaDevolverLaPistaMediaSiElPersonajeEsInvestigador(){
+	public void elLugarDeberiaDevolverLaPistaMediaSiElPersonajeEsInvestigador(){
 		
 		Pista pistaFacil = new Pista("a");
 		Pista pistaMedia = new Pista("b");
@@ -56,7 +64,7 @@ public class AeropuertoTest {
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
 		JugadorInvestigador jugador = new JugadorInvestigador(BuenosAires);
-		Aeropuerto aeropuerto = new Aeropuerto(pistaFacil, pistaMedia, pistaDificil);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
 	}
