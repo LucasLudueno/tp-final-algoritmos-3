@@ -73,5 +73,17 @@ public class JugadorTest {
 		
 	}
 	
+	@Test
+	public void deberiaReducirElTiempoDelJugador8HorasSiEsteDuerme(){
+		
+		Jugador jugador = new JugadorNovato(null);
+		
+		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
+		jugador.dormir();
+		
+		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoInicialJugador - 8) );		
+		
+	}
+	
 	
 }
