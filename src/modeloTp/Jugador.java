@@ -5,6 +5,8 @@ public class Jugador {
 	private Ciudad ciudadActual;
 	private int tiempoRestante;
 	private int tiempoPorEntrarALugar;
+	private int tiempoPorHeridaDeCuchillo;
+	private int tiempoPorHeridaDeBala;
 	protected int velocidad;
 	
 	public Jugador(Ciudad ciudad){
@@ -12,6 +14,8 @@ public class Jugador {
 		this.ciudadActual = ciudad;
 		this.tiempoRestante = 154; 
 		this.tiempoPorEntrarALugar = 1;
+		this.tiempoPorHeridaDeCuchillo = 2;
+		this.tiempoPorHeridaDeBala = 4;
 	}
 
 	public void restarTiempoPorEntrarALugar(){
@@ -45,5 +49,16 @@ public class Jugador {
 	public Ciudad obtenerCiudadActual() {
 		
 		return this.ciudadActual;
+	}
+
+	public void recibirCuchillazo() {
+		
+		this.tiempoRestante = this.tiempoRestante - this.tiempoPorHeridaDeCuchillo;
+		
+	}
+
+	public void recibirBalazo() {
+		
+		this.tiempoRestante = this.tiempoRestante - this.tiempoPorHeridaDeBala;
 	}
 } 

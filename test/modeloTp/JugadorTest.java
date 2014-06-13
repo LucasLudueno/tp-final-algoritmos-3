@@ -48,4 +48,30 @@ public class JugadorTest {
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
 						
 	}
+	
+	@Test
+	public void herirAJugadorConCuchilloDeberiaReducirElTiempoDelJugador2Horas(){
+		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Jugador jugador = new JugadorNovato(buenosAires);
+		
+		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
+		jugador.recibirCuchillazo();
+		
+		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoInicialJugador - 2) );		
+		
+	}
+	
+	@Test
+	public void herirAJugadorConArmaDeFuegoDeberiaReducirElTiempoDelJugador4Horas(){
+		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Jugador jugador = new JugadorNovato(buenosAires);
+		
+		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
+		jugador.recibirBalazo();
+		
+		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoInicialJugador - 4) );		
+		
+	}
+	
+	
 }
