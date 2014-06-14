@@ -1,5 +1,7 @@
 package modeloTp;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -12,7 +14,7 @@ public class TpTest{
 	@Test
 	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta() throws ExcepcionNoHayMasTiempo{
 	
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		
 		jugador.viajar(BuenosAires);
@@ -23,8 +25,8 @@ public class TpTest{
 	@Test
 	public void deberiaBajarElTiempoDelJugadorSiViajaAOtraCiudad() throws ExcepcionNoHayMasTiempo{
 	
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
-		Ciudad Paris = new Ciudad("Paris",5,5,null,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
+		Ciudad Paris = new Ciudad("Paris",5,5,null,null,null, new ArrayList<Ciudad>());
 		Jugador jugador = new JugadorNovato(BuenosAires);
 		
 		jugador.viajar(Paris);
@@ -38,7 +40,7 @@ public class TpTest{
 		Pista pistaMediaAeropuertoBsAs = new Pista("pistaMediaBsAs");
 		Pista pistaDificilAeropuertoBsAs = new Pista("pistaDificilBsAs");
 		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto",pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null, new ArrayList<Ciudad>());
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		
 		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
@@ -57,8 +59,8 @@ public class TpTest{
 		
 		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
 		Lugar aeropuertoLondres = new Lugar("Aeropuerto", pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null);
-		Ciudad Londres = new Ciudad("Londres",6,11, aeropuertoLondres,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null, new ArrayList<Ciudad>());
+		Ciudad Londres = new Ciudad("Londres",6,11, aeropuertoLondres,null,null, new ArrayList<Ciudad>());
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		
 		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
@@ -81,7 +83,7 @@ public class TpTest{
 		
 		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
 		Lugar bolsaBsAs = new Lugar("Bolsa", pistaFacilBolsaBsAs, pistaMediaBolsaBsAs, pistaDificilBolsaBsAs);
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,null, new ArrayList<Ciudad>());
 		
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		
@@ -101,7 +103,7 @@ public class TpTest{
 		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, null, null);
 		Lugar bolsaBsAs = new Lugar("Bolsa",pistaFacilBolsaBsAs, null, null);
 		Lugar bibliotecaBsAs = new Lugar("Biblioteca",pistaFacilBibliotecaBsAs, null, null);
-		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,bibliotecaBsAs);
+		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,bibliotecaBsAs, new ArrayList<Ciudad>());
 		JugadorNovato jugador = new JugadorNovato(buenosAires);
 		
 		Integer tiempoActualJugador = jugador.obtenerTiempoRestante();
@@ -116,6 +118,35 @@ public class TpTest{
 		buenosAires.obtenerPista(jugador,bibliotecaBsAs); // El jugador entra a un lugar por tercera vez
 		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoActualJugador - 3) );
 		
+	}
+	
+	/*
+	@Test
+	public void jugadorNovatoNoAtrapaAlLadronCasoGrupo2(){
+		Pista pistaFacilBibliotecaBsAs = new Pista( "Fue a un país asiático. Tenía una horrible cicatriz");
+		Pista pistaFacilBancoHongKong = new Pista( "Consulto por el tipo de cambio del yen" );
+		Pista pistaFacilPuertoHongKong = new Pista( "Fue a un país con bandera blanca y roja. Llevaba una raqueta" );
+		Pista pistaFacilBancoTokio = new Pista("Pregunto por el tipo de cambio de la libra. Tenía pelo rubio");
+		
+		Lugar bibliotecaBsAs = new Lugar( "biblioteca", pistaFacilBibliotecaBsAs, null, null);
+		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);
+		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null);
+		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null);
+		
+		Ciudad hongKong = new Ciudad( "Hong Kong", 3, 3, bancoHongKong, puertoHongKong, null, new ArrayList<Ciudad>());
+		Ciudad buenosAires = new Ciudad( "Buenos Aires", 1, 1, bibliotecaBsAs, null, null,);
+		Ciudad tokio = new Ciudad( "Tokio", 5, 5, bancoTokio, null, null);
+		
+		//Aca comienza lo que seria la prueba, lo demas se deberia cargar del XML
+		JugadorNovato jugador = new JugadorNovato(buenosAires);
+		
+		ArrayList<Lugar> lugaresBsAs = ( (Ciudad)jugador.obtenerCiudadActual() ).obtenerLugares();
+		Assert.assertTrue( buenosAires.obtenerPista(jugador, lugaresBsAs.get(0)) == pistaFacilBibliotecaBsAs);
+		
+		
+		
+		
 		
 	}
+	*/
 }

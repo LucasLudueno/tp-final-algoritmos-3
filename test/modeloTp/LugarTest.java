@@ -1,5 +1,7 @@
 package modeloTp;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -20,7 +22,7 @@ public class LugarTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
 		JugadorNovato jugador = new JugadorNovato(BuenosAires);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
@@ -34,7 +36,7 @@ public class LugarTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
 		JugadorDetective jugador = new JugadorDetective(BuenosAires);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
@@ -48,7 +50,7 @@ public class LugarTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
 		JugadorSargento jugador = new JugadorSargento(BuenosAires);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
@@ -62,7 +64,7 @@ public class LugarTest {
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null);
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
 		JugadorInvestigador jugador = new JugadorInvestigador(BuenosAires);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
