@@ -9,14 +9,16 @@ public class Ciudad {
 	private int posicion_x;
 	private int posicion_y;
 	private ArrayList<Lugar> lugares;
+	private ArrayList<Ciudad> ciudadesAViajar;
 	
 
-	public Ciudad(String nombre, int posicion_x, int posicion_y,Lugar lugar1,Lugar lugar2,Lugar lugar3){
+	public Ciudad(String nombre, int posicion_x, int posicion_y,Lugar lugar1,Lugar lugar2,Lugar lugar3, ArrayList<Ciudad> ciudadesAViajar){
 		
 		this.nombre = nombre;
 		this.posicion_x = posicion_x;
 		this.posicion_y = posicion_y;
 		this.lugares = new ArrayList<Lugar>();
+		this.ciudadesAViajar = ciudadesAViajar;
 		
 		this.lugares.add(lugar1);
 		this.lugares.add(lugar2);
@@ -66,4 +68,8 @@ public class Ciudad {
 		return this.lugares;
 	}	
 	
+	public ArrayList<Ciudad> obtenerCiudadesAViajar() {
+		
+		return this.ciudadesAViajar;
+	}
 }
