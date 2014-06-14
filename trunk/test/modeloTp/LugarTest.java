@@ -42,7 +42,7 @@ public class LugarTest {
 	}
 	
 	@Test
-	public void elLugarDeberiaDevolverLaPistaFacilSiElPersonajeEsSargento(){
+	public void elLugarDeberiaDevolverLaPistaDificilSiElPersonajeEsSargento(){
 	
 		Pista pistaFacil = new Pista("a");
 		Pista pistaMedia = new Pista("b");
