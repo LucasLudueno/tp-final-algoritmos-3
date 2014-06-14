@@ -10,7 +10,7 @@ public class LugarTest {
 	@Test 
 	public void elLugarDeberiaDevolverElNombreIngresado(){
 		
-		Lugar bolsa = new Lugar("bolsa", null, null, null);
+		Lugar bolsa = new Lugar("bolsa", null, null, null, null);
 		
 		Assert.assertTrue( bolsa.obtenerNombre() == "bolsa" );
 	}
@@ -23,8 +23,8 @@ public class LugarTest {
 		Pista pistaDificil = new Pista("c");
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorNovato jugador = new JugadorNovato(BuenosAires);
-		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
+		JugadorNovato jugador = new JugadorNovato(BuenosAires, null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil, null);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaFacil);
 	}
@@ -37,8 +37,8 @@ public class LugarTest {
 		Pista pistaDificil = new Pista("c");
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorDetective jugador = new JugadorDetective(BuenosAires);
-		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
+		JugadorDetective jugador = new JugadorDetective(BuenosAires, null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil, null);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
 	}
@@ -51,8 +51,8 @@ public class LugarTest {
 		Pista pistaDificil = new Pista("c");
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorSargento jugador = new JugadorSargento(BuenosAires);
-		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
+		JugadorSargento jugador = new JugadorSargento(BuenosAires, null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil, null);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaDificil);
 	}
@@ -65,8 +65,8 @@ public class LugarTest {
 		Pista pistaDificil = new Pista("c");
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorInvestigador jugador = new JugadorInvestigador(BuenosAires);
-		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
+		JugadorInvestigador jugador = new JugadorInvestigador(BuenosAires, null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil, null);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
 	}

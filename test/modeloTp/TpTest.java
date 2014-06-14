@@ -15,7 +15,7 @@ public class TpTest{
 	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta() throws ExcepcionNoHayMasTiempo{
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		Jugador jugador = new JugadorNovato(BuenosAires);
+		Jugador jugador = new JugadorNovato(BuenosAires, null);
 		
 		jugador.viajar(BuenosAires);
 		
@@ -27,7 +27,7 @@ public class TpTest{
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
 		Ciudad Paris = new Ciudad("Paris",5,5,null,null,null, new ArrayList<Ciudad>());
-		Jugador jugador = new JugadorNovato(BuenosAires);
+		Jugador jugador = new JugadorNovato(BuenosAires, null);
 		
 		jugador.viajar(Paris);
 		
@@ -39,9 +39,9 @@ public class TpTest{
 		Pista pistaFacilAeropuertoBsAs = new Pista("pistaFacilBsAs");
 		Pista pistaMediaAeropuertoBsAs = new Pista("pistaMediaBsAs");
 		Pista pistaDificilAeropuertoBsAs = new Pista("pistaDificilBsAs");
-		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto",pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
+		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto",pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs, null);
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null, new ArrayList<Ciudad>());
-		JugadorNovato jugador = new JugadorNovato(BuenosAires);
+		JugadorNovato jugador = new JugadorNovato(BuenosAires, null);
 		
 		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
 		
@@ -57,11 +57,11 @@ public class TpTest{
 		Pista pistaMediaAeropuertoLondres = new Pista("pistaMediaLondres");
 		Pista pistaDificilAeropuertoLondres = new Pista("pistaDificilLondres");
 		
-		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Lugar aeropuertoLondres = new Lugar("Aeropuerto", pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
+		Lugar aeropuertoBuenosAires = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs, null);
+		Lugar aeropuertoLondres = new Lugar("Aeropuerto", pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres, null);
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBuenosAires,null,null, new ArrayList<Ciudad>());
 		Ciudad Londres = new Ciudad("Londres",6,11, aeropuertoLondres,null,null, new ArrayList<Ciudad>());
-		JugadorNovato jugador = new JugadorNovato(BuenosAires);
+		JugadorNovato jugador = new JugadorNovato(BuenosAires, null);
 		
 		Assert.assertTrue( (jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBuenosAires) == pistaFacilAeropuertoBsAs );
 		
@@ -81,11 +81,11 @@ public class TpTest{
 		Pista pistaMediaBolsaBsAs = new Pista("pistaMediaBsAsBolsa");
 		Pista pistaDificilBolsaBsAs = new Pista("pistaDificilBsAsBolsa");
 		
-		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs);
-		Lugar bolsaBsAs = new Lugar("Bolsa", pistaFacilBolsaBsAs, pistaMediaBolsaBsAs, pistaDificilBolsaBsAs);
+		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, pistaMediaAeropuertoBsAs, pistaDificilAeropuertoBsAs, null);
+		Lugar bolsaBsAs = new Lugar("Bolsa", pistaFacilBolsaBsAs, pistaMediaBolsaBsAs, pistaDificilBolsaBsAs, null);
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,null, new ArrayList<Ciudad>());
 		
-		JugadorNovato jugador = new JugadorNovato(BuenosAires);
+		JugadorNovato jugador = new JugadorNovato(BuenosAires, null);
 		
 		Assert.assertTrue((jugador.obtenerCiudadActual()).obtenerPista(jugador,aeropuertoBsAs) == pistaFacilAeropuertoBsAs);
 		Assert.assertTrue((jugador.obtenerCiudadActual()).obtenerPista(jugador,bolsaBsAs) == pistaFacilBolsaBsAs );
@@ -100,11 +100,11 @@ public class TpTest{
 		Pista pistaFacilBolsaBsAs = new Pista("pistaFacilBsAsBolsa");;
 		Pista pistaFacilBibliotecaBsAs = new Pista("pistaFacilBsAsBolsa");
 		
-		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, null, null);
-		Lugar bolsaBsAs = new Lugar("Bolsa",pistaFacilBolsaBsAs, null, null);
-		Lugar bibliotecaBsAs = new Lugar("Biblioteca",pistaFacilBibliotecaBsAs, null, null);
+		Lugar aeropuertoBsAs = new Lugar("Aeropuerto", pistaFacilAeropuertoBsAs, null, null, null);
+		Lugar bolsaBsAs = new Lugar("Bolsa",pistaFacilBolsaBsAs, null, null, null);
+		Lugar bibliotecaBsAs = new Lugar("Biblioteca",pistaFacilBibliotecaBsAs, null, null, null);
 		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1, aeropuertoBsAs, bolsaBsAs,bibliotecaBsAs, new ArrayList<Ciudad>());
-		JugadorNovato jugador = new JugadorNovato(buenosAires);
+		JugadorNovato jugador = new JugadorNovato(buenosAires, null);
 		
 		Integer tiempoActualJugador = jugador.obtenerTiempoRestante();
 		buenosAires.obtenerPista(jugador,aeropuertoBsAs); // El jugador entra a un lugar por primera vez
@@ -120,19 +120,26 @@ public class TpTest{
 		
 	}
 	
-	/*
+	
 	@Test
 	public void jugadorNovatoNoAtrapaAlLadronCasoGrupo2() throws ExcepcionNoHayMasTiempo{
+		Ladron ladron = new Ladron("Carmen San Diego", "femenino", "tennis", "rubio", "cicatriz", "ninguno");
+		Ladron sospechoso = new Ladron("John Wayne", "masculino", "alpinismo", "rubio", "cicatriz", "ninguno");
+		ArrayList<Ladron> sospechosos = new ArrayList<Ladron>();
+		sospechosos.add(ladron);
+		sospechosos.add(sospechoso);
+		ComputadoraPolicial computadora = new ComputadoraPolicial(sospechosos);
+		
 		Pista pistaFacilBibliotecaBsAs = new Pista( "Fue a un país asiático. Tenía una horrible cicatriz");
 		Pista pistaFacilBancoHongKong = new Pista( "Consulto por el tipo de cambio del yen" );
 		Pista pistaFacilPuertoHongKong = new Pista( "Fue a un país con bandera blanca y roja. Llevaba una raqueta" );
 		Pista pistaFacilBancoTokio = new Pista("Pregunto por el tipo de cambio de la libra. Tenía pelo rubio");
 		
-		Lugar bibliotecaBsAs = new Lugar( "biblioteca", pistaFacilBibliotecaBsAs, null, null);
-		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);
-		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null);
-		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null);
-		Lugar bancoLondres = new Lugar( "banco", null, null, null);
+		Lugar bibliotecaBsAs = new Lugar( "biblioteca", pistaFacilBibliotecaBsAs, null, null, null);
+		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null, null);
+		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null, null);
+		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null, null);
+		Lugar bancoLondres = new Lugar( "banco", null, null, null, ladron);
 		
 		Ciudad londres = new Ciudad( "Londes", 7, 7, bancoLondres, null, null, new ArrayList<Ciudad>() );
 		ArrayList<Ciudad> ciudadesAViajarTokio = new ArrayList<Ciudad>();
@@ -147,7 +154,7 @@ public class TpTest{
 				
 		
 		//Aca comienza lo que seria la prueba, lo demas se deberia cargar del XML
-		JugadorNovato jugador = new JugadorNovato(buenosAires);
+		JugadorNovato jugador = new JugadorNovato(buenosAires, computadora);
 		
 		Ciudad ciudadActual = jugador.obtenerCiudadActual();
 		ArrayList<Lugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
@@ -165,9 +172,15 @@ public class TpTest{
 		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilBancoTokio);
 		
 		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Londres
+		Ladron ladronBuscado = jugador.emitirOrdenDeArresto( null, "alpinismo", "rubio", "cicatriz", null );
+		ciudadActual = jugador.obtenerCiudadActual();
+		lugaresCiudadActual = ciudadActual.obtenerLugares();
+		
+		Assert.assertFalse( ( (Lugar)lugaresCiudadActual.get(0) ).obtenerLadron() == ladronBuscado );
+		Assert.assertTrue( ladronBuscado == sospechoso);
 		
 
-	
+		
 	}
-	*/
+	
 }
