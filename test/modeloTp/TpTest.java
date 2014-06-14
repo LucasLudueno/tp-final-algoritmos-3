@@ -122,7 +122,7 @@ public class TpTest{
 	
 	/*
 	@Test
-	public void jugadorNovatoNoAtrapaAlLadronCasoGrupo2(){
+	public void jugadorNovatoNoAtrapaAlLadronCasoGrupo2() throws ExcepcionNoHayMasTiempo{
 		Pista pistaFacilBibliotecaBsAs = new Pista( "Fue a un país asiático. Tenía una horrible cicatriz");
 		Pista pistaFacilBancoHongKong = new Pista( "Consulto por el tipo de cambio del yen" );
 		Pista pistaFacilPuertoHongKong = new Pista( "Fue a un país con bandera blanca y roja. Llevaba una raqueta" );
@@ -132,21 +132,42 @@ public class TpTest{
 		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);
 		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null);
 		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null);
+		Lugar bancoLondres = new Lugar( "banco", null, null, null);
 		
-		Ciudad hongKong = new Ciudad( "Hong Kong", 3, 3, bancoHongKong, puertoHongKong, null, new ArrayList<Ciudad>());
-		Ciudad buenosAires = new Ciudad( "Buenos Aires", 1, 1, bibliotecaBsAs, null, null,);
-		Ciudad tokio = new Ciudad( "Tokio", 5, 5, bancoTokio, null, null);
+		Ciudad londres = new Ciudad( "Londes", 7, 7, bancoLondres, null, null, new ArrayList<Ciudad>() );
+		ArrayList<Ciudad> ciudadesAViajarTokio = new ArrayList<Ciudad>();
+		ciudadesAViajarTokio.add(londres);
+		Ciudad tokio = new Ciudad( "Tokio", 5, 5, bancoTokio, null, null, ciudadesAViajarTokio );
+		ArrayList<Ciudad> ciudadesAViajarHongKong = new ArrayList<Ciudad>();
+		ciudadesAViajarHongKong.add(tokio);
+		Ciudad hongKong = new Ciudad( "Hong Kong", 3, 3, bancoHongKong, puertoHongKong, null, ciudadesAViajarHongKong );
+		ArrayList<Ciudad> ciudadesAViajarBsAs = new ArrayList<Ciudad>();
+		ciudadesAViajarBsAs.add(hongKong);
+		Ciudad buenosAires = new Ciudad( "Buenos Aires", 1, 1, bibliotecaBsAs, null, null, ciudadesAViajarBsAs);
+				
 		
 		//Aca comienza lo que seria la prueba, lo demas se deberia cargar del XML
 		JugadorNovato jugador = new JugadorNovato(buenosAires);
 		
-		ArrayList<Lugar> lugaresBsAs = ( (Ciudad)jugador.obtenerCiudadActual() ).obtenerLugares();
-		Assert.assertTrue( buenosAires.obtenerPista(jugador, lugaresBsAs.get(0)) == pistaFacilBibliotecaBsAs);
+		Ciudad ciudadActual = jugador.obtenerCiudadActual();
+		ArrayList<Lugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilBibliotecaBsAs);
 		
+		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Hong Kong
+		ciudadActual = jugador.obtenerCiudadActual();
+		lugaresCiudadActual = ciudadActual.obtenerLugares();
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilBancoHongKong);
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(1)) == pistaFacilPuertoHongKong);
 		
+		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Tokio
+		ciudadActual = jugador.obtenerCiudadActual();
+		lugaresCiudadActual = ciudadActual.obtenerLugares();
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilBancoTokio);
 		
+		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Londres
 		
-		
+
+	
 	}
 	*/
 }
