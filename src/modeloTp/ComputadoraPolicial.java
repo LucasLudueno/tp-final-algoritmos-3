@@ -11,9 +11,9 @@ public class ComputadoraPolicial {
 	private String vehiculoLadron;
 	private ArrayList<Ladron> sospechosos;
 	
-	public ComputadoraPolicial(){
+	public ComputadoraPolicial(ArrayList<Ladron> sospechosos){
 	
-		this.sospechosos = new ArrayList<Ladron>();
+		this.sospechosos = sospechosos;
 	}
 	
 	public String obtenerSexoLadron() {
@@ -44,6 +44,31 @@ public class ComputadoraPolicial {
 	public ArrayList<Ladron> obtenerSospechosos() {
 		
 		return this.sospechosos;
+	}
+
+	public void agregarSexoLadron(String sexoLadron) {
+		
+		this.sexoLadron = sexoLadron;
+	}
+
+	public void agregarHobbyLadron(String hobbyLadron) {
+		
+		this.hobbyLadron = hobbyLadron;		
+	}
+
+	public void agregarVehiculoLadron(String vehiculoLadron) {
+		
+		this.vehiculoLadron = vehiculoLadron;
+	}
+
+	public void agregarCabelloLadron(String cabelloLadron) {
+		
+		this.cabelloLadron = cabelloLadron;		
+	}
+
+	public void agregarSeniaLadron(String seniaLadron) {
+		
+		this.seniaLadron = seniaLadron;		
 	}
 
 }
