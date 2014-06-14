@@ -1,5 +1,7 @@
 package modeloTp;
 
+import java.util.ArrayList;
+
 public class Jugador {
 
 	private Ciudad ciudadActual;
@@ -8,10 +10,12 @@ public class Jugador {
 	private int tiempoPorHeridaDeCuchillo;
 	private int tiempoPorHeridaDeBala;
 	private int tiempoPorDormir;
+	private int tiempoEmitirOrdenDeArresto;
+	private ComputadoraPolicial computadoraPolicial;
 	protected int velocidad;
 	
 	
-	public Jugador(Ciudad ciudad){
+	public Jugador(Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
 		
 		this.ciudadActual = ciudad;
 		this.tiempoRestante = 154; 
@@ -19,6 +23,8 @@ public class Jugador {
 		this.tiempoPorHeridaDeCuchillo = 2;
 		this.tiempoPorHeridaDeBala = 4;
 		this.tiempoPorDormir = 8;
+		this.tiempoEmitirOrdenDeArresto = 3;
+		this.computadoraPolicial = computadoraPolicial;
 	}
 
 	public void restarTiempoPorEntrarALugar(){
@@ -71,8 +77,21 @@ public class Jugador {
 		
 	}
 	
+	public Ladron emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
+		
+		reducirTiempo( this.tiempoEmitirOrdenDeArresto);
+		ArrayList<Ladron> posiblesLadrones = this.computadoraPolicial.buscarPosiblesLadrones(sexo, hobby, cabello, senia, vehiculo);
+		
+		if (posiblesLadrones.size() == 1){
+			return posiblesLadrones.get(0);
+		}
+		return null;
+	}
+	
 	private void reducirTiempo( Integer tiempo ){
 		
 		this.tiempoRestante = this.tiempoRestante - tiempo;
 	}
+	
+	
 } 

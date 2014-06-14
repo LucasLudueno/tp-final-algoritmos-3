@@ -31,9 +31,9 @@ public class CiudadTest {
 	
 	@Test
 	public void obtenerLugaresDeberiaDevolverLosLugaresIngresados(){
-		Lugar aeropuerto = new Lugar("Aeropuerto",null, null, null);
-		Lugar bolsa = new Lugar("Bolsa",null, null, null);
-		Lugar biblioteca = new Lugar("Biblioteca",null, null, null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",null, null, null, null);
+		Lugar bolsa = new Lugar("Bolsa",null, null, null, null);
+		Lugar biblioteca = new Lugar("Biblioteca",null, null, null, null);
 		Ciudad buenosAires = new Ciudad("Buenos Aires", 1, 1, aeropuerto, bolsa, biblioteca, new ArrayList<Ciudad>());
 		
 		ArrayList<Lugar> lugaresCiudad = buenosAires.obtenerLugares();

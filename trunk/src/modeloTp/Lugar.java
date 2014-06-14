@@ -6,13 +6,15 @@ public class Lugar {
 	private Pista pistaFacil;
 	private Pista pistaMedia;
 	private Pista pistaDificil;
+	private Ladron ladronEscondido;
 	
-	public Lugar(String nombre, Pista pistaFacil, Pista pistaMedia, Pista pistaDificil){
+	public Lugar(String nombre, Pista pistaFacil, Pista pistaMedia, Pista pistaDificil, Ladron ladron){
 		
 		this.nombre = nombre;
 		this.pistaFacil = pistaFacil;
 		this.pistaMedia = pistaMedia;
 		this.pistaDificil = pistaDificil;
+		this.ladronEscondido = ladron;
 
 	}
 	
@@ -35,5 +37,10 @@ public class Lugar {
 	public String obtenerNombre() {
 		
 		return this.nombre;
+	}
+
+	public Ladron obtenerLadron() {
+		
+		return this.ladronEscondido;
 	}	
 }
