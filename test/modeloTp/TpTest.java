@@ -178,9 +178,7 @@ public class TpTest{
 		
 		Assert.assertFalse( ( (Lugar)lugaresCiudadActual.get(0) ).obtenerLadron() == ladronBuscado );
 		Assert.assertTrue( ladronBuscado == sospechoso);
-		
-
-		
+			
 	}
 	
 }

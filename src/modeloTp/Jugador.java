@@ -2,6 +2,7 @@ package modeloTp;
 
 import java.util.ArrayList;
 
+
 public class Jugador {
 
 	private Ciudad ciudadActual;
@@ -92,6 +93,5 @@ public class Jugador {
 		
 		this.tiempoRestante = this.tiempoRestante - tiempo;
 	}
-	
 	
 } 
