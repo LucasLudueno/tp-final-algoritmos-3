@@ -2,6 +2,7 @@ package modeloTp;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 public class Pista {
 	
@@ -15,16 +16,15 @@ public class Pista {
 		return this.contenido;
 	}
 
-	public Element serializar(Document doc) {
+	public Node serializar(Document doc) {
 		Element element = doc.createElement("Pista");
 		element.setAttribute("contenido", this.contenido);
 		return element;
 	}
 
-	public static Pista cargarEstado(Document doc) {
+	public static Pista cargarEstado(Node elementoPista) {
 		Pista nuevaPista = new Pista("");
-		Element elementoPista = (Element)doc.getElementsByTagName("Pista").item(0);
-		nuevaPista.contenido = elementoPista.getAttribute("contenido");
+		nuevaPista.contenido = ((Element)elementoPista).getAttribute("contenido");
 		return nuevaPista;
 	}
 	
