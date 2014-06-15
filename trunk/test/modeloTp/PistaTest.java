@@ -24,6 +24,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 public class PistaTest {
@@ -48,7 +49,7 @@ public class PistaTest {
 		Pista unaPista = new Pista("Contenido de pista");
 		
 		//Asigno el elemento XML de la clase Pista al documento generado anteriormente
-		Element pistaSerializada = unaPista.serializar(doc);
+		Node pistaSerializada = unaPista.serializar(doc);
 		
 		assertNotNull(pistaSerializada);
 		
@@ -65,13 +66,10 @@ public class PistaTest {
 		assertTrue(archivo.exists());
 		
 		
-		//Ahora recupero el estado guardado de pista en una nueva instancia
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
+		//Recupero el estado guardado de pista en una nueva instancia
+		Element elementoPista = (Element)doc.getElementsByTagName("Pista").item(0);
+		Pista otraPista = Pista.cargarEstado(elementoPista);
 		
-		Pista otraPista = Pista.cargarEstado(doc);
 		assertNotNull(otraPista);
 		assertEquals(unaPista.obtenerContenido(), otraPista.obtenerContenido());
 				
