@@ -17,9 +17,9 @@ public class Pista {
 	}
 
 	public Node serializar(Document doc) {
-		Element element = doc.createElement("Pista");
-		element.setAttribute("contenido", this.contenido);
-		return element;
+		Element elementoPista = doc.createElement("Pista");
+		elementoPista.setAttribute("contenido", this.contenido);
+		return elementoPista;
 	}
 
 	public static Pista cargarEstado(Node elementoPista) {

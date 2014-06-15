@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -48,11 +47,10 @@ public class PistaTest {
 		
 		Pista unaPista = new Pista("Contenido de pista");
 		
-		//Asigno el elemento XML de la clase Pista al documento generado anteriormente
+		//Asigno el elemento XML de la instancia al documento generado anteriormente
 		Node pistaSerializada = unaPista.serializar(doc);
 		
 		assertNotNull(pistaSerializada);
-		
 		
 		//Guardo el XML en el disco
 		doc.appendChild(pistaSerializada);
@@ -65,23 +63,19 @@ public class PistaTest {
 		
 		assertTrue(archivo.exists());
 		
-		
 		//Recupero el estado guardado de pista en una nueva instancia
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
 		Element elementoPista = (Element)doc.getElementsByTagName("Pista").item(0);
 		Pista otraPista = Pista.cargarEstado(elementoPista);
 		
 		assertNotNull(otraPista);
 		assertEquals(unaPista.obtenerContenido(), otraPista.obtenerContenido());
-				
+		
+		archivo.delete();	
 	}
 	
-	@After
-	public void after(){
-		File archivo = new File("pistaTest.xml");
-		if (archivo.exists()){
-			archivo.delete();
-		}
-		
-	}
-
 }
