@@ -1,8 +1,27 @@
 package modeloTp;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Assert;
 import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import modeloTp.Ciudad;
 
@@ -56,6 +75,53 @@ public class CiudadTest {
 
 		Assert.assertTrue( buenosAires.obtenerCiudadesAViajar() == ciudadesAViajarDesdeBsAs );
 		
+	}
+	
+	@Test
+	public void unaCiudadDeberiaGuardarYRecuperarATravesDeXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		
+		//Genero un documento XML vacio en la memoria
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		Lugar biblioteca = new Lugar("Biblioteca",new Pista("BiblioFacil"),new Pista("BiblioMedia"),new Pista("BiblioDificil"),null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",new Pista("AeroFacil"),new Pista("AeroMedia"),new Pista("AeroDificil"),null);
+		Lugar banco = new Lugar("Banco",new Pista("BancFacil"),new Pista("BancMedia"),new Pista("BancDificil"),null);
+		
+		Ciudad unaCiudad = new Ciudad("Buenos Aires",1,1,biblioteca,aeropuerto,banco,null);
+		
+		//Asigno el elemento XML de la instancia al documento generado anteriormente
+		Node ciudadSerializada = unaCiudad.serializar(doc);
+		
+		assertNotNull(ciudadSerializada);
+		
+		//Guardo el XML en el disco
+		doc.appendChild(ciudadSerializada);
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		File archivo = new File("ciudadTest.xml");
+		StreamResult streamResult = new StreamResult(archivo);
+		transformer.transform(source, streamResult);
+				
+		assertTrue(archivo.exists());
+		
+		//Recupero el estado guardado de ciudad en una nueva instancia
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+					
+		Ciudad otraCiudad = Ciudad.cargarEstado(doc);
+		
+		assertNotNull(otraCiudad);
+		assertEquals(unaCiudad.obtenerNombre(), otraCiudad.obtenerNombre());
+		assertEquals(unaCiudad.obtenerPosicion_x(), otraCiudad.obtenerPosicion_x());
+		assertEquals(unaCiudad.obtenerPosicion_y(), otraCiudad.obtenerPosicion_y());
+		assertEquals(unaCiudad.cantidadLugares(), otraCiudad.cantidadLugares());
+		
+		archivo.delete();
 	}
 	
 }

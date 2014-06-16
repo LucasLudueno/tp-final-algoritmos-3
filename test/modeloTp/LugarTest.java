@@ -20,6 +20,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.junit.Test;
 import org.junit.Assert;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -119,13 +120,14 @@ public class LugarTest {
 		
 		assertTrue(archivo.exists());
 		
-		//Recupero el estado guardado de pista en una nueva instancia
+		//Recupero el estado guardado de lugar en una nueva instancia
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		doc = dBuilder.parse(archivo);
 		doc.getDocumentElement().normalize();
-			
-		Lugar otroLugar = Lugar.cargarEstado(doc);
+		
+		Element elementoLugar = (Element) doc.getElementsByTagName("Lugar").item(0);
+		Lugar otroLugar = Lugar.cargarEstado(elementoLugar);
 		
 		assertNotNull(otroLugar);
 		assertEquals(unLugar.obtenerNombre(), otroLugar.obtenerNombre());
