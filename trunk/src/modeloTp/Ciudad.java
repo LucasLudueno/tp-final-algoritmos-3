@@ -2,6 +2,9 @@ package modeloTp;
 
 import java.util.ArrayList;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 public class Ciudad {
 
@@ -25,7 +28,7 @@ public class Ciudad {
 		this.lugares.add(lugar3);
 	}
 
-	public String obtenerNombre() { /* CONSIDERO QUE ESTE METODO NO VA, POR LO MENOS POR AHORA */
+	public String obtenerNombre() {
 		return this.nombre;
 	} 
 	
@@ -71,5 +74,36 @@ public class Ciudad {
 	public ArrayList<Ciudad> obtenerCiudadesAViajar() {
 		
 		return this.ciudadesAViajar;
+	}
+
+	public Node serializar(Document doc) {
+		Element elementoCiudad = doc.createElement("Ciudad");
+		elementoCiudad.setAttribute("nombre",this.nombre);
+		elementoCiudad.setAttribute("posicion_x",String.valueOf(this.posicion_x));
+		elementoCiudad.setAttribute("posicion_y",String.valueOf(this.posicion_y));
+		
+		Element elementoLugares = doc.createElement("Lugares");
+		elementoCiudad.appendChild(elementoLugares);
+		for (int i = 0 ; i < lugares.size() ; i++){
+			elementoLugares.appendChild(lugares.get(i).serializar(doc));
+		}
+		
+		return elementoCiudad;
+	}
+
+	public static Ciudad cargarEstado(Document doc) {
+		Element elementoCiudad = (Element)doc.getElementsByTagName("Ciudad").item(0);
+		String nombre = elementoCiudad.getAttribute("nombre");
+		int posicion_x = Integer.valueOf(elementoCiudad.getAttribute("posicion_x"));
+		int posicion_y = Integer.valueOf(elementoCiudad.getAttribute("posicion_y"));
+		
+		Element elementoLugares = (Element)doc.getElementsByTagName("Lugares").item(0);
+		Lugar lugarUno = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(0));
+		Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
+		Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));
+		
+		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y,lugarUno,lugarDos,lugarTres,null);
+		
+		return unaCiudad;
 	}
 }

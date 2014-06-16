@@ -61,14 +61,14 @@ public class Lugar {
 		return elementoLugar;
 	}
 
-	public static Lugar cargarEstado(Document doc) {
-		Element elementoLugar = (Element) doc.getElementsByTagName("Lugar").item(0);
+	public static Lugar cargarEstado(Element elementoLugar) {
 		String nombre = elementoLugar.getAttribute("nombre");
 		
-		Element elementoPistas = (Element) doc.getElementsByTagName("Pistas").item(0);
+		Element elementoPistas = (Element)elementoLugar.getElementsByTagName("Pistas").item(0);
 		Pista pistaFacil = Pista.cargarEstado(elementoPistas.getChildNodes().item(0));
 		Pista pistaMedia = Pista.cargarEstado(elementoPistas.getChildNodes().item(1));
 		Pista pistaDificil = Pista.cargarEstado(elementoPistas.getChildNodes().item(2));
+
 		
 		Lugar unLugar = new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil,null);
 		
