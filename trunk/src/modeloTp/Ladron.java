@@ -1,5 +1,9 @@
 package modeloTp;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 public class Ladron {
 	
 	private String nombre;
@@ -46,6 +50,31 @@ public class Ladron {
 	public String obtenerVehiculo() {
 		
 		return this.vehiculo;
+	}
+
+	public Node serializar(Document doc) {
+		Element elementoLadron = doc.createElement("Ladron");
+		elementoLadron.setAttribute("nombre", this.nombre);
+		elementoLadron.setAttribute("sexo", this.sexo);
+		elementoLadron.setAttribute("hobby", this.hobby);
+		elementoLadron.setAttribute("cabello", this.cabello);
+		elementoLadron.setAttribute("senia", this.senia);
+		elementoLadron.setAttribute("vehiculo", this.vehiculo);
+		
+		return elementoLadron;
+	}
+
+	public static Ladron cargarEstado(Element elementoLadron) {
+		String nombre = elementoLadron.getAttribute("nombre");
+		String sexo = elementoLadron.getAttribute("sexo");
+		String hobby = elementoLadron.getAttribute("hobby");
+		String cabello = elementoLadron.getAttribute("cabello");
+		String senia = elementoLadron.getAttribute("senia");
+		String vehiculo = elementoLadron.getAttribute("vehiculo");
+		
+		Ladron unLadron = new Ladron(nombre,sexo,hobby,cabello,senia,vehiculo);
+		
+		return unLadron;
 	}
 
 }
