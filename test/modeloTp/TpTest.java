@@ -181,4 +181,48 @@ public class TpTest{
 			
 	}
 	
+	@Test
+	public void jugadorDetectiveNoAtrapaAlLadronCasoGrupo1SeQuedaSinTiempo() throws ExcepcionNoHayMasTiempo{
+		
+		Pista pistaFacilMuseoVeracruz = new Pista( "Era alto y de contextura delgada");
+		Pista pistaFacilAeropuertoVeracruz = new Pista( "Se movia en auto con bandera roja y blanca" );
+		Pista pistaFacilBancoMilan = new Pista( "Nunca vi a esa persona" );
+		Pista pistaFacilMuelleMilan = new Pista("Por aca pasa mucha gente");
+		
+		Lugar museoVeracruz = new Lugar( "museo", pistaFacilMuseoVeracruz, null, null, null);
+		Lugar aeropuertoVeracruz = new Lugar( "aeropuerto", pistaFacilAeropuertoVeracruz, null, null, null);
+		Lugar bancoMilan = new Lugar( "banco", pistaFacilBancoMilan, null, null, null);
+		Lugar muelleMilan= new Lugar( "muelle", pistaFacilMuelleMilan, null, null, null);
+		
+		Ciudad newYork = new Ciudad( "NewYork", 125, 130, null, null, null, new ArrayList<Ciudad>() );
+		ArrayList<Ciudad> ciudadesAViajarMilan = new ArrayList<Ciudad>();
+		ciudadesAViajarMilan.add(newYork);
+		Ciudad milan = new Ciudad( "Milan", 25, 55, muelleMilan, bancoMilan, null, ciudadesAViajarMilan );
+		ArrayList<Ciudad> ciudadesAViajarVeracruz = new ArrayList<Ciudad>();
+		ciudadesAViajarVeracruz.add(milan);
+		Ciudad veracruz = new Ciudad( "Veracruz", 34, 34, museoVeracruz, aeropuertoVeracruz, null, ciudadesAViajarVeracruz );
+				
+		
+		//Aca comienza lo que seria la prueba, lo demas se deberia cargar del XML
+		JugadorNovato jugador = new JugadorNovato(veracruz, null);
+		
+		Ciudad ciudadActual = jugador.obtenerCiudadActual();
+		ArrayList<Lugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilMuseoVeracruz);
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(1)) == pistaFacilAeropuertoVeracruz);
+
+		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Milan
+		ciudadActual = jugador.obtenerCiudadActual();
+		lugaresCiudadActual = ciudadActual.obtenerLugares();
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilMuelleMilan);
+		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(1)) ==  pistaFacilBancoMilan);
+		
+		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a newYork
+		ciudadActual = jugador.obtenerCiudadActual();
+		lugaresCiudadActual = ciudadActual.obtenerLugares();
+		Integer tiempoRestante = jugador.obtenerTiempoRestante();
+		
+		Assert.assertTrue(tiempoRestante < 2); //Tiene menos de 2 horas par jugar, perdio. Retocar la prueba.
+		
+	}
 }
