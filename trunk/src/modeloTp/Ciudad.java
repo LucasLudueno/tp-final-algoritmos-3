@@ -91,13 +91,12 @@ public class Ciudad {
 		return elementoCiudad;
 	}
 
-	public static Ciudad cargarEstado(Document doc) {
-		Element elementoCiudad = (Element)doc.getElementsByTagName("Ciudad").item(0);
+	public static Ciudad cargarEstado(Element elementoCiudad) {
 		String nombre = elementoCiudad.getAttribute("nombre");
 		int posicion_x = Integer.valueOf(elementoCiudad.getAttribute("posicion_x"));
 		int posicion_y = Integer.valueOf(elementoCiudad.getAttribute("posicion_y"));
 		
-		Element elementoLugares = (Element)doc.getElementsByTagName("Lugares").item(0);
+		Element elementoLugares = (Element)elementoCiudad.getElementsByTagName("Lugares").item(0);
 		Lugar lugarUno = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(0));
 		Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
 		Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));

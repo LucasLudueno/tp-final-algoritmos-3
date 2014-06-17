@@ -1,9 +1,27 @@
 package modeloTp;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 import modeloTp.Ciudad;
 import modeloTp.ExcepcionNoHayMasTiempo;
@@ -98,5 +116,52 @@ public class JugadorTest {
 		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoInicialJugador - 3) );
 	}
 	
+	@Test
+	public void unJugadorDeberiaGuardarYRecuperarATravesDeXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		
+		//Genero un documento XML vacio en la memoria
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		Lugar biblioteca = new Lugar("Biblioteca",new Pista("BiblioFacil"),new Pista("BiblioMedia"),new Pista("BiblioDificil"),null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",new Pista("AeroFacil"),new Pista("AeroMedia"),new Pista("AeroDificil"),null);
+		Lugar banco = new Lugar("Banco",new Pista("BancFacil"),new Pista("BancMedia"),new Pista("BancDificil"),null);
+		
+		Ciudad unaCiudad = new Ciudad("Buenos Aires",1,1,biblioteca,aeropuerto,banco,null);
+		
+		Jugador unJugador = new Jugador(unaCiudad,null);
+		
+		//Asigno el elemento XML de la instancia al documento generado anteriormente
+		Node jugadorSerializado = unJugador.serializar(doc);
+		
+		assertNotNull(jugadorSerializado);
+		
+		//Guardo el XML en el disco
+		doc.appendChild(jugadorSerializado);
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		File archivo = new File("jugadorTest.xml");
+		StreamResult streamResult = new StreamResult(archivo);
+		transformer.transform(source, streamResult);
+						
+		assertTrue(archivo.exists());
+		
+		//Recupero el estado guardado de jugador en una nueva instancia
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+							
+		Jugador otroJugador = Jugador.cargarEstado(doc);
+		
+		assertNotNull(otroJugador);
+		assertEquals(unJugador.velocidad, otroJugador.velocidad);
+		assertNotNull(otroJugador.obtenerCiudadActual());
+		assertEquals(unJugador.obtenerCiudadActual().obtenerNombre(), otroJugador.obtenerCiudadActual().obtenerNombre());
+		
+		archivo.delete();	
+	}
 	
 }
