@@ -48,6 +48,7 @@ public class Jugador {
 		if( this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual)) >= this.tiempoRestante ) throw new ExcepcionNoHayMasTiempo();
 		else this.tiempoRestante = this.tiempoRestante - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual));
 		this.cambiarDeCiudad(ciudad);
+		this.tiempoPorEntrarALugar = 1;
 		
 	}
 
