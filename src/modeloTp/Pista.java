@@ -23,8 +23,8 @@ public class Pista {
 	}
 
 	public static Pista cargarEstado(Node elementoPista) {
-		Pista nuevaPista = new Pista("");
-		nuevaPista.contenido = ((Element)elementoPista).getAttribute("contenido");
+		String contenido = ((Element)elementoPista).getAttribute("contenido");
+		Pista nuevaPista = new Pista(contenido);
 		return nuevaPista;
 	}
 	

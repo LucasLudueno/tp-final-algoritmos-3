@@ -161,7 +161,7 @@ public class JugadorTest {
 		assertNotNull(otroJugador.obtenerCiudadActual());
 		assertEquals(unJugador.obtenerCiudadActual().obtenerNombre(), otroJugador.obtenerCiudadActual().obtenerNombre());
 		
-		archivo.delete();	
+		archivo.delete();
 	}
 	
 }
