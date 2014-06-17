@@ -2,6 +2,10 @@ package modeloTp;
 
 import java.util.ArrayList;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 
 public class Jugador {
 
@@ -92,6 +96,29 @@ public class Jugador {
 	private void reducirTiempo( Integer tiempo ){
 		
 		this.tiempoRestante = this.tiempoRestante - tiempo;
+	}
+
+	public Node serializar(Document doc) {
+		Element elementoJugador = doc.createElement("Jugador");
+		elementoJugador.setAttribute("velocidad", String.valueOf(this.velocidad));
+		
+		Element elementoCiudadActual = doc.createElement("CiudadActual");
+		elementoJugador.appendChild(elementoCiudadActual);
+		elementoCiudadActual.appendChild(this.ciudadActual.serializar(doc));
+		
+		return elementoJugador;
+	}
+
+	public static Jugador cargarEstado(Document doc) {
+		Element elementoCiudadActual = (Element) doc.getElementsByTagName("CiudadActual").item(0);
+		Ciudad ciudadActual = Ciudad.cargarEstado((Element) elementoCiudadActual.getChildNodes().item(0));
+		
+		Jugador unJugador = new Jugador(ciudadActual,null);
+		
+		Element elementoJugador = (Element) doc.getElementsByTagName("Jugador").item(0);
+		unJugador.velocidad = Integer.valueOf(elementoJugador.getAttribute("velocidad"));
+		
+		return unJugador;
 	}
 	
 } 

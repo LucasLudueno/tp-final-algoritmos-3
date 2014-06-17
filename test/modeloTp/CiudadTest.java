@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Assert;
 import org.junit.Test;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -112,8 +113,9 @@ public class CiudadTest {
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		doc = dBuilder.parse(archivo);
 		doc.getDocumentElement().normalize();
-					
-		Ciudad otraCiudad = Ciudad.cargarEstado(doc);
+		
+		Element elementoCiudad = (Element) doc.getElementsByTagName("Ciudad").item(0);
+		Ciudad otraCiudad = Ciudad.cargarEstado(elementoCiudad);
 		
 		assertNotNull(otraCiudad);
 		assertEquals(unaCiudad.obtenerNombre(), otraCiudad.obtenerNombre());
