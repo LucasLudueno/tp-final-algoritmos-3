@@ -124,12 +124,6 @@ public class JugadorTest {
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.newDocument();
 		
-		Lugar biblioteca = new Lugar("Biblioteca",new Pista("BiblioFacil"),new Pista("BiblioMedia"),new Pista("BiblioDificil"),null);
-		Lugar aeropuerto = new Lugar("Aeropuerto",new Pista("AeroFacil"),new Pista("AeroMedia"),new Pista("AeroDificil"),null);
-		Lugar banco = new Lugar("Banco",new Pista("BancFacil"),new Pista("BancMedia"),new Pista("BancDificil"),null);
-		
-		Ciudad unaCiudad = new Ciudad("Buenos Aires",1,1,biblioteca,aeropuerto,banco,null);
-		
 		Ladron ladronUno = new Ladron("John Wayne", "masculino", "alpinismo", "rubio", "cicatriz", "ninguno");
 		Ladron ladronDos = new Ladron("Gracie Kai", "femenino", "paracaidismo", "rojo", "anillo", "ninguno");
 		Ladron ladronTres = new Ladron("Jack Norris", "masculino", "ninguno", "negro", "tatuaje", "Limusina");
@@ -138,6 +132,12 @@ public class JugadorTest {
 		sospechosos.add(ladronUno);
 		sospechosos.add(ladronDos);
 		sospechosos.add(ladronTres);
+		
+		Lugar biblioteca = new Lugar("Biblioteca",new Pista("BiblioFacil"),new Pista("BiblioMedia"),new Pista("BiblioDificil"),ladronUno);
+		Lugar aeropuerto = new Lugar("Aeropuerto",new Pista("AeroFacil"),new Pista("AeroMedia"),new Pista("AeroDificil"),null);
+		Lugar banco = new Lugar("Banco",new Pista("BancFacil"),new Pista("BancMedia"),new Pista("BancDificil"),ladronDos);
+		
+		Ciudad unaCiudad = new Ciudad("Buenos Aires",1,1,biblioteca,aeropuerto,banco,null);
 		
 		ComputadoraPolicial unaComputadora = new ComputadoraPolicial(sospechosos);
 		
@@ -172,7 +172,7 @@ public class JugadorTest {
 		assertNotNull(otroJugador.obtenerCiudadActual());
 		assertEquals(unJugador.obtenerCiudadActual().obtenerNombre(), otroJugador.obtenerCiudadActual().obtenerNombre());
 		
-		//archivo.delete();
+		archivo.delete();
 	}
 	
 }

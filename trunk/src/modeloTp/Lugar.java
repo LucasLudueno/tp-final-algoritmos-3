@@ -58,6 +58,12 @@ public class Lugar {
 		elementoPistas.appendChild(pistaMedia.serializar(doc));
 		elementoPistas.appendChild(pistaDificil.serializar(doc));
 		
+		Element elementoLadron = doc.createElement("LadronEscondido");
+		elementoLugar.appendChild(elementoLadron);
+		if (this.ladronEscondido != null){
+		elementoLadron.appendChild(this.ladronEscondido.serializar(doc));
+		}
+		
 		return elementoLugar;
 	}
 
@@ -68,11 +74,14 @@ public class Lugar {
 		Pista pistaFacil = Pista.cargarEstado(elementoPistas.getChildNodes().item(0));
 		Pista pistaMedia = Pista.cargarEstado(elementoPistas.getChildNodes().item(1));
 		Pista pistaDificil = Pista.cargarEstado(elementoPistas.getChildNodes().item(2));
-
 		
-		Lugar unLugar = new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil,null);
-		
-		return unLugar;
+		Element elementoLadron = (Element) elementoLugar.getElementsByTagName("LadronEscondido").item(0);
+		if (elementoLadron.getChildNodes().getLength() == 0) {
+			return new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil,null);
+		} else {
+			Ladron unLadron = Ladron.cargarEstado((Element) elementoLadron.getChildNodes());
+			return new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil,unLadron);
+		}
 	}
 	
 }

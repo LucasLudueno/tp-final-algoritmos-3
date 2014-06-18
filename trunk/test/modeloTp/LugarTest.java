@@ -102,7 +102,9 @@ public class LugarTest {
 		Pista pistaMedia = new Pista("Una pista media de Biblioteca");
 		Pista pistaDificil = new Pista("Una pista dificil de Biblioteca");
 		
-		Lugar unLugar = new Lugar("Biblioteca",pistaFacil,pistaMedia,pistaDificil,null);
+		Ladron unLadron = new Ladron("John Wayne", "masculino", "alpinismo", "rubio", "cicatriz", "ninguno");
+		
+		Lugar unLugar = new Lugar("Biblioteca",pistaFacil,pistaMedia,pistaDificil,unLadron);
 		
 		//Asigno el elemento XML de la instancia al documento generado anteriormente
 		Node lugarSerializado = unLugar.serializar(doc);
@@ -131,6 +133,8 @@ public class LugarTest {
 		
 		assertNotNull(otroLugar);
 		assertEquals(unLugar.obtenerNombre(), otroLugar.obtenerNombre());
+		
+		assertEquals(unLugar.obtenerLadron().obtenerNombre(),"John Wayne");
 		
 		assertEquals(unLugar.devolverPista(new JugadorNovato(null,null)).obtenerContenido(), otroLugar.devolverPista(new JugadorNovato(null,null)).obtenerContenido());
 		assertEquals(unLugar.devolverPista(new JugadorDetective(null,null)).obtenerContenido(), otroLugar.devolverPista(new JugadorDetective(null,null)).obtenerContenido());
