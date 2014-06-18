@@ -107,6 +107,10 @@ public class Jugador {
 		elementoJugador.appendChild(elementoCiudadActual);
 		elementoCiudadActual.appendChild(this.ciudadActual.serializar(doc));
 		
+		Element elementoComputadora = doc.createElement("ComputadoraPolicial");
+		elementoJugador.appendChild(elementoComputadora);
+		elementoComputadora.appendChild(this.computadoraPolicial.serializar(doc));
+		
 		return elementoJugador;
 	}
 
@@ -114,7 +118,10 @@ public class Jugador {
 		Element elementoCiudadActual = (Element) doc.getElementsByTagName("CiudadActual").item(0);
 		Ciudad ciudadActual = Ciudad.cargarEstado((Element) elementoCiudadActual.getChildNodes().item(0));
 		
-		Jugador unJugador = new Jugador(ciudadActual,null);
+		Element elementoComputadora = (Element) doc.getElementsByTagName("ComputadoraPolicial").item(0);
+		ComputadoraPolicial unaComputadora = ComputadoraPolicial.cargarEstado((Element) elementoComputadora.getChildNodes().item(0));
+		
+		Jugador unJugador = new Jugador(ciudadActual,unaComputadora);
 		
 		Element elementoJugador = (Element) doc.getElementsByTagName("Jugador").item(0);
 		unJugador.velocidad = Integer.valueOf(elementoJugador.getAttribute("velocidad"));

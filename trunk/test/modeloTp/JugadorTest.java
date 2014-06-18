@@ -130,7 +130,18 @@ public class JugadorTest {
 		
 		Ciudad unaCiudad = new Ciudad("Buenos Aires",1,1,biblioteca,aeropuerto,banco,null);
 		
-		Jugador unJugador = new Jugador(unaCiudad,null);
+		Ladron ladronUno = new Ladron("John Wayne", "masculino", "alpinismo", "rubio", "cicatriz", "ninguno");
+		Ladron ladronDos = new Ladron("Gracie Kai", "femenino", "paracaidismo", "rojo", "anillo", "ninguno");
+		Ladron ladronTres = new Ladron("Jack Norris", "masculino", "ninguno", "negro", "tatuaje", "Limusina");
+		
+		ArrayList<Ladron> sospechosos = new ArrayList<Ladron>();
+		sospechosos.add(ladronUno);
+		sospechosos.add(ladronDos);
+		sospechosos.add(ladronTres);
+		
+		ComputadoraPolicial unaComputadora = new ComputadoraPolicial(sospechosos);
+		
+		Jugador unJugador = new Jugador(unaCiudad,unaComputadora);
 		
 		//Asigno el elemento XML de la instancia al documento generado anteriormente
 		Node jugadorSerializado = unJugador.serializar(doc);
@@ -161,7 +172,7 @@ public class JugadorTest {
 		assertNotNull(otroJugador.obtenerCiudadActual());
 		assertEquals(unJugador.obtenerCiudadActual().obtenerNombre(), otroJugador.obtenerCiudadActual().obtenerNombre());
 		
-		archivo.delete();
+		//archivo.delete();
 	}
 	
 }
