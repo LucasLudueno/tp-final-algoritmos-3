@@ -1,9 +1,27 @@
 package modeloTp;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 public class ComputadoraPolicialTest {
 	
@@ -86,6 +104,56 @@ public class ComputadoraPolicialTest {
 				
 	}
 	*/
+	
+	@Test
+	public void computadoraPolicialDeberiaGuardarYRecuperarATravesDeXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		
+		//Genero un documento XML vacio en la memoria
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		Ladron ladronUno = new Ladron("John Wayne", "masculino", "alpinismo", "rubio", "cicatriz", "ninguno");
+		Ladron ladronDos = new Ladron("Gracie Kai", "femenino", "paracaidismo", "rojo", "anillo", "ninguno");
+		Ladron ladronTres = new Ladron("Jack Norris", "masculino", "ninguno", "negro", "tatuaje", "Limusina");
+		
+		ArrayList<Ladron> sospechosos = new ArrayList<Ladron>();
+		sospechosos.add(ladronUno);
+		sospechosos.add(ladronDos);
+		sospechosos.add(ladronTres);
+		
+		ComputadoraPolicial unaComputadora = new ComputadoraPolicial(sospechosos);
+		
+		//Asigno el elemento XML de la instancia al documento generado anteriormente
+		Node computadoraSerializada = unaComputadora.serializar(doc);
+				
+		assertNotNull(computadoraSerializada);
+		
+		//Guardo el XML en el disco
+		doc.appendChild(computadoraSerializada);
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		File archivo = new File("computadoraTest.xml");
+		StreamResult streamResult = new StreamResult(archivo);
+		transformer.transform(source, streamResult);
+						
+		assertTrue(archivo.exists());
+		
+		//Recupero el estado guardado de ciudad en una nueva instancia
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+				
+		Element elementoComputadora = (Element) doc.getElementsByTagName("ComputadoraPolicial").item(0);
+		ComputadoraPolicial otraComputadora = ComputadoraPolicial.cargarEstado(elementoComputadora);
+		
+		assertNotNull(otraComputadora);
+		assertTrue(otraComputadora.buscarPosiblesLadrones(null,null,null,null,null).size() == 3);
+		
+		archivo.delete();
+	}
 	
 	
 }
