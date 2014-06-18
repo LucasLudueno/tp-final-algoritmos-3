@@ -1,5 +1,6 @@
 package modeloTp;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -150,8 +151,8 @@ public class ComputadoraPolicialTest {
 		ComputadoraPolicial otraComputadora = ComputadoraPolicial.cargarEstado(elementoComputadora);
 		
 		assertNotNull(otraComputadora);
-		assertTrue(otraComputadora.buscarPosiblesLadrones(null,null,null,null,null).size() == 3);
-		//assertTrue(otraComputadora.buscarPosiblesLadrones("masculino",null,null,null,null).size() == 2);
+		assertEquals(otraComputadora.buscarPosiblesLadrones(null,null,null,null,null).size(), 3);
+		//assertEquals(otraComputadora.buscarPosiblesLadrones("masculino",null,null,null,null).size(), 2);
 		
 		archivo.delete();
 	}
