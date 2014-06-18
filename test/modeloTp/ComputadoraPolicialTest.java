@@ -140,7 +140,7 @@ public class ComputadoraPolicialTest {
 						
 		assertTrue(archivo.exists());
 		
-		//Recupero el estado guardado de ciudad en una nueva instancia
+		//Recupero el estado guardado de computadora en una nueva instancia
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		doc = dBuilder.parse(archivo);
@@ -151,6 +151,7 @@ public class ComputadoraPolicialTest {
 		
 		assertNotNull(otraComputadora);
 		assertTrue(otraComputadora.buscarPosiblesLadrones(null,null,null,null,null).size() == 3);
+		//assertTrue(otraComputadora.buscarPosiblesLadrones("masculino",null,null,null,null).size() == 2);
 		
 		archivo.delete();
 	}
