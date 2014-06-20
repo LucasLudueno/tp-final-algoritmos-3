@@ -16,6 +16,7 @@ public class Jugador {
 	private int tiempoPorHeridaDeBala;
 	private int tiempoPorDormir;
 	private int tiempoEmitirOrdenDeArresto;
+	private String nombreDelLadronBuscado;
 	private ComputadoraPolicial computadoraPolicial;
 	protected int velocidad;
 	
@@ -34,7 +35,9 @@ public class Jugador {
 
 	public void restarTiempoPorEntrarALugar(){
 		reducirTiempo(tiempoPorEntrarALugar);
-		this.tiempoPorEntrarALugar = this.tiempoPorEntrarALugar + 1;
+		if (this.tiempoPorEntrarALugar < 3){
+			this.tiempoPorEntrarALugar = this.tiempoPorEntrarALugar + 1;
+		}
 	}
 	
 	
@@ -83,20 +86,29 @@ public class Jugador {
 		
 	}
 	
-	public Ladron emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
+	public ArrayList<Ladron> emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
 		
 		reducirTiempo( this.tiempoEmitirOrdenDeArresto);
 		ArrayList<Ladron> posiblesLadrones = this.computadoraPolicial.buscarPosiblesLadrones(sexo, hobby, cabello, senia, vehiculo);
 		
 		if (posiblesLadrones.size() == 1){
-			return posiblesLadrones.get(0);
+			this.nombreDelLadronBuscado = ( (Ladron)posiblesLadrones.get(0) ).obtenerNombre();
 		}
-		return null;
+		return posiblesLadrones;
 	}
 	
 	private void reducirTiempo( Integer tiempo ){
 		
 		this.tiempoRestante = this.tiempoRestante - tiempo;
+	}
+	
+	public String obtenerNombreDeLadronBuscado() {
+		
+		return this.nombreDelLadronBuscado;
+	}
+
+	public boolean seEmitioOrdenDeArresto() {
+		return (this.nombreDelLadronBuscado != null);
 	}
 
 	public Node serializar(Document doc) {

@@ -116,6 +116,7 @@ public class JugadorTest {
 		Assert.assertTrue( jugador.obtenerTiempoRestante() == (tiempoInicialJugador - 3) );
 	}
 	
+	/*
 	@Test
 	public void unJugadorDeberiaGuardarYRecuperarATravesDeXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		
@@ -174,5 +175,5 @@ public class JugadorTest {
 		
 		archivo.delete();
 	}
-	
+	*/
 }

@@ -10,15 +10,13 @@ public class Lugar {
 	private Pista pistaFacil;
 	private Pista pistaMedia;
 	private Pista pistaDificil;
-	private Ladron ladronEscondido;
 	
-	public Lugar(String nombre, Pista pistaFacil, Pista pistaMedia, Pista pistaDificil, Ladron ladron){
+	public Lugar(String nombre, Pista pistaFacil, Pista pistaMedia, Pista pistaDificil){
 		
 		this.nombre = nombre;
 		this.pistaFacil = pistaFacil;
 		this.pistaMedia = pistaMedia;
 		this.pistaDificil = pistaDificil;
-		this.ladronEscondido = ladron;
 
 	}
 	
@@ -43,11 +41,6 @@ public class Lugar {
 		return this.nombre;
 	}
 
-	public Ladron obtenerLadron() {
-		
-		return this.ladronEscondido;
-	}
-
 	public Node serializar(Document doc) {
 		Element elementoLugar = doc.createElement("Lugar");
 		elementoLugar.setAttribute("nombre",this.nombre);
@@ -60,9 +53,6 @@ public class Lugar {
 		
 		Element elementoLadron = doc.createElement("LadronEscondido");
 		elementoLugar.appendChild(elementoLadron);
-		if (this.ladronEscondido != null){
-		elementoLadron.appendChild(this.ladronEscondido.serializar(doc));
-		}
 		
 		return elementoLugar;
 	}
@@ -75,13 +65,7 @@ public class Lugar {
 		Pista pistaMedia = Pista.cargarEstado(elementoPistas.getChildNodes().item(1));
 		Pista pistaDificil = Pista.cargarEstado(elementoPistas.getChildNodes().item(2));
 		
-		Element elementoLadron = (Element) elementoLugar.getElementsByTagName("LadronEscondido").item(0);
-		if (elementoLadron.getChildNodes().getLength() == 0) {
-			return new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil,null);
-		} else {
-			Ladron unLadron = Ladron.cargarEstado((Element) elementoLadron.getChildNodes());
-			return new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil,unLadron);
-		}
+		return new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil);
 	}
 	
 }

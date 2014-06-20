@@ -51,9 +51,9 @@ public class CiudadTest {
 	
 	@Test
 	public void obtenerLugaresDeberiaDevolverLosLugaresIngresados(){
-		Lugar aeropuerto = new Lugar("Aeropuerto",null, null, null, null);
-		Lugar bolsa = new Lugar("Bolsa",null, null, null, null);
-		Lugar biblioteca = new Lugar("Biblioteca",null, null, null, null);
+		Lugar aeropuerto = new Lugar("Aeropuerto",null, null, null);
+		Lugar bolsa = new Lugar("Bolsa",null, null, null);
+		Lugar biblioteca = new Lugar("Biblioteca",null, null, null);
 		Ciudad buenosAires = new Ciudad("Buenos Aires", 1, 1, aeropuerto, bolsa, biblioteca, new ArrayList<Ciudad>());
 		
 		ArrayList<Lugar> lugaresCiudad = buenosAires.obtenerLugares();
@@ -86,9 +86,9 @@ public class CiudadTest {
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.newDocument();
 		
-		Lugar biblioteca = new Lugar("Biblioteca",new Pista("BiblioFacil"),new Pista("BiblioMedia"),new Pista("BiblioDificil"),null);
-		Lugar aeropuerto = new Lugar("Aeropuerto",new Pista("AeroFacil"),new Pista("AeroMedia"),new Pista("AeroDificil"),null);
-		Lugar banco = new Lugar("Banco",new Pista("BancFacil"),new Pista("BancMedia"),new Pista("BancDificil"),null);
+		Lugar biblioteca = new Lugar("Biblioteca",new Pista("BiblioFacil"),new Pista("BiblioMedia"),new Pista("BiblioDificil"));
+		Lugar aeropuerto = new Lugar("Aeropuerto",new Pista("AeroFacil"),new Pista("AeroMedia"),new Pista("AeroDificil"));
+		Lugar banco = new Lugar("Banco",new Pista("BancFacil"),new Pista("BancMedia"),new Pista("BancDificil"));
 		
 		Ciudad unaCiudad = new Ciudad("Buenos Aires",1,1,biblioteca,aeropuerto,banco,null);
 		
