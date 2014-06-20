@@ -2,25 +2,26 @@ package modeloTp;
 
 import java.util.ArrayList;
 
+/*
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
+import org.w3c.dom.Node; */
 
 public class Ciudad {
 
 	private String nombre;
 	private int posicion_x;
 	private int posicion_y;
-	private ArrayList<Lugar> lugares;
+	private ArrayList<ILugar> lugares;
 	private ArrayList<Ciudad> ciudadesAViajar;
 	
 
-	public Ciudad(String nombre, int posicion_x, int posicion_y,Lugar lugar1,Lugar lugar2,Lugar lugar3, ArrayList<Ciudad> ciudadesAViajar){
+	public Ciudad(String nombre, int posicion_x, int posicion_y,ILugar lugar1,ILugar lugar2,ILugar lugar3, ArrayList<Ciudad> ciudadesAViajar){
 		
 		this.nombre = nombre;
 		this.posicion_x = posicion_x;
 		this.posicion_y = posicion_y;
-		this.lugares = new ArrayList<Lugar>();
+		this.lugares = new ArrayList<ILugar>();
 		this.ciudadesAViajar = ciudadesAViajar;
 		
 		this.lugares.add(lugar1);
@@ -57,7 +58,7 @@ public class Ciudad {
 		return this.lugares.size();
 	}
 
-	public Pista obtenerPista(Jugador jugador, Lugar lugar) {
+	public Pista obtenerPista(Jugador jugador, ILugar lugar) {
 		
 		if (this.lugares.contains(lugar) == true){
 			jugador.restarTiempoPorEntrarALugar();
@@ -66,7 +67,7 @@ public class Ciudad {
 		return null;
 	}
 
-	public ArrayList<Lugar> obtenerLugares() {
+	public ArrayList<ILugar> obtenerLugares() {
 		
 		return this.lugares;
 	}	
@@ -76,6 +77,7 @@ public class Ciudad {
 		return this.ciudadesAViajar;
 	}
 
+	/*
 	public Node serializar(Document doc) {
 		Element elementoCiudad = doc.createElement("Ciudad");
 		elementoCiudad.setAttribute("nombre",this.nombre);
@@ -105,4 +107,5 @@ public class Ciudad {
 		
 		return unaCiudad;
 	}
+	*/
 }
