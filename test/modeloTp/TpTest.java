@@ -139,7 +139,7 @@ public class TpTest{
 		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);
 		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null);
 		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null);
-		Lugar bancoLondres = new Lugar( "banco", null, null, null);
+		LugarConLadron bancoLondres = new LugarConLadron( ladron );
 		
 		Ciudad londres = new Ciudad( "Londes", 7, 7, bancoLondres, null, null, new ArrayList<Ciudad>() );
 		ArrayList<Ciudad> ciudadesAViajarTokio = new ArrayList<Ciudad>();
@@ -157,7 +157,7 @@ public class TpTest{
 		JugadorNovato jugador = new JugadorNovato(buenosAires, computadora);
 		
 		Ciudad ciudadActual = jugador.obtenerCiudadActual();
-		ArrayList<Lugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
+		ArrayList<ILugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
 		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilBibliotecaBsAs);
 		
 		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Hong Kong
@@ -172,7 +172,7 @@ public class TpTest{
 		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilBancoTokio);
 		
 		jugador.viajar( ( (ArrayList<Ciudad>)ciudadActual.obtenerCiudadesAViajar()).get(0) ); //Viajo a Londres
-		//Ladron ladronBuscado = jugador.emitirOrdenDeArresto( null, "alpinismo", "rubio", "cicatriz" );
+		jugador.emitirOrdenDeArresto( null, "alpinismo", "rubio", "cicatriz", null );
 		ciudadActual = jugador.obtenerCiudadActual();
 		lugaresCiudadActual = ciudadActual.obtenerLugares();
 		
@@ -207,7 +207,7 @@ public class TpTest{
 		JugadorNovato jugador = new JugadorNovato(veracruz, null);
 		
 		Ciudad ciudadActual = jugador.obtenerCiudadActual();
-		ArrayList<Lugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
+		ArrayList<ILugar> lugaresCiudadActual = ciudadActual.obtenerLugares();
 		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(0)) == pistaFacilMuseoVeracruz);
 		Assert.assertTrue( ciudadActual.obtenerPista(jugador, lugaresCiudadActual.get(1)) == pistaFacilAeropuertoVeracruz);
 

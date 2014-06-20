@@ -2,10 +2,11 @@ package modeloTp;
 
 import java.util.ArrayList;
 
+/*
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
+*/
 
 public class Jugador {
 
@@ -111,6 +112,7 @@ public class Jugador {
 		return (this.nombreDelLadronBuscado != null);
 	}
 
+	/*
 	public Node serializar(Document doc) {
 		Element elementoJugador = doc.createElement("Jugador");
 		elementoJugador.setAttribute("velocidad", String.valueOf(this.velocidad));
@@ -140,5 +142,5 @@ public class Jugador {
 		
 		return unJugador;
 	}
-	
+	*/
 } 

@@ -1,12 +1,13 @@
 package modeloTp;
 
+/*
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,12 +18,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Assert;
-import org.junit.Test;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
-
+*/
+import org.junit.Assert;
+import org.junit.Test;
+import java.util.ArrayList;
 import modeloTp.Ciudad;
 import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.Jugador;

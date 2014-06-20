@@ -1,6 +1,6 @@
 package modeloTp;
 
-public class LugarConLadron {
+public class LugarConLadron implements ILugar{
 
 	private Ladron ladronEscondido;
 	
@@ -8,7 +8,7 @@ public class LugarConLadron {
 		this.ladronEscondido = ladron;
 	}
 	
-	public void devolverPista(JugadorNovato jugador) {
+	public Pista devolverPista(JugadorNovato jugador) {
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
@@ -19,9 +19,10 @@ public class LugarConLadron {
 		}
 		
 		//PERDISTEEEEEEEEE
+		return null;
 	}
 		
-	public void devolverPista(JugadorDetective jugador){	
+	public Pista devolverPista(JugadorDetective jugador){	
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
@@ -32,9 +33,10 @@ public class LugarConLadron {
 		}
 		
 		//PERDISTEEEEEEEEE
+		return null;
 	}
 	
-	public void devolverPista(JugadorInvestigador jugador){	
+	public Pista devolverPista(JugadorInvestigador jugador){	
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
@@ -45,9 +47,10 @@ public class LugarConLadron {
 		}
 		
 		//PERDISTEEEEEEEEE
+		return null;
 	}
 		
-	public void devolverPista(JugadorSargento jugador){	
+	public Pista devolverPista(JugadorSargento jugador){	
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
@@ -58,5 +61,6 @@ public class LugarConLadron {
 		}
 		
 		//PERDISTEEEEEEEEE
+		return null;
 	}
 }
