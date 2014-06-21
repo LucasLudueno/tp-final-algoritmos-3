@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import modeloTp.Ladron;
 
 
-public class SerializadorTest {
+public class Serializador {
 
 	@Test
 	public void serializadorDeListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
