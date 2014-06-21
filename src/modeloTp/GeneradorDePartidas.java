@@ -52,7 +52,7 @@ import javax.xml.transform.TransformerException;
 
 import java.util.Random;
 //import org.junit.Assert;
-import org.junit.Test;
+//import org.junit.Test;
 import java.util.ArrayList;
 import modeloTp.Ciudad;
 import modeloTp.Ladron;
