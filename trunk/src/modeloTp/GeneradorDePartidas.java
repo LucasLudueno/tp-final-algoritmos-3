@@ -117,12 +117,22 @@ private ArrayList<Ciudad> ciudades;
                         }
                                 
                         if (ciudadesValidas.get(i).obtenerNombre() == "Londres"){
+                        		lugares.add(new Lugar("Aeropuerto",new Pista("Se informo sobre los vuelos nocturnos hacia la isla de Wight."),new Pista(""),new Pista("")));
+                        		lugares.add(new Lugar("Puerto",new Pista(""),new Pista(""),new Pista("")));
+                        		lugares.add(new Lugar("Banco",new Pista("Vino a cambiar su dinero a libras esterlinas."),new Pista(""),new Pista("")));
+                        		lugares.add(new Lugar("Bolsa",new Pista("Dijo que tenia la intencion de invertir en Whisky."),new Pista(""),new Pista("")));
                                 lugares.add(new Lugar("Biblioteca",new Pista("Buscaba sellos para aniadirlos a su coleccion."),new Pista(""),new Pista("")));
                         }
                         
                         if (ciudadesValidas.get(i).obtenerNombre() == "Hong Kong"){}
                         
-                        if (ciudadesValidas.get(i).obtenerNombre() == "Atenas"){}
+                        if (ciudadesValidas.get(i).obtenerNombre() == "Atenas"){
+                        	lugares.add(new Lugar("Aeropuerto",new Pista("Pidio el asiento de al lado de la ventana para poder ver los montes del Pindo."),new Pista(""),new Pista("")));
+                            lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera celeste y blanca."),new Pista(""),new Pista("")));
+                            lugares.add(new Lugar("Banco",new Pista("Menciono que se estaba preparando para jugar al golf con el primer ministro."),new Pista(""),new Pista("")));
+                            lugares.add(new Lugar("Bolsa",new Pista("Vino a cambiar su dinero a euros."),new Pista(""),new Pista("")));
+                            lugares.add(new Lugar("Biblioteca",new Pista("No dejaba de hacer preguntas sobre la antigua Esparta."),new Pista(""),new Pista("")));
+                        }
 
                         if (ciudadesValidas.get(i).obtenerNombre() == "Sidney"){
                                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion que llevaba adornada una bandera azul y roja con estrellas blancas."),new Pista(""),new Pista("")));
@@ -146,17 +156,17 @@ private ArrayList<Ciudad> ciudades;
                         
                         if (ciudadesValidas.get(i).obtenerNombre() == "Roma"){
                                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion cuya ala estaba adornada con una bandera verde, blanca y roja."),new Pista(""),new Pista("")));
-                                lugares.add(new Lugar("Puerto",new Pista(""),new Pista(""),new Pista("")));
+                                lugares.add(new Lugar("Puerto",new Pista("El queria aprender a hablar con las manos."),new Pista(""),new Pista("")));
                                 lugares.add(new Lugar("Banco",new Pista(""),new Pista(""),new Pista("")));
                                 lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
-                                lugares.add(new Lugar("Biblioteca",new Pista(""),new Pista(""),new Pista("")));                         
+                                lugares.add(new Lugar("Biblioteca",new Pista("Dijo que debia ir a la opera con el presidente."),new Pista(""),new Pista("")));                         
                         }
                         
                         if (ciudadesValidas.get(i).obtenerNombre() == "Singapur"){
                                 lugares.add(new Lugar("Aeropuerto",new Pista("Fue a visitar una isla del sudeste asiatico."),new Pista(""),new Pista("")));
-                                lugares.add(new Lugar("Puerto",new Pista(""),new Pista(""),new Pista("")));
+                                lugares.add(new Lugar("Puerto",new Pista("Dijo que queria visitar un bosque tropical."),new Pista(""),new Pista("")));
                                 lugares.add(new Lugar("Banco",new Pista("Dijo que queria comprar un barco para dar la vuelta al mundo."),new Pista(""),new Pista("")));
-                                lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
+                                lugares.add(new Lugar("Bolsa",new Pista("Dijo que queria jugar al polo con el presidente."),new Pista(""),new Pista("")));
                                 lugares.add(new Lugar("Biblioteca",new Pista("Dijo que tenia ganas de degustar un Gin Tonic en el hotel Raffles. Pidio una mariscada."),new Pista(""),new Pista("")));
                         }
                         
