@@ -175,7 +175,6 @@ private ArrayList<Ciudad> ciudades;
                 return ciudadesValidas;
         }
         
-        @Test
         public ArrayList<Ladron> generarListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
         	
         	File archivo = new File("ListaDeLadrones.xml");
