@@ -1,8 +1,8 @@
 package controladorTp;
 
 //import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertTrue;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,7 +23,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 //import org.junit.Assert;
-import org.junit.Test;
+//import org.junit.Test;
 import java.util.ArrayList;
 //import modeloTp.Ciudad;
 import modeloTp.Ladron;
@@ -31,7 +31,7 @@ import modeloTp.Ladron;
 
 public class Serializador {
 
-	@Test
+	//@Test
 	public void serializadorDeListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 
 	
@@ -82,7 +82,7 @@ public class Serializador {
 				elementoLadrones.appendChild(lista.get(i).serializar(doc));
 			}
 			
-			assertNotNull(elementoLadrones);
+			//assertNotNull(elementoLadrones);
 			
 			//Guardo el XML en el disco
 			doc.appendChild(elementoLadrones);
@@ -93,7 +93,7 @@ public class Serializador {
 			StreamResult streamResult = new StreamResult(archivo);
 			transformer.transform(source, streamResult);
 					
-			assertTrue(archivo.exists()); 
+			//assertTrue(archivo.exists()); 
 			
 	}
 	
