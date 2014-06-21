@@ -154,7 +154,7 @@ public class ComputadoraPolicialTest {
 		assertEquals(otraComputadora.buscarPosiblesLadrones(null,null,null,null,null).size(), 3);
 		//assertEquals(otraComputadora.buscarPosiblesLadrones("masculino",null,null,null,null).size(), 2);
 		
-		//archivo.delete();
+		archivo.delete();
 	}
 	
 	
