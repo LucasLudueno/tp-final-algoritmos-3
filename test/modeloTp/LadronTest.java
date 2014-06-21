@@ -81,6 +81,6 @@ public class LadronTest {
 		assertEquals(unLadron.obtenerSenia(),otroLadron.obtenerSenia());
 		assertEquals(unLadron.obtenerVehiculo(),otroLadron.obtenerVehiculo());
 		
-		//archivo.delete();
+		archivo.delete();
 	}
 }
