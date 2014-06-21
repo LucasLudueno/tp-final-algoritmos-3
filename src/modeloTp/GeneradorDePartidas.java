@@ -1,7 +1,61 @@
 package modeloTp;
+/*
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.text.Document;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import static org.junit.Assert.assertTrue;
+
+import org.xml.sax.SAXException;
+
+
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+*/
+
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertTrue;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+//import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
+
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+//import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+//import javax.xml.transform.TransformerFactory;
+//import javax.xml.transform.dom.DOMSource;
+//import javax.xml.transform.stream.StreamResult;
+
+import java.util.Random;
+//import org.junit.Assert;
+import org.junit.Test;
+import java.util.ArrayList;
+import modeloTp.Ciudad;
+import modeloTp.Ladron;
 
 public class GeneradorDePartidas {
         
@@ -9,6 +63,7 @@ private ArrayList<Ciudad> ciudades;
         
         public GeneradorDePartidas(){
                 
+        		this.ciudades = new ArrayList<Ciudad>();
                 ciudades.add(new Ciudad("Buenos Aires",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Madrid",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Londres",1,1,null,null,null,null));
@@ -31,7 +86,6 @@ private ArrayList<Ciudad> ciudades;
                 ciudades.add(new Ciudad("Berlin",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Katmandu",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Dubai",1,1,null,null,null,null));
-                
         }
         
         public ArrayList<Ciudad> generarListaDeCiudadesValidas(ArrayList<Ciudad> unaListaDeCiudades){
@@ -120,5 +174,28 @@ private ArrayList<Ciudad> ciudades;
                 
                 return ciudadesValidas;
         }
-
+        
+        @Test
+        public ArrayList<Ladron> generarListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+        	
+        	File archivo = new File("ListaDeLadrones.xml");
+			
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(archivo);
+			doc.getDocumentElement().normalize();
+			
+			Element elementoLadrones = (Element)doc.getElementsByTagName("Ladrones").item(0);						
+			
+			ArrayList<Ladron> ladrones = new ArrayList<Ladron>();
+			
+			int i = 0;
+			while (elementoLadrones.getChildNodes().item(i) != null){
+				Ladron ladron = Ladron.cargarEstado((Element) elementoLadrones.getChildNodes().item(i));
+				ladrones.add( ladron );
+				i = i + 1;
+			}
+			
+			return ladrones;
+        }
 }
