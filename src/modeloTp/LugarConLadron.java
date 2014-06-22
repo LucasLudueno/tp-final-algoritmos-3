@@ -1,5 +1,8 @@
 package modeloTp;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
 public class LugarConLadron implements ILugar{
 
 	private Ladron ladronEscondido;
@@ -61,6 +64,12 @@ public class LugarConLadron implements ILugar{
 		}
 		
 		//PERDISTEEEEEEEEE
+		return null;
+	}
+
+	@Override
+	public Node serializar(Document doc) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

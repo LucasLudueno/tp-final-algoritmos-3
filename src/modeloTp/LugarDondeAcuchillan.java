@@ -1,21 +1,34 @@
 package modeloTp;
 
-public class LugarDondeAcuchillan{
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+public class LugarDondeAcuchillan implements ILugar{
 	
-	public void devolverPista(JugadorNovato jugador) {
+	public Pista devolverPista(JugadorNovato jugador) {
 		jugador.recibirCuchillazo();
+		return null;
 	}
 		
-	public void devolverPista(JugadorDetective jugador){	
+	public Pista  devolverPista(JugadorDetective jugador){	
 		jugador.recibirCuchillazo();
+		return null;
 	}
 	
-	public void devolverPista(JugadorInvestigador jugador){	
+	public Pista  devolverPista(JugadorInvestigador jugador){	
 		jugador.recibirCuchillazo();
+		return null;
 	}
 		
-	public void devolverPista(JugadorSargento jugador){	
+	public Pista  devolverPista(JugadorSargento jugador){	
 		jugador.recibirCuchillazo();
+		return null;
+	}
+
+	@Override
+	public Node serializar(Document doc) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 		
 }

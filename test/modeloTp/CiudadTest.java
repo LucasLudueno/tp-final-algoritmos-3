@@ -39,7 +39,6 @@ public class CiudadTest {
 		Assert.assertTrue(ciudad.obtenerNombre() == "Buenos Aires");
 		Assert.assertTrue(ciudad.obtenerPosicion_x() == 1);
 		Assert.assertTrue(ciudad.obtenerPosicion_y() == 1);
-		Assert.assertTrue(ciudad.cantidadLugares() == 3);
 		
 	}
 	

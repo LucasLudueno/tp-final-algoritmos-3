@@ -2,10 +2,10 @@ package modeloTp;
 
 import java.util.ArrayList;
 
-/*
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node; */
+import org.w3c.dom.Node; 
 
 public class Ciudad {
 
@@ -24,9 +24,15 @@ public class Ciudad {
 		this.lugares = new ArrayList<ILugar>();
 		this.ciudadesAViajar = ciudadesAViajar;
 		
-		this.lugares.add(lugar1);
-		this.lugares.add(lugar2);
-		this.lugares.add(lugar3);
+		if (lugar1 != null){
+			this.lugares.add(lugar1);
+		}
+		if (lugar1 != null){
+			this.lugares.add(lugar2);
+		}
+		if (lugar1 != null){
+			this.lugares.add(lugar3);
+		}
 	}
 
 	public String obtenerNombre() {
@@ -77,7 +83,6 @@ public class Ciudad {
 		return this.ciudadesAViajar;
 	}
 
-	/*
 	public Node serializar(Document doc) {
 		Element elementoCiudad = doc.createElement("Ciudad");
 		elementoCiudad.setAttribute("nombre",this.nombre);
@@ -107,5 +112,16 @@ public class Ciudad {
 		
 		return unaCiudad;
 	}
-	*/
+
+	public void agregarLugar(ILugar lugar) {
+		this.lugares.add(lugar);
+		
+	}
+
+	public void agregarCiudadAViajar(Ciudad ciudad) {
+		
+		this.ciudadesAViajar.add(ciudad);
+		
+	}
+	
 }
