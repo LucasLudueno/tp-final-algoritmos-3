@@ -93,7 +93,6 @@ private ArrayList<Ciudad> ciudades;
                 ciudades.add(new Ciudad("Bamako",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Bangkok",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Moroni",1,1,null,null,null,null));
-                ciudades.add(new Ciudad("Colombo",1,1,null,null,null,null));
                 ciudades.add(new Ciudad("Puerto Moresby",1,1,null,null,null,null));
         }
         
@@ -298,7 +297,7 @@ private ArrayList<Ciudad> ciudades;
                             lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera azul, amarilla y verde."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Banco",new Pista("Pregunto a cuanto estaba el franco CFA."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Bolsa",new Pista("Compro francos CFA en el mercado negro."),new Pista("Llevaba un diccionario en frances."),new Pista("")));
-                            lugares.add(new Lugar("Biblioteca",new Pista("Retiro libros sobre los gorilas de las montanias."),new Pista("Dijo que quería averiguar sobre volcanes."),new Pista("Dijo que quería averiguar sobre los mambos negros.")));
+                            lugares.add(new Lugar("Biblioteca",new Pista("Retiro libros sobre los gorilas de las montanias."),new Pista("Dijo que queria averiguar sobre volcanes."),new Pista("Dijo que queria averiguar sobre los mambos negros.")));
                         }
                         
                         if (ciudadesValidas.get(i).obtenerNombre() == "Reykjavik"){
@@ -328,7 +327,7 @@ private ArrayList<Ciudad> ciudades;
                         if (ciudadesValidas.get(i).obtenerNombre() == "Bangkok"){
                         	lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion que tenia adornada el ala con una bandera roja, blanca y azul."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Puerto",new Pista(""),new Pista(""),new Pista("")));
-                            lugares.add(new Lugar("Banco",new Pista("Deseaba comprar bahts en el mercado negro. Ha hablado de la belleza de las montañas."),new Pista(""),new Pista("")));
+                            lugares.add(new Lugar("Banco",new Pista("Deseaba comprar bahts en el mercado negro. Ha hablado de la belleza de las montanias."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Bolsa",new Pista("Pregunto a cuanto estaban los bahts."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Biblioteca",new Pista("Contaba realizar una visita con un guia por los wats siameses."),new Pista(""),new Pista("")));
                         }
@@ -338,7 +337,7 @@ private ArrayList<Ciudad> ciudades;
                             lugares.add(new Lugar("Puerto",new Pista("Se ha ido en un catamaran que lucia una bandera verde y blanca."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Banco",new Pista("Dijo que iba a comprar todo lo necesario para hacer perfumes."),new Pista(""),new Pista("")));
                             lugares.add(new Lugar("Bolsa",new Pista("Pregunto a cuanto estaba el franco comorense."),new Pista(""),new Pista("")));
-                            lugares.add(new Lugar("Biblioteca",new Pista("Llevaba un diccionaro arabe en la maleta."),new Pista("Pidio informacion sobre los volcanes. Ha hablado de la belleza de las montañas."),new Pista("")));
+                            lugares.add(new Lugar("Biblioteca",new Pista("Llevaba un diccionaro arabe en la maleta."),new Pista("Pidio informacion sobre los volcanes. Ha hablado de la belleza de las montanias."),new Pista("")));
                         }
                         
                         if (ciudadesValidas.get(i).obtenerNombre() == "Puerto Moresby"){
