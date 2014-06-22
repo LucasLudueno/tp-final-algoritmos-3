@@ -414,7 +414,7 @@ private ArrayList<Ciudad> recorridoDelLadron;
                 
                 LugarDondeAcuchillan lugar1 = new LugarDondeAcuchillan();
                 LugarDondeDisparan lugar2 = new LugarDondeDisparan();
-                LugarConLadron lugar3 = new LugarConLadron( null);
+                LugarConLadron lugar3 = new LugarConLadron( null); // ACA HAY QUE PONER AL LADRON
                 Ciudad ultimaCiudad = recorridoDelLadron.get( recorridoDelLadron.size() -1);
                 
                 ultimaCiudad.agregarLugar(lugar1);
