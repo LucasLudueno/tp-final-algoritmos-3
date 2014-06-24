@@ -42,6 +42,24 @@ public class GeneradorDePartidasTest {
 	}
 	
 	@Test
+	public void lasCiudadesDelRecorridoDelLadronDebenTener3ciudadesADondeViajar(){
+		GeneradorDePartidas generador = new GeneradorDePartidas();
+		
+		generador.obtenerCiudades();
+		ArrayList<Ciudad> recorridoDelLadron= generador.generarCiudadesConLugares();
+		
+		for(int j=0; j < recorridoDelLadron.size() - 1; j++){
+			
+    		Assert.assertTrue(recorridoDelLadron.get(j).obtenerCiudadesAViajar().size() == 3);
+    		
+    		Assert.assertTrue(recorridoDelLadron.get(j).obtenerCiudadesAViajar().get(0) != null);
+    		Assert.assertTrue(recorridoDelLadron.get(j).obtenerCiudadesAViajar().get(1) != null);
+    		Assert.assertTrue(recorridoDelLadron.get(j).obtenerCiudadesAViajar().get(2) != null);
+    	}
+		
+		
+	}
+	@Test
 	public void elGeneradorDebeDevolverUnaListaConLadronesConCaracteristicas() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		
