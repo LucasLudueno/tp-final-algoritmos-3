@@ -330,6 +330,24 @@ public class GeneradorDePartidas {
 			}
 			lugares.clear();
 		}	
+		
+		 //A LAS CIUDADES DEL RECORRIDO DEL LADRON LES AGREGO LA PROXIMA CIUDAD EN LA LISTA Y OTRAS 2 AL AZAR DE LAS CIUDADES AUXILIARES
+        
+        for( int k=0; k< ciudadesValidas.size() - 1; k++){
+        	
+        	Ciudad unaCiudad = ciudadesValidas.get(k);
+        	unaCiudad.agregarCiudadAViajar( ciudadesValidas.get(k + 1) );
+        	
+        	int valor1 = generador.nextInt(ciudades.size());
+        	int valor2 = valor1;
+        	while (valor1 != valor2){
+        		valor2 = generador.nextInt(ciudades.size());
+        	}
+        	
+        	unaCiudad.agregarCiudadAViajar( ciudades.get(valor1) );
+        	unaCiudad.agregarCiudadAViajar( ciudades.get(valor2) );
+        	
+        }
 		return ciudadesValidas;		
 	}
 	

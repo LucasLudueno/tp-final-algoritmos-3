@@ -22,7 +22,7 @@ public class Ciudad {
 		this.posicion_x = posicion_x;
 		this.posicion_y = posicion_y;
 		this.lugares = new ArrayList<ILugar>();
-		this.ciudadesAViajar = ciudadesAViajar;
+		this.ciudadesAViajar = new ArrayList<Ciudad>();
 		
 		if (lugar1 != null){
 			this.lugares.add(lugar1);
