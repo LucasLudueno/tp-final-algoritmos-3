@@ -1,7 +1,19 @@
 package modeloTp;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 public class GeneradorDePartidas {
 	
@@ -343,4 +355,27 @@ public class GeneradorDePartidas {
 	        lugares.clear();
 		}
 	}	
+	
+	public ArrayList<Ladron> generarListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+    	
+    	File archivo = new File("ListaDeLadrones.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoLadrones = (Element)doc.getElementsByTagName("Ladrones").item(0);						
+		
+		ArrayList<Ladron> ladrones = new ArrayList<Ladron>();
+		
+		int i = 0;
+		while (elementoLadrones.getChildNodes().item(i) != null){
+			Ladron ladron = Ladron.cargarEstado((Element) elementoLadrones.getChildNodes().item(i));
+			ladrones.add( ladron );
+			i = i + 1;
+		}
+		
+		return ladrones;
+    }
 }
