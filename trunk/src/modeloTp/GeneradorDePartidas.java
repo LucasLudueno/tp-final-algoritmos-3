@@ -220,7 +220,7 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Aeropuerto",new Pista("Contaba pasar sus vacaciones en un reino asiatico."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Se ha ido en un vehiculo que llevaba una bandera adornada con un triangulo doble."),new Pista("Estaba pensando en visitar un pais montanioso."),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Cambio su dinero a rupias."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista("Llevaba un diccionario nepalí."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Llevaba un diccionario nepali."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Buscaba un libro sobre la conquista del monte Everest."),new Pista("Pidio un mapa de Himalaya"),new Pista("Queria aprenderse las oraciones hinduistas.")));
 			}
         
