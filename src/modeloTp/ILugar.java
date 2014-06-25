@@ -16,4 +16,5 @@ public interface ILugar {
 	
 	public Node serializar(Document doc);
 	
+	public String obtenerNombre();
 }

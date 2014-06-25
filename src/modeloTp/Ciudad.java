@@ -38,10 +38,11 @@ public class Ciudad {
 			this.lugares.add(lugar3);
 		}
 	}
-
-	public String obtenerNombre() {
+	
+public String obtenerNombre() {
+		
 		return this.nombre;
-	} 
+	}
 	
 	public int obtenerPosicion_x() {
 		
@@ -70,11 +71,12 @@ public class Ciudad {
 
 	public Pista obtenerPista(Jugador jugador, ILugar lugar) {
 		
-		if (this.lugares.contains(lugar) == true){
+		if (this.lugares.contains(lugar)){
 			jugador.restarTiempoPorEntrarALugar();
 			return ((this.lugares.get(this.lugares.indexOf(lugar))).devolverPista((JugadorNovato) jugador));
 		}
-		return null;
+		
+		else return null;
 	}
 
 	public ArrayList<ILugar> obtenerLugares() {
