@@ -242,7 +242,7 @@ public class GeneradorDePartidas {
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Nueva Delhi"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Ha tomado un avion cuya ala estaba adornada con una bandera roja, blanca y verde."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Puerto",new Pista("Dijo que quería averiguar sobre la religion Sikh."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Puerto",new Pista("Dijo que queria averiguar sobre la religion Sikh."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Llevaba un diccionario hindi."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Vino a cambiar su dinero a rupias."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Deseaba ver el Nanda Devi."),new Pista("Estaba buscando un turbante sij."),new Pista("")));
@@ -445,6 +445,5 @@ public class GeneradorDePartidas {
 		int valor = generador.nextInt(listaDeLadrones.size());
 		
 		return listaDeLadrones.get(valor);
-	}
-	
+	}	
 }
