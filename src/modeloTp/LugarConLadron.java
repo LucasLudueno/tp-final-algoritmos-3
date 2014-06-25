@@ -7,8 +7,12 @@ public class LugarConLadron implements ILugar{
 
 	private Ladron ladronEscondido;
 	
-	public LugarConLadron(Ladron ladron){
+	@SuppressWarnings("unused")
+	private String nombre;
+	
+	public LugarConLadron(String unNombre, Ladron ladron){
 		this.ladronEscondido = ladron;
+		this.nombre = unNombre;
 	}
 	
 	public Pista devolverPista(JugadorNovato jugador) {
