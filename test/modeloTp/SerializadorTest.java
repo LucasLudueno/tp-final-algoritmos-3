@@ -80,6 +80,7 @@ public class SerializadorTest {
 		assertEquals(ladrones.get(1).obtenerNombre(),"Gracie Kai");
 		assertEquals(ladrones.get(2).obtenerNombre(),"Jack Norris");
 		
+		archivo.delete();
 	}
 
 }

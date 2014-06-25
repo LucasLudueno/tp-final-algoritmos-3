@@ -64,9 +64,9 @@ public class PantallaPrincipal {
 	        		ciudadJugando = ciudadesValidas.get(contador);
 	        	}
 	        	
+	        } else {
+	        	System.out.println(lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador).obtenerContenido());
 	        }
-	        
-	        System.out.println(lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador).obtenerContenido());
 	       
 	        espacio = entradaEscaner.nextLine();
 	        }
