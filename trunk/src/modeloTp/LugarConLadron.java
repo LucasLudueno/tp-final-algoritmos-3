@@ -6,8 +6,6 @@ import org.w3c.dom.Node;
 public class LugarConLadron implements ILugar{
 
 	private Ladron ladronEscondido;
-	
-	@SuppressWarnings("unused")
 	private String nombre;
 	
 	public LugarConLadron(String unNombre, Ladron ladron){
@@ -75,5 +73,10 @@ public class LugarConLadron implements ILugar{
 	public Node serializar(Document doc) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String obtenerNombre() {
+		
+		return this.nombre;
 	}
 }
