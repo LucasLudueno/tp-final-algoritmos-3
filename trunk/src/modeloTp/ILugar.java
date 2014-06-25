@@ -5,7 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 public interface ILugar {
-
+	
 	public Pista devolverPista(JugadorNovato jugador);
 	
 	public Pista devolverPista(JugadorDetective jugador);

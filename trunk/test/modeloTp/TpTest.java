@@ -139,7 +139,7 @@ public class TpTest{
 		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);
 		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null);
 		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null);
-		LugarConLadron bancoLondres = new LugarConLadron( ladron );
+		LugarConLadron bancoLondres = new LugarConLadron( null , ladron );
 		
 		Ciudad londres = new Ciudad( "Londes", 7, 7, bancoLondres, null, null, new ArrayList<Ciudad>() );
 		ArrayList<Ciudad> ciudadesAViajarTokio = new ArrayList<Ciudad>();

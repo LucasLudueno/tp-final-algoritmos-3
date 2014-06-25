@@ -5,6 +5,13 @@ import org.w3c.dom.Node;
 
 public class LugarDondeAcuchillan implements ILugar{
 	
+	@SuppressWarnings("unused")
+	private String nombre;
+	
+	public LugarDondeAcuchillan(String unNombre){
+		this.nombre = unNombre;
+	}
+	
 	public Pista devolverPista(JugadorNovato jugador) {
 		jugador.recibirCuchillazo();
 		return null;

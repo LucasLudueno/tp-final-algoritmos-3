@@ -372,7 +372,53 @@ public class GeneradorDePartidas {
 	        	}
 	        lugares.clear();
 		}
-	}	
+	}
+	
+	public ArrayList<Ciudad> generarRecorridoDelLadron() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		ArrayList<Ciudad> recorridoLadron = this.generarCiudadesConLugares(); 
+		
+		for (int i=0; i < recorridoLadron.size()-1; i++){
+			recorridoLadron.get(i).obtenerLugares().clear();
+			for (int j=0; j < 3; j++){
+				ILugar unLugar = recorridoLadron.get(i+1).obtenerLugares().get(j);
+				recorridoLadron.get(i).agregarLugar(unLugar);
+			}
+		}
+		
+		//Asigno las acciones de la ultima ciudad
+		Random generador = new Random();
+		ArrayList<String> listaDeLugares = new ArrayList<String>();
+		listaDeLugares.add("Aeropuerto");
+		listaDeLugares.add("Puerto");
+		listaDeLugares.add("Banco");
+		listaDeLugares.add("Bolsa");
+		listaDeLugares.add("Biblioteca");
+		
+		ArrayList<ILugar> lugaresSospechosos = new ArrayList<ILugar>();
+		Ladron ladronElegido = this.obtenerUnLadronDeLaLista();
+		
+		int valor = generador.nextInt(listaDeLugares.size());
+		lugaresSospechosos.add(new LugarConLadron(listaDeLugares.get(valor),ladronElegido));
+		listaDeLugares.remove(valor);
+		
+		valor = generador.nextInt(listaDeLugares.size());
+		lugaresSospechosos.add(new LugarDondeAcuchillan(listaDeLugares.get(valor)));
+		listaDeLugares.remove(valor);
+		
+		valor = generador.nextInt(listaDeLugares.size());
+		lugaresSospechosos.add(new LugarDondeDisparan(listaDeLugares.get(valor)));
+		
+		//Asigno los lugares a la ultima ciudad del recorrido
+		recorridoLadron.get(recorridoLadron.size()-1).obtenerLugares().clear();
+		while(lugaresSospechosos.size()>0){
+			valor = generador.nextInt(lugaresSospechosos.size());
+			recorridoLadron.get(recorridoLadron.size()-1).agregarLugar(lugaresSospechosos.get(valor));
+			lugaresSospechosos.remove(valor);			
+		}
+		
+		return recorridoLadron;
+	}
+	
 	
 	public ArrayList<Ladron> generarListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
     	
@@ -396,4 +442,14 @@ public class GeneradorDePartidas {
 		
 		return ladrones;
     }
+	
+	private Ladron obtenerUnLadronDeLaLista() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		Random generador = new Random();
+		ArrayList<Ladron> listaDeLadrones = this.generarListaDeLadrones();
+		
+		int valor = generador.nextInt(listaDeLadrones.size());
+		
+		return listaDeLadrones.get(valor);
+	}
+	
 }
