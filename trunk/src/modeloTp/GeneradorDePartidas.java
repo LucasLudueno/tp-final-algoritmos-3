@@ -109,7 +109,7 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera azul y blanca."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Llevaba un diccionario de griego en el bolsillo."),new Pista("Menciono que se estaba preparando para jugar al golf con el primer ministro."),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Vino a cambiar su dinero a euros."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Biblioteca",new Pista("No dejaba de hacer preguntas sobre la antigua Esparta."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Biblioteca",new Pista("No dejaba de hacer preguntas sobre la antigua Esparta."),new Pista("Dijo que estaba investigando la republica de Platon."),new Pista("")));
 			}
 
 			if (ciudadesValidas.get(i).obtenerNombre() == "Sidney"){
@@ -155,9 +155,9 @@ public class GeneradorDePartidas {
 			if (ciudadesValidas.get(i).obtenerNombre() == "Rio De Janeiro"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion cuya ala estaba adornada con una bandera verde, azul y amarilla."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Se preparaba para bajar por las cataratas del Iguazu."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Banco",new Pista("Cambio su dinero a cruzados."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Biblioteca",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Banco",new Pista("Cambio su dinero a reales."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Dijo que iba a adquirir el monopolio de la industria del cafe."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Biblioteca",new Pista("Buscaba libros sobre las conquistas portugesas."),new Pista(""),new Pista("")));
         	}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Roma"){
@@ -201,7 +201,7 @@ public class GeneradorDePartidas {
 			}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Bagdad"){
-                lugares.add(new Lugar("Aeropuerto",new Pista("Se ha marchado en un avion que ondeaba una bandera roja, blanca y negra."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Aeropuerto",new Pista("Se ha marchado en un avion que ondeaba una bandera roja, blanca y negra."),new Pista("Buscaba una guia de familiarizacion con los vestigios de ceramicas mesopotamicas."),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Me ha pedido una tabla de las mareas del Golfo Persico."),new Pista("Dijo que queria bajar por el Tigris en canoa."),new Pista("Se ha informado sobre la posibilidad de hacer vela en el Eufrates.")));
                 lugares.add(new Lugar("Banco",new Pista("Pregunto cuanto estaba el dinar."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Se fue rapidamente en un vehiculo que llevaba una bandera roja, blanca y negra."),new Pista(""),new Pista("")));
@@ -211,7 +211,7 @@ public class GeneradorDePartidas {
 			if (ciudadesValidas.get(i).obtenerNombre() == "Estambul"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion adornado con una bandera con una luna y una estrella."),new Pista("Se fue a un pais que se encuentra ubicado en dos contienentes."),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera adornada con una luna y una estrella."),new Pista("Dijo que contaba con pasar la noche en el palacio de un sultan."),new Pista("")));
-                lugares.add(new Lugar("Banco",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Banco",new Pista("Pregunto cuanto estaba la lira."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Cambio su dinero por liras."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Hizo muchas preguntas sobre el imperio bizantino."),new Pista(""),new Pista("")));
 			}
@@ -219,8 +219,8 @@ public class GeneradorDePartidas {
 			if (ciudadesValidas.get(i).obtenerNombre() == "Katmandu"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Contaba pasar sus vacaciones en un reino asiatico."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Se ha ido en un vehiculo que llevaba una bandera adornada con un triangulo doble."),new Pista("Estaba pensando en visitar un pais montanioso."),new Pista("")));
-                lugares.add(new Lugar("Banco",new Pista(""),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Banco",new Pista("Cambio su dinero a rupias."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Llevaba un diccionario nepalí."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Buscaba un libro sobre la conquista del monte Everest."),new Pista("Pidio un mapa de Himalaya"),new Pista("Queria aprenderse las oraciones hinduistas.")));
 			}
         
@@ -228,22 +228,22 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Aeropuerto",new Pista("Paneo viajar hacia el medio oriente."),new Pista("Pidio el asiento de al lado de la ventana para poder ver el Burj Khalifa."),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera roja, verde, blanca y negra."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Cambio su dinero a dirham."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Dijo que iba a invertir en la industria del petroleo."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Estaba interesado en conocer el medio oriente."),new Pista("Pregunto sobre la industria petrolera."),new Pista("")));
 			}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "San Marino"){
-                lugares.add(new Lugar("Aeropuerto",new Pista("Ha tomado un avion cuya ala estaba adornada con una bandera roja y blanca."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Aeropuerto",new Pista("Ha tomado un avion cuya ala estaba adornada con una bandera azul y blanca."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Dijo que queria visitar el Monte Titano"),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Vino a cambiar su dinero a rupias."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Contaba con salir, con la mochila al hombro, a visitar a los vecinos de Italia."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Llevaba un diccionario italiano."),new Pista(""),new Pista("")));
 			}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Nueva Delhi"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Ha tomado un avion cuya ala estaba adornada con una bandera roja, blanca y verde."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Puerto",new Pista(""),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Banco",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Puerto",new Pista("Dijo que quería averiguar sobre la religion Sikh."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Banco",new Pista("Llevaba un diccionario hindi."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Vino a cambiar su dinero a rupias."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Deseaba ver el Nanda Devi."),new Pista("Estaba buscando un turbante sij."),new Pista("")));
 			}
@@ -258,7 +258,7 @@ public class GeneradorDePartidas {
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Lima"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion cuya ala estaba adornada con una bandera roja y blanca."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Puerto",new Pista("Estaba pensando en visitar America."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Puerto",new Pista("Estaba pensando en visitar America."),new Pista("Ha dicho que queria seguir los pasos de los conquistadores espanioles."),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Pregunto a cuanto estaban el sol."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Tenia la intencion de comprar una mina de cobre."),new Pista("Dijo que tenia la intencion de invertir en el mercado del cinc."),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Retiro una biografia de Francisco Pizarro."),new Pista("Solicito un libro sobre la geologia de los Andes."),new Pista("")));
@@ -266,8 +266,8 @@ public class GeneradorDePartidas {
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Kigali"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion que llevaba una bandera azul, amarilla y verde."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera azul, amarilla y verde."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Banco",new Pista("Pregunto a cuanto estaba el franco CFA."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera azul, amarilla y verde."),new Pista("Se inquieto al saber que habia cocodrilos en el rio Kagera."),new Pista("")));
+                lugares.add(new Lugar("Banco",new Pista("Pregunto a cuanto estaba el franco CFA."),new Pista("Estaba haciendo investigaciones sobre personas extremadamente altas."),new Pista("")));
             	lugares.add(new Lugar("Bolsa",new Pista("Compro francos CFA en el mercado negro."),new Pista("Llevaba un diccionario en frances."),new Pista("")));
             	lugares.add(new Lugar("Biblioteca",new Pista("Retiro libros sobre los gorilas de las montanias."),new Pista("Dijo que queria averiguar sobre volcanes."),new Pista("Dijo que queria averiguar sobre los mambos negros.")));
 			}
@@ -284,7 +284,7 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Aeropuerto",new Pista("Contaba con visitar un pais de Europa central."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Tomo un barco que llevaba una bandera roja, blanca y verde."),new Pista("Se translado a un pais vecino de Austria."),new Pista("Comento que le gustaria bajar por el Danubio en un barco velero.")));
                 lugares.add(new Lugar("Banco",new Pista("Ha cambiado su dinero a forints."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Dijo que iba a jugar al golf con el presidente."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Solicito un libro sobre Budapest."),new Pista("Estaba buscando antiguos manuscritos magiares."),new Pista("")));
 			}
         
@@ -298,7 +298,7 @@ public class GeneradorDePartidas {
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Bangkok"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion que tenia adornada el ala con una bandera roja, blanca y azul."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Puerto",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Puerto",new Pista("Dijo que iba a pasar unas vacaciones por la Asia Oriental."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Deseaba comprar bahts en el mercado negro. Ha hablado de la belleza de las montanias."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Pregunto a cuanto estaban los bahts."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Contaba realizar una visita con un guia por los wats siameses."),new Pista(""),new Pista("")));
@@ -309,7 +309,7 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Puerto",new Pista("Se ha ido en un catamaran que lucia una bandera verde y blanca."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Dijo que iba a comprar todo lo necesario para hacer perfumes."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Pregunto a cuanto estaba el franco comorense."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Biblioteca",new Pista("Llevaba un diccionaro arabe en la maleta."),new Pista("Pidio informacion sobre los volcanes. Ha hablado de la belleza de las montanias."),new Pista("")));
+                lugares.add(new Lugar("Biblioteca",new Pista("Llevaba un diccionaro arabe en la maleta."),new Pista("Pidio informacion sobre los volcanes. Ha hablado de la belleza de las montanias."),new Pista("Buscaba un libro sobre la industria del perfume.")));
 			}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Puerto Moresby"){
@@ -317,7 +317,7 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera roja y negra."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Cambio su dinero a kinas."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Bolsa",new Pista("Dijo que iba a una barbacoa con el primer ministro."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Biblioteca",new Pista(""),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Biblioteca",new Pista("Hizo preguntas sobre la colonizacion europea."),new Pista(""),new Pista("")));
 			}
 			
 			while (lugares.size() > 3){
@@ -331,22 +331,17 @@ public class GeneradorDePartidas {
 			lugares.clear();
 		}	
 		
-		 //A LAS CIUDADES DEL RECORRIDO DEL LADRON LES AGREGO LA PROXIMA CIUDAD EN LA LISTA Y OTRAS 2 AL AZAR DE LAS CIUDADES AUXILIARES
+		//A LAS CIUDADES DEL RECORRIDO DEL LADRON LES AGREGO LA PROXIMA CIUDAD EN LA LISTA Y OTRAS 2 AL AZAR DE LAS CIUDADES AUXILIARES
         
-        for( int k=0; k< ciudadesValidas.size() - 1; k++){
+        for(int i=0; i < ciudadesValidas.size() - 1; i++){
         	
-        	Ciudad unaCiudad = ciudadesValidas.get(k);
-        	unaCiudad.agregarCiudadAViajar( ciudadesValidas.get(k + 1) );
+        	Ciudad unaCiudad = ciudadesValidas.get(i);
+        	unaCiudad.agregarCiudadAViajar(ciudadesValidas.get(i + 1));
         	
-        	int valor1 = generador.nextInt(ciudades.size());
-        	int valor2 = valor1;
-        	while (valor1 != valor2){
-        		valor2 = generador.nextInt(ciudades.size());
+        	for(int j=0; j<2; j++){
+        		int valor = generador.nextInt(ciudades.size()); 
+        		unaCiudad.agregarCiudadAViajar(ciudades.get(valor));
         	}
-        	
-        	unaCiudad.agregarCiudadAViajar( ciudades.get(valor1) );
-        	unaCiudad.agregarCiudadAViajar( ciudades.get(valor2) );
-        	
         }
 		return ciudadesValidas;		
 	}
