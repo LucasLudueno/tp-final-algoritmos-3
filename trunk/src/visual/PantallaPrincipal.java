@@ -21,8 +21,9 @@ public class PantallaPrincipal {
 	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 	
 		GeneradorDePartidas juego = new GeneradorDePartidas();	
-		ArrayList<Ciudad> ciudadesValidas = juego.generarCiudadesConLugares();
+		ArrayList<Ciudad> ciudadesValidas = juego.generarRecorridoDelLadron();
 		ArrayList<ILugar> lugaresEnLaCiudad;
+		@SuppressWarnings("resource")
 		Scanner entradaEscaner = new Scanner (System.in);
 		@SuppressWarnings("unused")
 		String espacio = "";
