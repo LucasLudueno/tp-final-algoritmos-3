@@ -20,38 +20,47 @@ public class GeneradorDePartidas {
 	private ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 	
 	public GeneradorDePartidas(){
+		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
+		Random generador = new Random();
+		int valor;
 		
 		//Genero la lista de las ciudades que contiene el juego
-		ciudades.add(new Ciudad("Buenos Aires",8,5,null,null,null,null));
-		ciudades.add(new Ciudad("Madrid",12,10,null,null,null,null));
-		ciudades.add(new Ciudad("Londres",12,12,null,null,null,null));
-		ciudades.add(new Ciudad("Atenas",14,11,null,null,null,null));
-		ciudades.add(new Ciudad("Sidney",22,5,null,null,null,null));
-		ciudades.add(new Ciudad("Moscu",15,12,null,null,null,null));
-		ciudades.add(new Ciudad("Paris",13,11,null,null,null,null));
-		ciudades.add(new Ciudad("Tokio",22,10,null,null,null,null));
-		ciudades.add(new Ciudad("El Cairo",14,10,null,null,null,null));
-    	ciudades.add(new Ciudad("Rio De Janeiro",9,6,null,null,null,null));
-    	ciudades.add(new Ciudad("Roma",13,11,null,null,null,null));
-    	ciudades.add(new Ciudad("Oslo",13,13,null,null,null,null));
-    	ciudades.add(new Ciudad("Montreal",8,12,null,null,null,null));
-    	ciudades.add(new Ciudad("Nueva York",8,11,null,null,null,null));
-    	ciudades.add(new Ciudad("Singapur",19,8,null,null,null,null));
-    	ciudades.add(new Ciudad("Bagdad",15,10,null,null,null,null));
-    	ciudades.add(new Ciudad("Estambul",15,11,null,null,null,null));
-    	ciudades.add(new Ciudad("Katmandu",18,9,null,null,null,null));
-    	ciudades.add(new Ciudad("Dubai",15,9,null,null,null,null));
-    	ciudades.add(new Ciudad("San Marino",13,10,null,null,null,null));
-    	ciudades.add(new Ciudad("Nueva Delhi",17,9,null,null,null,null));
-    	ciudades.add(new Ciudad("Ciudad de Mexico",5,9,null,null,null,null));
-    	ciudades.add(new Ciudad("Lima",7,7,null,null,null,null));
-    	ciudades.add(new Ciudad("Kigali",14,8,null,null,null,null));
-    	ciudades.add(new Ciudad("Reykjavik",11,13,null,null,null,null));
-    	ciudades.add(new Ciudad("Budapest",14,12,null,null,null,null));
-    	ciudades.add(new Ciudad("Bamako",12,9,null,null,null,null));
-    	ciudades.add(new Ciudad("Bangkok",19,9,null,null,null,null));
-    	ciudades.add(new Ciudad("Moroni",15,7,null,null,null,null));
-    	ciudades.add(new Ciudad("Puerto Moresby",22,7,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Buenos Aires",8,5,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Madrid",12,10,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Londres",12,12,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Atenas",14,11,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Sidney",22,5,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Moscu",15,12,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Paris",13,11,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Tokio",22,10,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("El Cairo",14,10,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Rio De Janeiro",9,6,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Roma",13,11,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Oslo",13,13,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Montreal",8,12,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Nueva York",8,11,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Singapur",19,8,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Bagdad",15,10,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Estambul",15,11,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Katmandu",18,9,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Dubai",15,9,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("San Marino",13,10,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Nueva Delhi",17,9,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Ciudad de Mexico",5,9,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Lima",7,7,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Kigali",14,8,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Reykjavik",11,13,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Budapest",14,12,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Bamako",12,9,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Bangkok",19,9,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Moroni",15,7,null,null,null,null));
+		listaDeCiudades.add(new Ciudad("Puerto Moresby",22,7,null,null,null,null));
+		
+		while (listaDeCiudades.size() > 0){
+			valor = generador.nextInt(listaDeCiudades.size());
+			ciudades.add(listaDeCiudades.get(valor));
+			listaDeCiudades.remove(valor);
+		}
 	}
 	
 	public ArrayList<Ciudad> obtenerCiudades(){
@@ -180,7 +189,7 @@ public class GeneradorDePartidas {
                 lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion que llevaba una bandera con una hoja de arce."),new Pista(""),new Pista("Dijo que proponia visiar la isla de Baffin.")));
                 lugares.add(new Lugar("Puerto",new Pista("Se fue en un vehiculo que llevaba una bandera roja y blanca."),new Pista("Queria pasar una noche en la isla de Prince Edward."),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Llevaba un diccionario frances."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista("Cambio su dinero a dolares."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Cambio su dinero a dolares."),new Pista("Dijo que tenia la intencion de adquirir el monopolio del mercado del uranio."),new Pista("")));
                 lugares.add(new Lugar("Biblioteca",new Pista("Dijo que queria averiguar sobre Yukon."),new Pista("Queria enumerar las especies de pajaros existentes en los territorios del norte."),new Pista("Dijo que estaba escribiendo un libro sobre los enfrentamientos coloniales franco-ingleses.")));
 			}
         
@@ -249,11 +258,11 @@ public class GeneradorDePartidas {
 			}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Ciudad de Mexico"){
-                lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion cuya ala estaba adornada con una bandera verde, blanca y roja."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion cuya ala estaba adornada con una bandera verde, blanca y roja."),new Pista("Conocia el antiguo nombre de la capital, Tenoctitlan."),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Estaba pensando en viajar a un pais que se hable espaniol."),new Pista(""),new Pista("")));
                 lugares.add(new Lugar("Banco",new Pista("Dijo que iba a montar en caballo con el presidente."),new Pista(""),new Pista("")));
-                lugares.add(new Lugar("Bolsa",new Pista("Vino a cambiar su dinero a pesos."),new Pista(""),new Pista("")));
-           		lugares.add(new Lugar("Biblioteca",new Pista("Dijo que queria averiguar sobre los Aztecas."),new Pista(""),new Pista("")));
+                lugares.add(new Lugar("Bolsa",new Pista("Vino a cambiar su dinero a pesos."),new Pista("Queria saber el precio de la cania de azucar."),new Pista("")));
+           		lugares.add(new Lugar("Biblioteca",new Pista("Dijo que queria averiguar sobre los Aztecas."),new Pista("Investigaba los origenes de los calendarios mayas."),new Pista("")));
 			}
         
 			if (ciudadesValidas.get(i).obtenerNombre() == "Lima"){
@@ -331,10 +340,9 @@ public class GeneradorDePartidas {
 			lugares.clear();
 		}	
 		
-		//A las ciudades del recorrido del ladron les agrego la proxima ciudad en la lista y otras dos al azar de las ciudades auxiliares
+		//Agrego las ciudades a viajar asignando la siguiente ciudad valida y las restantes son ciudades invalidas al azar
         
         for(int i=0; i < ciudadesValidas.size() - 1; i++){
-        	
         	Ciudad unaCiudad = ciudadesValidas.get(i);
         	unaCiudad.agregarCiudadAViajar(ciudadesValidas.get(i + 1));
         	
@@ -445,5 +453,5 @@ public class GeneradorDePartidas {
 		int valor = generador.nextInt(listaDeLadrones.size());
 		
 		return listaDeLadrones.get(valor);
-	}	
+	}
 }
