@@ -130,10 +130,10 @@ public class TpTest{
 		sospechosos.add(sospechoso);
 		ComputadoraPolicial computadora = new ComputadoraPolicial(sospechosos);
 		
-		Pista pistaFacilBibliotecaBsAs = new Pista( "Fue a un país asiático. Tenía una horrible cicatriz");
+		Pista pistaFacilBibliotecaBsAs = new Pista( "Fue a un pais asiatico. Tenia una horrible cicatriz");
 		Pista pistaFacilBancoHongKong = new Pista( "Consulto por el tipo de cambio del yen" );
-		Pista pistaFacilPuertoHongKong = new Pista( "Fue a un país con bandera blanca y roja. Llevaba una raqueta" );
-		Pista pistaFacilBancoTokio = new Pista("Pregunto por el tipo de cambio de la libra. Tenía pelo rubio");
+		Pista pistaFacilPuertoHongKong = new Pista( "Fue a un pais con bandera blanca y roja. Llevaba una raqueta" );
+		Pista pistaFacilBancoTokio = new Pista("Pregunto por el tipo de cambio de la libra. Tenia pelo rubio");
 		
 		Lugar bibliotecaBsAs = new Lugar( "biblioteca", pistaFacilBibliotecaBsAs, null, null);
 		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);

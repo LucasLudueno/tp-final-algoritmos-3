@@ -331,7 +331,7 @@ public class GeneradorDePartidas {
 			lugares.clear();
 		}	
 		
-		//A LAS CIUDADES DEL RECORRIDO DEL LADRON LES AGREGO LA PROXIMA CIUDAD EN LA LISTA Y OTRAS 2 AL AZAR DE LAS CIUDADES AUXILIARES
+		//A las ciudades del recorrido del ladron les agrego la proxima ciudad en la lista y otras dos al azar de las ciudades auxiliares
         
         for(int i=0; i < ciudadesValidas.size() - 1; i++){
         	
