@@ -75,6 +75,7 @@ public class PantallaPrincipal {
 	        	
 	        } else {
 	        	System.out.println(lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador).obtenerContenido());
+	        	jugador.restarTiempoPorEntrarALugar();
 	        }
 	       
 	        espacio = entradaEscaner.nextLine();
