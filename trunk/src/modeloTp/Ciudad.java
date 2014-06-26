@@ -39,7 +39,7 @@ public class Ciudad {
 		}
 	}
 	
-public String obtenerNombre() {
+	public String obtenerNombre() {
 		
 		return this.nombre;
 	}
