@@ -22,36 +22,36 @@ public class GeneradorDePartidas {
 	public GeneradorDePartidas(){
 		
 		//Genero la lista de las ciudades que contiene el juego
-		ciudades.add(new Ciudad("Buenos Aires",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Madrid",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Londres",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Atenas",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Sidney",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Moscu",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Paris",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Tokio",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("El Cairo",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Rio De Janeiro",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Roma",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Oslo",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Montreal",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Nueva York",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Singapur",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Bagdad",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Estambul",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Katmandu",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Dubai",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("San Marino",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Nueva Delhi",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Ciudad de Mexico",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Lima",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Kigali",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Reykjavik",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Budapest",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Bamako",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Bangkok",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Moroni",1,1,null,null,null,null));
-    	ciudades.add(new Ciudad("Puerto Moresby",1,1,null,null,null,null));
+		ciudades.add(new Ciudad("Buenos Aires",8,5,null,null,null,null));
+		ciudades.add(new Ciudad("Madrid",12,10,null,null,null,null));
+		ciudades.add(new Ciudad("Londres",12,12,null,null,null,null));
+		ciudades.add(new Ciudad("Atenas",14,11,null,null,null,null));
+		ciudades.add(new Ciudad("Sidney",22,5,null,null,null,null));
+		ciudades.add(new Ciudad("Moscu",15,12,null,null,null,null));
+		ciudades.add(new Ciudad("Paris",13,11,null,null,null,null));
+		ciudades.add(new Ciudad("Tokio",22,10,null,null,null,null));
+		ciudades.add(new Ciudad("El Cairo",14,10,null,null,null,null));
+    	ciudades.add(new Ciudad("Rio De Janeiro",9,6,null,null,null,null));
+    	ciudades.add(new Ciudad("Roma",13,11,null,null,null,null));
+    	ciudades.add(new Ciudad("Oslo",13,13,null,null,null,null));
+    	ciudades.add(new Ciudad("Montreal",8,12,null,null,null,null));
+    	ciudades.add(new Ciudad("Nueva York",8,11,null,null,null,null));
+    	ciudades.add(new Ciudad("Singapur",19,8,null,null,null,null));
+    	ciudades.add(new Ciudad("Bagdad",15,10,null,null,null,null));
+    	ciudades.add(new Ciudad("Estambul",15,11,null,null,null,null));
+    	ciudades.add(new Ciudad("Katmandu",18,9,null,null,null,null));
+    	ciudades.add(new Ciudad("Dubai",15,9,null,null,null,null));
+    	ciudades.add(new Ciudad("San Marino",13,10,null,null,null,null));
+    	ciudades.add(new Ciudad("Nueva Delhi",17,9,null,null,null,null));
+    	ciudades.add(new Ciudad("Ciudad de Mexico",5,9,null,null,null,null));
+    	ciudades.add(new Ciudad("Lima",7,7,null,null,null,null));
+    	ciudades.add(new Ciudad("Kigali",14,8,null,null,null,null));
+    	ciudades.add(new Ciudad("Reykjavik",11,13,null,null,null,null));
+    	ciudades.add(new Ciudad("Budapest",14,12,null,null,null,null));
+    	ciudades.add(new Ciudad("Bamako",12,9,null,null,null,null));
+    	ciudades.add(new Ciudad("Bangkok",19,9,null,null,null,null));
+    	ciudades.add(new Ciudad("Moroni",15,7,null,null,null,null));
+    	ciudades.add(new Ciudad("Puerto Moresby",22,7,null,null,null,null));
 	}
 	
 	public ArrayList<Ciudad> obtenerCiudades(){

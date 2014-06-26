@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 
 import modeloTp.Ciudad;
 import modeloTp.ComputadoraPolicial;
+import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.GeneradorDePartidas;
 import modeloTp.ILugar;
 import modeloTp.JugadorNovato;
@@ -18,7 +19,7 @@ import modeloTp.JugadorNovato;
 public class PantallaPrincipal {
 	
 	
-	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException{
+	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException, ExcepcionNoHayMasTiempo{
 	
 		GeneradorDePartidas juego = new GeneradorDePartidas();	
 		ArrayList<Ciudad> ciudadesValidas = juego.generarRecorridoDelLadron();
@@ -38,7 +39,11 @@ public class PantallaPrincipal {
 			
 		 	lugaresEnLaCiudad = ciudadJugando.obtenerLugares();
 		 	
-			System.out.println(ciudadJugando.obtenerNombre());
+		 	System.out.println("");
+			System.out.print("Ciudad actual: "+jugador.obtenerCiudadActual().obtenerNombre());
+			System.out.print(" / ");
+			System.out.println("Tiempo restante: "+jugador.obtenerTiempoRestante());
+			System.out.println("");
 			System.out.println("1)_ "+lugaresEnLaCiudad.get(0).obtenerNombre());
 			System.out.println("2)_ "+lugaresEnLaCiudad.get(1).obtenerNombre());
 			System.out.println("3)_ "+lugaresEnLaCiudad.get(2).obtenerNombre());
@@ -48,6 +53,9 @@ public class PantallaPrincipal {
 		
 	        if ( opcionElegida == 4){
 	        	
+	        	System.out.println("");
+	        	System.out.println("Ciudades a viajar:");
+	        	System.out.println("");
 	        	System.out.println("1)_ "+ciudadJugando.obtenerCiudadesAViajar().get(0).obtenerNombre());
 	        	System.out.println("2)_ "+ciudadJugando.obtenerCiudadesAViajar().get(1).obtenerNombre());
 	        	System.out.println("3)_ "+ciudadJugando.obtenerCiudadesAViajar().get(2).obtenerNombre());
@@ -62,6 +70,7 @@ public class PantallaPrincipal {
 	        		
 	        		contador = contador +1;
 	        		ciudadJugando = ciudadesValidas.get(contador);
+	        		jugador.viajar(ciudadJugando);
 	        	}
 	        	
 	        } else {
