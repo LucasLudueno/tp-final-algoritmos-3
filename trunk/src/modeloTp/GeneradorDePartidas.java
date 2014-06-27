@@ -61,34 +61,65 @@ public class GeneradorDePartidas {
 			ciudades.add(listaDeCiudades.get(valor));
 			listaDeCiudades.remove(valor);
 		}
+		this.generarRelacionEntreCiudades();
 	}
 	
 	public ArrayList<Ciudad> obtenerCiudades(){
 		return ciudades;
 	}
 	
+	private void generarRelacionEntreCiudades(){
+		//Compruebo si la cantidad de elementos de la lista de ciudades es par, para que funcione el siguiente algoritmo
+		if(ciudades.size() % 2 != 0){
+			ciudades.remove(ciudades.size()-1);
+		}
+		
+		//Relaciono la primera ciudad de la lista con la ultima y con la siguiente de la misma
+		ciudades.get(0).agregarCiudadAViajar(ciudades.get(1));
+		ciudades.get(0).agregarCiudadAViajar(ciudades.get(ciudades.size()-1));
+		
+		//Relaciono la ultima ciudad de la lista con la primera y con la anterior de la misma
+		ciudades.get(ciudades.size()-1).agregarCiudadAViajar(ciudades.get(0));
+		ciudades.get(ciudades.size()-1).agregarCiudadAViajar(ciudades.get(ciudades.size()-2));
+		
+		//Relaciono cada ciudad de la lista con la siguiente
+		for (int i=1; i < ciudades.size()-1; i++){
+			ciudades.get(i).agregarCiudadAViajar(ciudades.get(i+1));
+			ciudades.get(i).agregarCiudadAViajar(ciudades.get(i-1));		
+		}
+		//Hasta aca cada ciudad tiene dos ciudades a viajar en su lista
+		
+		//Relaciono cada ciudad con otra ciudad para completar la lista de ciudades a viajar
+		for (int i=0; i < (ciudades.size()/2); i++){
+			ciudades.get(i).agregarCiudadAViajar(ciudades.get((ciudades.size()/2)+i));
+			ciudades.get((ciudades.size()/2)+i).agregarCiudadAViajar(ciudades.get(i));
+		}
+	}
+
 	private ArrayList<Ciudad> generarListaDeCiudadesValidas(){
 		ArrayList<Ciudad> ciudadesValidas = new ArrayList<Ciudad>();
 		Random generador = new Random();
 		
-		//Tomo aleatoriamente seis ciudades de la lista
-		for (int i=0; i < 6; i++){
-			int valor = generador.nextInt(ciudades.size());
-			ciudadesValidas.add(ciudades.get(valor));
-			ciudades.remove(valor);
-		}
+		//Tomo aleatoriamente una ciudad de la lista
+		ciudadesValidas.add(ciudades.get(generador.nextInt(ciudades.size())));
 		
+		//Tomo un camino aleatorio para formar el recorrido del ladron
+		for (int i=0; i < 5; i++){
+			ciudadesValidas.add(ciudadesValidas.get(i).obtenerCiudadesAViajar().get(0));
+		}
 		return ciudadesValidas;
 	}
 	
 	public ArrayList<Ciudad> generarCiudadesConLugares(){
+		this.generarLugaresALasCiudades();
+		
 		ArrayList<Ciudad> ciudadesValidas = this.generarListaDeCiudadesValidas();
-		this.generarLugaresACiudadesInvalidas();
 		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
 		Random generador = new Random();
 		
 		//Genero los lugares con sus pistas para cada ciudad
 		for(int i=0; i < ciudadesValidas.size(); i++){
+			ciudadesValidas.get(i).obtenerLugares().clear();
 			if (ciudadesValidas.get(i).obtenerNombre() == "Buenos Aires"){
                 lugares.add(new Lugar("Aeropuerto",new Pista("Ha tomado un avion pintado de azul y blanco."),new Pista("Ha tomado un avion que llevaba un sol dorado."),new Pista("")));
                 lugares.add(new Lugar("Puerto",new Pista("Llevaba un diccionario con palabras espaniolas."),new Pista("Pregunto donde se encontraba el rio Parana."),new Pista("")));
@@ -338,23 +369,11 @@ public class GeneradorDePartidas {
                 ciudadesValidas.get(i).obtenerLugares().add(lugares.get(j));
 			}
 			lugares.clear();
-		}	
-		
-		//Agrego las ciudades a viajar asignando la siguiente ciudad valida y las restantes son ciudades invalidas al azar
-        
-        for(int i=0; i < ciudadesValidas.size() - 1; i++){
-        	Ciudad unaCiudad = ciudadesValidas.get(i);
-        	unaCiudad.agregarCiudadAViajar(ciudadesValidas.get(i + 1));
-        	
-        	for(int j=0; j<2; j++){
-        		int valor = generador.nextInt(ciudades.size()); 
-        		unaCiudad.agregarCiudadAViajar(ciudades.get(valor));
-        	}
-        }
+		}
 		return ciudadesValidas;		
 	}
 	
-	private void generarLugaresACiudadesInvalidas(){
+	private void generarLugaresALasCiudades(){
 		Random generador = new Random();
 		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
 		

@@ -27,11 +27,12 @@ public class GeneradorDePartidasTest {
 	}
 	
 	@Test
-	public void elGeneradorDeCiudadesDebeCrearSuListaDeCiudadesValidasYEliminarlaLasCiudadesElegidasDeLaListaDeTodasLasCiudades(){
+	public void cadaCiudadDebeTenerTresCiudadesAViajar(){
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		
-		assertEquals(generador.generarCiudadesConLugares().size(),6);
-		assertEquals(generador.obtenerCiudades().size(),24);
+		for(int i=0; i < generador.obtenerCiudades().size(); i++){
+			assertEquals(generador.obtenerCiudades().get(i).obtenerCiudadesAViajar().size(),3);
+		}
 	}
 	
 	@Test
