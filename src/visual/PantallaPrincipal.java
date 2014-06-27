@@ -22,8 +22,9 @@ public class PantallaPrincipal {
 	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException, ExcepcionNoHayMasTiempo{
 	
 		GeneradorDePartidas juego = new GeneradorDePartidas();	
-		ArrayList<Ciudad> ciudadesValidas = juego.generarRecorridoDelLadron();
+		ArrayList<Ciudad> ciudadesValidas = juego.obtenerRecorridoLadron();
 		ArrayList<ILugar> lugaresEnLaCiudad;
+		@SuppressWarnings("resource")
 		Scanner entradaEscaner = new Scanner (System.in);
 		
 		int opcionElegida = 0;
@@ -61,6 +62,12 @@ public class PantallaPrincipal {
 	        	
 	        	jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(entradaEscaner.nextInt()-1));	        	
 	        	entradaEscaner.nextLine();
+	        	
+	        	if(juego.obtenerPasoActual() < (juego.obtenerRecorridoLadron().size()-1)){
+	        		if(jugador.obtenerCiudadActual() == ciudadesValidas.get(juego.obtenerPasoActual()+1)){
+	        			juego.pasarALaSiguienteCiudadDelRecorrido();
+	        		}
+	        	}
 	        	
 	        } else if( opcionElegida == 4){
 	        	

@@ -20,14 +20,14 @@ import controladorTp.Serializador;
 public class GeneradorDePartidasTest {
 	
 	@Test
-	public void elGeneradorDePartidasDebeCrearseConLasCiudadesDelJuego(){
+	public void elGeneradorDePartidasDebeCrearseConLasCiudadesDelJuego() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		
 		assertEquals(generador.obtenerCiudades().size(),30);		
 	}
 	
 	@Test
-	public void cadaCiudadDebeTenerTresCiudadesAViajar(){
+	public void cadaCiudadDebeTenerTresCiudadesAViajar() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		
 		for(int i=0; i < generador.obtenerCiudades().size(); i++){
@@ -36,27 +36,22 @@ public class GeneradorDePartidasTest {
 	}
 	
 	@Test
-	public void elGeneradorDeCiudadesDebeAsignarLosLugaresACadaCiudad(){
+	public void elGeneradorDeCiudadesDebeAsignarLosLugaresACadaCiudad() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		
-		ArrayList<Ciudad> listaDeCiudadesValidas = generador.generarCiudadesConLugares();
-		ArrayList<Ciudad> listaDeCiudadesInvalidas = generador.obtenerCiudades();
+		ArrayList<Ciudad> listaDeCiudades = generador.obtenerCiudades();
 		
-		for(int i=0; i<listaDeCiudadesValidas.size(); i++){
-			assertEquals(listaDeCiudadesValidas.get(i).obtenerLugares().size(),3);
-		}
-		
-		for(int i=0; i<listaDeCiudadesInvalidas.size(); i++){
-			assertEquals(listaDeCiudadesInvalidas.get(i).obtenerLugares().size(),3);
+		for(int i=0; i<listaDeCiudades.size(); i++){
+			assertEquals(listaDeCiudades.get(i).obtenerLugares().size(),3);
 		}
 	}
 	
 	@Test
-	public void lasCiudadesDelRecorridoDelLadronDebenTener3ciudadesADondeViajar(){
+	public void lasCiudadesDelRecorridoDelLadronDebenTener3ciudadesADondeViajar() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		
 		generador.obtenerCiudades();
-		ArrayList<Ciudad> recorridoDelLadron= generador.generarCiudadesConLugares();
+		ArrayList<Ciudad> recorridoDelLadron= generador.obtenerRecorridoLadron();
 		
 		for(int j=0; j < recorridoDelLadron.size() - 1; j++){
 			
@@ -66,6 +61,17 @@ public class GeneradorDePartidasTest {
     		assertTrue(recorridoDelLadron.get(j).obtenerCiudadesAViajar().get(1) != null);
     		assertTrue(recorridoDelLadron.get(j).obtenerCiudadesAViajar().get(2) != null);
     	}		
+	}
+	
+	@Test
+	public void pasarALaSiguienteCiudadDelRecorridoDelLadronDebeAumentarUnPasoActual() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		GeneradorDePartidas generador = new GeneradorDePartidas();
+		
+		assertEquals(generador.obtenerPasoActual(),0);
+		
+		generador.pasarALaSiguienteCiudadDelRecorrido();
+		
+		assertEquals(generador.obtenerPasoActual(),1);
 	}
 	
 	@Test
@@ -101,7 +107,7 @@ public class GeneradorDePartidasTest {
 		serializador.serializadorDeListaDeLadrones();
 		
 		GeneradorDePartidas generador = new GeneradorDePartidas();
-		ArrayList<Ciudad> recorridoLadron = generador.generarRecorridoDelLadron();
+		ArrayList<Ciudad> recorridoLadron = generador.obtenerRecorridoLadron();
 		
 		assertEquals(recorridoLadron.size(),6);
 		for(int i=0; i < recorridoLadron.size(); i++){
