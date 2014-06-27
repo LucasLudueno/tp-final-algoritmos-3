@@ -87,15 +87,17 @@ public class Jugador {
 		
 	}
 	
-	public ArrayList<Ladron> emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
+	public boolean emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
 		
 		reducirTiempo( this.tiempoEmitirOrdenDeArresto);
 		ArrayList<Ladron> posiblesLadrones = this.computadoraPolicial.buscarPosiblesLadrones(sexo, hobby, cabello, senia, vehiculo);
 		
 		if (posiblesLadrones.size() == 1){
 			this.nombreDelLadronBuscado = ( (Ladron)posiblesLadrones.get(0) ).obtenerNombre();
+			return true;
 		}
-		return posiblesLadrones;
+	
+		return false;
 	}
 	
 	private void reducirTiempo( Integer tiempo ){

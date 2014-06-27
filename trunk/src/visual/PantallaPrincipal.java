@@ -24,20 +24,17 @@ public class PantallaPrincipal {
 		GeneradorDePartidas juego = new GeneradorDePartidas();	
 		ArrayList<Ciudad> ciudadesValidas = juego.generarRecorridoDelLadron();
 		ArrayList<ILugar> lugaresEnLaCiudad;
-		@SuppressWarnings("resource")
 		Scanner entradaEscaner = new Scanner (System.in);
-		@SuppressWarnings("unused")
-		String espacio = "";
+		
 		int opcionElegida = 0;
-		int contador = 0;
 		ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
 		JugadorNovato jugador = new JugadorNovato(ciudadesValidas.get(0), computadora);
+		int tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
+		boolean juegoTerminado = false;
 		
-		Ciudad ciudadJugando = ciudadesValidas.get(contador);
-		
-		while (ciudadJugando != ciudadesValidas.get((ciudadesValidas.size()-1))){
+		while (juegoTerminado != true){
 			
-		 	lugaresEnLaCiudad = ciudadJugando.obtenerLugares();
+		 	lugaresEnLaCiudad = jugador.obtenerCiudadActual().obtenerLugares();
 		 	
 		 	System.out.println("");
 			System.out.print("Ciudad actual: "+jugador.obtenerCiudadActual().obtenerNombre());
@@ -47,39 +44,60 @@ public class PantallaPrincipal {
 			System.out.println("1)_ "+lugaresEnLaCiudad.get(0).obtenerNombre());
 			System.out.println("2)_ "+lugaresEnLaCiudad.get(1).obtenerNombre());
 			System.out.println("3)_ "+lugaresEnLaCiudad.get(2).obtenerNombre());
-			System.out.println("4)_ Proximas ciudades a viajar");
+			System.out.println("4)_ Computadora Policial");
+			System.out.println("5)_ Proximas ciudades a viajar");
 		
 	        opcionElegida = entradaEscaner.nextInt(); 
-		
-	        if ( opcionElegida == 4){
+	        entradaEscaner.nextLine();
+	        
+	        if ( opcionElegida == 5){
 	        	
 	        	System.out.println("");
 	        	System.out.println("Ciudades a viajar:");
 	        	System.out.println("");
-	        	System.out.println("1)_ "+ciudadJugando.obtenerCiudadesAViajar().get(0).obtenerNombre());
-	        	System.out.println("2)_ "+ciudadJugando.obtenerCiudadesAViajar().get(1).obtenerNombre());
-	        	System.out.println("3)_ "+ciudadJugando.obtenerCiudadesAViajar().get(2).obtenerNombre());
+	        	System.out.println("1)_ "+jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(0).obtenerNombre());
+	        	System.out.println("2)_ "+jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(1).obtenerNombre());
+	        	System.out.println("3)_ "+jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(2).obtenerNombre());
 	        	
-	        	opcionElegida = entradaEscaner.nextInt();
+	        	jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(entradaEscaner.nextInt()-1));	        	
+	        	entradaEscaner.nextLine();
 	        	
-	        	if( contador+1 >=ciudadesValidas.size()-1){
-	        		System.out.println("No hay mas ciudades");
-	        		espacio = entradaEscaner.nextLine();
-	        	}
-	        	else if ( ciudadesValidas.get(contador+1).obtenerNombre() == ciudadJugando.obtenerCiudadesAViajar().get(opcionElegida-1).obtenerNombre()){
-	        		
-	        		contador = contador +1;
-	        		ciudadJugando = ciudadesValidas.get(contador);
-	        		jugador.viajar(ciudadJugando);
-	        	}
+	        } else if( opcionElegida == 4){
 	        	
-	        } else {
-	        	System.out.println(lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador).obtenerContenido());
-	        	jugador.restarTiempoPorEntrarALugar();
-	        }
-	       
-	        espacio = entradaEscaner.nextLine();
+	        	System.out.println("Ingrese sexo del sospechoso ");
+	        	String sexo = entradaEscaner.nextLine();
+	        	System.out.println("Ingrese hobby del sospechoso ");
+	        	String hobby = entradaEscaner.nextLine();
+	        	System.out.println("Ingrese cabello del sospechoso ");
+	        	String cabello = entradaEscaner.nextLine();
+	        	System.out.println("Ingrese senia del sospechoso ");
+	        	String senia = entradaEscaner.nextLine();
+	        	System.out.println("Ingrese vehiculo del sospechoso ");
+	        	String vehiculo = entradaEscaner.nextLine();
+	        	
+	        	if (jugador.emitirOrdenDeArresto(sexo, hobby, cabello, senia, vehiculo) == true) System.out.println("Orden de arresto emitida");
+	        	else System.out.println("No Hay Suficientes pistas para obtener coincidencias");
+	        	
+	        	
 	        }
 	        
-		}
+	        
+	        
+	        else {
+	        	System.out.println(lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador).obtenerContenido());
+	        	jugador.restarTiempoPorEntrarALugar();
+	        	entradaEscaner.nextLine();
+	        }
+	       
+	        
+			if(tiempoAntesDeDormir - jugador.obtenerTiempoRestante() > 17) {
+	        	
+	        	tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
+	        	jugador.dormir();
+	        	System.out.println("El jugador esta durmiendo");
+	        }
+	        
+	    }
+	        
 	}
+}
