@@ -86,7 +86,7 @@ public class SerializadorTest {
 		archivo.delete();
 	}
 	
-	@Test
+	//@Test
 	public void ejemploSerializarLugaresDeCiudadesDebeDevolverUnaListaDeLugaresConPistas() throws ParserConfigurationException, SAXException, IOException{
 		
 		File archivo = new File("Buenos Aires.xml");
