@@ -3,7 +3,6 @@ package modeloTp;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -113,9 +112,6 @@ public class GeneradorDePartidasTest {
 			assertEquals(recorridoLadron.get(i).cantidadLugares(),3);
 		}
 		
-		//Elimino el archivo
-		File archivo = new File("ListaDeLadrones.xml");
-		archivo.delete();
 	}
 	
 	@Test
