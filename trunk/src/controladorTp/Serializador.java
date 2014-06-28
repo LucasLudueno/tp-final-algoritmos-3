@@ -1,5 +1,6 @@
 package controladorTp;
 
+import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -150,7 +151,7 @@ public class Serializador {
 	}
 	
 	
-	//@Test
+	@Test
 	public void ejemploSerializarLugaresDeCiudades() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 
 		//Genero un documento XML vacio en la memoria
@@ -160,12 +161,12 @@ public class Serializador {
 
 		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
 									
-		lugares.add(new Lugar("Aeropuerto",new Pista("Ha tomado un avion pintado de azul y blanco."),new Pista("Ha tomado un avion que llevaba un sol dorado."),new Pista("")));
-		lugares.add(new Lugar("Puerto",new Pista("Llevaba un diccionario con palabras espaniolas."),new Pista("Pregunto donde se encontraba el rio Parana."),new Pista("")));
-		lugares.add(new Lugar("Banco",new Pista("Vino a cambiar su dinero a pesos."),new Pista("Ha invertido todo su dinero en soja."),new Pista("")));
-		lugares.add(new Lugar("Bolsa",new Pista("Ha declarado que iba a adquirir el monopolio del mercado del aceite de soja."),new Pista(""),new Pista("")));
-		lugares.add(new Lugar("Biblioteca",new Pista("Dijo que estaba interesado en conocer el pico mas alto de America."),new Pista("Era beneficiario de una beca para estudiar el nivel de colesterol de los gauchos."),new Pista("Ha hecho preguntas sobre la epoca de las conquistas espaniolas.")));
-		
+		lugares.add(new Lugar("Aeropuerto",new Pista("Tomo un avion cuya ala estaba adornada con una bandera roja y blanca."),new Pista("Fue a visitar una isla del sudeste asiatico."),new Pista("")));
+		lugares.add(new Lugar("Puerto",new Pista("Dijo que queria visitar un bosque tropical."),new Pista("Dijo que queria tirarse de cabeza en el puerto Calder."),new Pista("")));
+		lugares.add(new Lugar("Banco",new Pista("Dijo que queria comprar un barco para dar la vuelta al mundo."),new Pista(""),new Pista("")));
+		lugares.add(new Lugar("Bolsa",new Pista("Dijo que queria jugar al polo con el presidente."),new Pista(""),new Pista("")));
+		lugares.add(new Lugar("Biblioteca",new Pista("Estaba hojeando un diccionario en ingles."),new Pista("Dijo que tenia ganas de degustar un Gin Tonic en el hotel Raffles."),new Pista("")));
+	
 		Element elementoLugares = doc.createElement("Lugares");
 		for (int i = 0 ; i < lugares.size() ; i++){
 			elementoLugares.appendChild(lugares.get(i).serializar(doc));
@@ -176,7 +177,7 @@ public class Serializador {
 	    TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	    Transformer transformer = transformerFactory.newTransformer();
 	    DOMSource source = new DOMSource(doc);
-	    File archivo = new File("Buenos Aires.xml");
+	    File archivo = new File("Singapur.xml");
 	    StreamResult streamResult = new StreamResult(archivo);
 	    transformer.transform(source, streamResult);
 							
