@@ -33,8 +33,6 @@ public class GeneradorDePartidas {
 		
 		Element elementoCiudades = (Element)doc.getElementsByTagName("Ciudades").item(0);						
 		
-		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
-		
 		int i = 0;
 		while (elementoCiudades.getChildNodes().item(i) != null){
 			Ciudad ciudad = Ciudad.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));

@@ -17,8 +17,6 @@ import org.xml.sax.SAXException;
 
 import controladorTp.Serializador;
 
-
-
 public class GeneradorDePartidasTest {
 	
 	@Test
@@ -124,11 +122,12 @@ public class GeneradorDePartidasTest {
 		GeneradorDePartidas generador = new GeneradorDePartidas();
 		ArrayList<Ciudad> ciudades = generador.generarListaDeCiudades();
 		
+		
 		for(int i=0; i< ciudades.size(); i++){
 			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerNombre() != null );
 			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_x() != 0 );
 			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_y() != 0 );
 		}
-		Assert.assertTrue( ciudades.size() == 30 );
+		
 	}
 }
