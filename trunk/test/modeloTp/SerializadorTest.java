@@ -47,6 +47,7 @@ public class SerializadorTest {
 			elementoLadrones.appendChild(lista.get(i).serializar(doc));
 		}
 		
+		
 		assertNotNull(elementoLadrones);
 		
 		//Guardo el XML en el disco
@@ -82,5 +83,6 @@ public class SerializadorTest {
 		
 		archivo.delete();
 	}
+	
 
 }

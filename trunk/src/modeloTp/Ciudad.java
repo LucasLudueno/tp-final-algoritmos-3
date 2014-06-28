@@ -31,10 +31,10 @@ public class Ciudad {
 		if (lugar1 != null){
 			this.lugares.add(lugar1);
 		}
-		if (lugar1 != null){
+		if (lugar2 != null){
 			this.lugares.add(lugar2);
 		}
-		if (lugar1 != null){
+		if (lugar3 != null){
 			this.lugares.add(lugar3);
 		}
 	}
@@ -109,12 +109,13 @@ public class Ciudad {
 		int posicion_x = Integer.valueOf(elementoCiudad.getAttribute("posicion_x"));
 		int posicion_y = Integer.valueOf(elementoCiudad.getAttribute("posicion_y"));
 		
-		Element elementoLugares = (Element)elementoCiudad.getElementsByTagName("Lugares").item(0);
-		Lugar lugarUno = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(0));
-		Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
-		Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));
+		//Element elementoLugares = (Element)elementoCiudad.getElementsByTagName("Lugares").item(0);
 		
-		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y,lugarUno,lugarDos,lugarTres,null);
+		//Lugar lugarUno = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(0));
+		//Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
+		//Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));
+		
+		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y,null,null,null,null);
 		
 		return unaCiudad;
 	}
