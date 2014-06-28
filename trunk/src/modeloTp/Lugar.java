@@ -51,9 +51,6 @@ public class Lugar implements ILugar{
 		elementoPistas.appendChild(pistaMedia.serializar(doc));
 		elementoPistas.appendChild(pistaDificil.serializar(doc));
 		
-		Element elementoLadron = doc.createElement("LadronEscondido");
-		elementoLugar.appendChild(elementoLadron);
-		
 		return elementoLugar;
 	}
 
