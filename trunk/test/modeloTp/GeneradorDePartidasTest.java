@@ -7,12 +7,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
+
 import org.xml.sax.SAXException;
 
 import controladorTp.Serializador;
@@ -130,4 +132,16 @@ public class GeneradorDePartidasTest {
 		}
 		
 	}
+	
+	@Test
+		public void generarLugaresDeUnaCiudadDevuelveLosLugaresQueTieneEsaCiudadConSusPistas() throws ParserConfigurationException, SAXException, IOException, TransformerException{
+			
+			GeneradorDePartidas generador = new GeneradorDePartidas();
+			ArrayList<Lugar> lugares = generador.generarLugaresDeUnaCiudad("Ciudad de Mexico");
+			
+			JugadorNovato jugador = new JugadorNovato(null, null);
+			for(int j=0; j < lugares.size(); j++){
+				Assert.assertTrue(lugares.get(j).devolverPista(jugador) != null );
+			}
+		}
 }

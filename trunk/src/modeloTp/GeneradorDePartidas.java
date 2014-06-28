@@ -42,6 +42,30 @@ public class GeneradorDePartidas {
 		
 		return ciudades;
 	}
+	
+	public ArrayList<Lugar> generarLugaresDeUnaCiudad(String nombreDeLaCiudad) throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File(nombreDeLaCiudad+".xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoCiudades = (Element)doc.getElementsByTagName("Lugares").item(0);						
+		
+		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
+		
+		int i = 0;
+		while (elementoCiudades.getChildNodes().item(i) != null){
+			Lugar lugar = Lugar.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));
+			lugares.add( lugar );
+			i = i + 1;
+		}
+		return lugares;
+	
+	}
+	
 	public GeneradorDePartidas() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
 		Random generador = new Random();

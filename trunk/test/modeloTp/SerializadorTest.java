@@ -17,8 +17,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -86,31 +84,5 @@ public class SerializadorTest {
 		archivo.delete();
 	}
 	
-	//@Test
-	public void ejemploSerializarLugaresDeCiudadesDebeDevolverUnaListaDeLugaresConPistas() throws ParserConfigurationException, SAXException, IOException{
-		
-		File archivo = new File("Buenos Aires.xml");
-		
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
-		
-		Element elementoCiudades = (Element)doc.getElementsByTagName("Lugares").item(0);						
-		
-		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
-		
-		int i = 0;
-		while (elementoCiudades.getChildNodes().item(i) != null){
-			Lugar lugar = Lugar.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));
-			lugares.add( lugar );
-			i = i + 1;
-		}
-		
-		JugadorNovato jugador = new JugadorNovato(null, null);
-		for(int j=0; j < lugares.size(); j++){
-			Assert.assertTrue(lugares.get(j).devolverPista(jugador) != null );
-		}
-	}
 
 }
