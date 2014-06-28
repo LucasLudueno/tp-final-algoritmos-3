@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -96,9 +98,6 @@ public class GeneradorDePartidasTest {
     		assertTrue(listaDeLadrones.get(j).obtenerSexo() != null);
     	}
 		
-		//Elimino el archivo
-		File archivo = new File("ListaDeLadrones.xml");
-		archivo.delete();
 	}
 	
 	@Test
@@ -117,5 +116,19 @@ public class GeneradorDePartidasTest {
 		//Elimino el archivo
 		File archivo = new File("ListaDeLadrones.xml");
 		archivo.delete();
+	}
+	
+	@Test
+	public void generarListaDeCiudadesDebeDevolverUnaListaDeCiudadesConNombreYCoordenadas() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+	
+		GeneradorDePartidas generador = new GeneradorDePartidas();
+		ArrayList<Ciudad> ciudades = generador.generarListaDeCiudades();
+		
+		for(int i=0; i< ciudades.size(); i++){
+			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerNombre() != null );
+			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_x() != 0 );
+			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_y() != 0 );
+		}
+		Assert.assertTrue( ciudades.size() == 30 );
 	}
 }
