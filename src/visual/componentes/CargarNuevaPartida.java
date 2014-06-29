@@ -30,19 +30,25 @@ public class CargarNuevaPartida implements ActionListener {
 		
 		PanelBienvenidaJugador panelBienvenida;
 		
-		//PUSE ESTO DE ATRAPAR LA EXCEPCION PARA QUE NO TIRE ERROR, HAY QUE VER COMO SACARLO
-		
+		//PUSE ESTO DE ATRAPAR LA EXCEPCION PARA QUE NO TIRE ERROR, HAY QUE VER COMO SACARLO.
 		try {
 			panelBienvenida = new PanelBienvenidaJugador(campo.getText(),juego.obtenerRecorridoLadron().get(0).obtenerNombre(),juego.obtenerLadronBuscado().obtenerSexo());
 			ventana.getContentPane().removeAll();
 			ventana.getContentPane().add(panelBienvenida.obtenerPanel());
 			ventana.revalidate();
-		} catch (ParserConfigurationException | TransformerException
-				| SAXException | IOException e1) {
+		} catch (ParserConfigurationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (TransformerException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SAXException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 		
 	}
 
