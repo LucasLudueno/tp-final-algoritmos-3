@@ -139,7 +139,9 @@ public class TpTest{
 		Lugar bancoHongKong = new Lugar( "banco", pistaFacilBancoHongKong, null, null);
 		Lugar puertoHongKong = new Lugar( "puerto", pistaFacilPuertoHongKong, null, null);
 		Lugar bancoTokio = new Lugar( "banco", pistaFacilBancoTokio, null, null);
-		LugarConLadron bancoLondres = new LugarConLadron( null , ladron );
+		
+		Pista ordenDeArrestoIncorrecta = new Pista("Orden de arresto incorrecta");
+		LugarConLadron bancoLondres = new LugarConLadron( null , ladron, null, ordenDeArrestoIncorrecta, null );
 		
 		Ciudad londres = new Ciudad( "Londes", 7, 7, bancoLondres, null, null, new ArrayList<Ciudad>() );
 		ArrayList<Ciudad> ciudadesAViajarTokio = new ArrayList<Ciudad>();
@@ -176,8 +178,7 @@ public class TpTest{
 		ciudadActual = jugador.obtenerCiudadActual();
 		lugaresCiudadActual = ciudadActual.obtenerLugares();
 		
-		//Assert.assertFalse( ( (Lugar)lugaresCiudadActual.get(0) ).obtenerLadron() == ladronBuscado );
-		//Assert.assertTrue( ladronBuscado == sospechoso);
+		Assert.assertTrue( ( (ILugar)lugaresCiudadActual.get(0) ).devolverPista(jugador) == ordenDeArrestoIncorrecta );
 			
 	}
 	

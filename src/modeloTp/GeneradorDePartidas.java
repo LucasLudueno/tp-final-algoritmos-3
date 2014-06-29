@@ -20,7 +20,10 @@ public class GeneradorDePartidas {
 	private ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 	private ArrayList<Ciudad> recorridoLadron = new ArrayList<Ciudad>();
 	private int pasoActual = 0;
-	private Ladron ladronBuscado = this.obtenerUnLadronDeLaLista();
+	private Ladron ladronBuscado;
+	private Pista mensajeJuegoGanado;
+	private Pista mensajeJuegoPerdidoPorOrdenIncorrecta;
+	private Pista mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto;
 	
 	
 	public ArrayList<Ciudad> generarListaDeCiudades() throws ParserConfigurationException, SAXException, IOException{
@@ -68,7 +71,13 @@ public class GeneradorDePartidas {
 	
 	}
 	
-	public GeneradorDePartidas() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		
+		this.mensajeJuegoGanado = juegoGanado;
+		this.mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto = ordenDeArrestoNoEmitida;
+		this.mensajeJuegoPerdidoPorOrdenIncorrecta = ordenDeArrestoIncorrecta;
+		this.ladronBuscado = null;
+				
 		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
 		Random generador = new Random();
 		int valor;
@@ -210,7 +219,7 @@ public class GeneradorDePartidas {
 		ArrayList<ILugar> lugaresSospechosos = new ArrayList<ILugar>();
 		
 		valor = generador.nextInt(listaDeLugares.size());
-		lugaresSospechosos.add(new LugarConLadron(listaDeLugares.get(valor),ladronBuscado));
+		lugaresSospechosos.add(new LugarConLadron(listaDeLugares.get(valor),this.ladronBuscado, this.mensajeJuegoGanado, this.mensajeJuegoPerdidoPorOrdenIncorrecta, this.mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto));
 		listaDeLugares.remove(valor);
 		
 		valor = generador.nextInt(listaDeLugares.size());
@@ -262,7 +271,7 @@ public class GeneradorDePartidas {
 		return listaDeLadrones.get(valor);
 	}
 	
-	public Ladron obtenerLadronBuscado(){
-		return ladronBuscado;
+	public Ladron obtenerLadronBuscado() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		return this.obtenerUnLadronDeLaLista();
 	}
 }
