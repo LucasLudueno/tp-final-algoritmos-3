@@ -1,6 +1,7 @@
 package controladorTp;
 
 //import org.junit.Test;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -26,7 +27,7 @@ import modeloTp.Pista;
 
 public class Serializador {
 
-	//@Test
+	//Test
 	public void serializadorDeListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 
 	

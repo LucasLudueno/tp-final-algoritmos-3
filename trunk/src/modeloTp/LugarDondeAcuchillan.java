@@ -3,8 +3,6 @@ package modeloTp;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-
-
 public class LugarDondeAcuchillan implements ILugar{
 
 	private String nombre;

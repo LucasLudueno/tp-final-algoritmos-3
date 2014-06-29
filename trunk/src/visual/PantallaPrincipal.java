@@ -15,13 +15,18 @@ import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.GeneradorDePartidas;
 import modeloTp.ILugar;
 import modeloTp.JugadorNovato;
+import modeloTp.Pista;
 
 public class PantallaPrincipal {
 	
 	
 	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException, ExcepcionNoHayMasTiempo{
-	
-		GeneradorDePartidas juego = new GeneradorDePartidas();	
+		
+		Pista juegoGanado = new Pista("Has atrapado al ladron, has ganado la partida");
+		Pista ordenDeArrestoIncorrecta = new Pista("La orden de arresto emitida fue incorrecta, has perdido la partida");
+		Pista noSeHaEmitidoOrdenDeArresto = new Pista("La orden de arresto emitida fue incorrecta, has perdido la partida");
+		
+		GeneradorDePartidas juego = new GeneradorDePartidas(juegoGanado, ordenDeArrestoIncorrecta, noSeHaEmitidoOrdenDeArresto);	
 		ArrayList<Ciudad> ciudadesValidas = juego.obtenerRecorridoLadron();
 		ArrayList<ILugar> lugaresEnLaCiudad;
 		@SuppressWarnings("resource")
