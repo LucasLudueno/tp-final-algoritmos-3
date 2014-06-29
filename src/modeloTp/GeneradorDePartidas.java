@@ -20,6 +20,7 @@ public class GeneradorDePartidas {
 	private ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 	private ArrayList<Ciudad> recorridoLadron = new ArrayList<Ciudad>();
 	private int pasoActual = 0;
+	private Ladron ladronBuscado = this.obtenerUnLadronDeLaLista();
 	
 	
 	public ArrayList<Ciudad> generarListaDeCiudades() throws ParserConfigurationException, SAXException, IOException{
@@ -207,10 +208,9 @@ public class GeneradorDePartidas {
 		listaDeLugares.add("Biblioteca");
 		
 		ArrayList<ILugar> lugaresSospechosos = new ArrayList<ILugar>();
-		Ladron ladronElegido = this.obtenerUnLadronDeLaLista();
 		
 		valor = generador.nextInt(listaDeLugares.size());
-		lugaresSospechosos.add(new LugarConLadron(listaDeLugares.get(valor),ladronElegido));
+		lugaresSospechosos.add(new LugarConLadron(listaDeLugares.get(valor),ladronBuscado));
 		listaDeLugares.remove(valor);
 		
 		valor = generador.nextInt(listaDeLugares.size());
@@ -260,5 +260,9 @@ public class GeneradorDePartidas {
 		int valor = generador.nextInt(listaDeLadrones.size());
 		
 		return listaDeLadrones.get(valor);
+	}
+	
+	public Ladron obtenerLadronBuscado(){
+		return ladronBuscado;
 	}
 }

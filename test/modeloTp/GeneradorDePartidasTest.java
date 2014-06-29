@@ -6,16 +6,10 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-
-import junit.framework.Assert;
-
 import org.junit.Test;
-
 import org.xml.sax.SAXException;
-
 import controladorTp.Serializador;
 
 public class GeneradorDePartidasTest {
@@ -122,9 +116,9 @@ public class GeneradorDePartidasTest {
 		
 		
 		for(int i=0; i< ciudades.size(); i++){
-			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerNombre() != null );
-			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_x() != 0 );
-			Assert.assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_y() != 0 );
+			assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerNombre() != null );
+			assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_x() != 0 );
+			assertTrue( ( (Ciudad)ciudades.get(i) ).obtenerPosicion_y() != 0 );
 		}
 		
 	}

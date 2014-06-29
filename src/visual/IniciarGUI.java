@@ -2,12 +2,18 @@ package visual;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
+import org.xml.sax.SAXException;
+
+import visual.componentes.PanelMenuPrincipal;
 import visual.componentes.VentanaAcercaDe;
 
 public class IniciarGUI {
@@ -20,7 +26,10 @@ public class IniciarGUI {
 		ventana.setResizable(false);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setJMenuBar(this.obtenerBarraDeMenu());
-		ventana.setVisible(true);
+	}
+	
+	public JFrame obtenerVentanaPrincipal(){
+		return ventana;
 	}
 	
 	private JMenuBar obtenerBarraDeMenu(){
@@ -55,9 +64,12 @@ public class IniciarGUI {
 		return menu;
 	}
 	
-	public static void main(String[] args) {
-		@SuppressWarnings("unused")
+	public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException, SAXException {
 		IniciarGUI gui = new IniciarGUI();
+		PanelMenuPrincipal menuPrincipal = new PanelMenuPrincipal(gui.obtenerVentanaPrincipal());
+		
+		gui.obtenerVentanaPrincipal().getContentPane().add(menuPrincipal.obtenerPanel());
+		gui.obtenerVentanaPrincipal().setVisible(true);
 	}
 
 }

@@ -19,8 +19,7 @@ public class VentanaAcercaDe implements ActionListener{
 		panelDeVentana.setLayout(null);
 		
 		ImageIcon imagen = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftAcercaDe_img.png");
-		JLabel fondo = new JLabel();
-		fondo.setIcon(imagen);
+		JLabel fondo = new JLabel(imagen);
 		panelDeVentana.setBackground(Color.WHITE);
 		panelDeVentana.add(fondo);
 		fondo.setBounds(42,10,299,84);
