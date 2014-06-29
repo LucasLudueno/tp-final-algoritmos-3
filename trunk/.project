@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Buenos Aires.xml</name>
+			<type>1</type>
+			<location>/home/lucas/tp2-Algoritmos/tp2Algortimos3/Buenos Aires.xml</location>
+		</link>
+		<link>
+			<name>Madrid.xml</name>
+			<type>1</type>
+			<location>/home/lucas/tp2-Algoritmos/tp2Algortimos3/Madrid.xml</location>
+		</link>
+	</linkedResources>
 </projectDescription>
