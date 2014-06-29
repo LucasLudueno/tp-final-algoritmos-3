@@ -20,6 +20,7 @@ public class Jugador {
 	private String nombreDelLadronBuscado;
 	private ComputadoraPolicial computadoraPolicial;
 	protected int velocidad;
+	private int cantidadDeArrestos;
 	
 	
 	public Jugador(Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
@@ -32,8 +33,22 @@ public class Jugador {
 		this.tiempoPorDormir = 8;
 		this.tiempoEmitirOrdenDeArresto = 3;
 		this.computadoraPolicial = computadoraPolicial;
+		this.cantidadDeArrestos = 0;
 	}
 
+	public void finalize() throws Throwable{
+		super.finalize();
+	}
+	public void agregarArresto(){
+		
+		this.cantidadDeArrestos = this.cantidadDeArrestos + 1;
+	}
+	
+	public int obtenerCantidadDeArrestos(){
+		
+		return this.cantidadDeArrestos;
+	}
+	
 	public void restarTiempoPorEntrarALugar(){
 		reducirTiempo(tiempoPorEntrarALugar);
 		if (this.tiempoPorEntrarALugar < 3){

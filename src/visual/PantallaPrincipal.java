@@ -22,6 +22,8 @@ public class PantallaPrincipal {
 	
 	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException, ExcepcionNoHayMasTiempo{
 		
+		JugadorNovato jugador;
+		
 		Pista juegoGanado = new Pista("Has atrapado al ladron, has ganado la partida");
 		Pista ordenDeArrestoIncorrecta = new Pista("La orden de arresto emitida fue incorrecta, has perdido la partida");
 		Pista ordenDeArrestoNoEmitida = new Pista("La orden de arresto emitida fue incorrecta, has perdido la partida");
@@ -31,6 +33,7 @@ public class PantallaPrincipal {
 		
 		int opcionElegida = 0;
 		boolean juegoTerminado = false;
+		boolean primeraPartida = true;
 		
 		
 		//MUESTRO POR PANTALLA EL MENU PRINCIPAL DEL JUEGO
@@ -48,9 +51,26 @@ public class PantallaPrincipal {
 			GeneradorDePartidas juego = new GeneradorDePartidas(juegoGanado, ordenDeArrestoIncorrecta, ordenDeArrestoNoEmitida);	
 			ArrayList<Ciudad> ciudadesValidas = juego.obtenerRecorridoLadron();
 			ArrayList<ILugar> lugaresEnLaCiudad;
-			
+		
 			ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
-			JugadorNovato jugador = new JugadorNovato(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+			
+			if (primeraPartida){
+				jugador = new JugadorNovato(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+				primeraPartida = false;
+
+			} else {
+				jugador = new JugadorNovato(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+
+				/*if (jugador.obtenerCantidadDeArrestos() > 3){
+					String nombreDelJugador = jugador.obtenerNombre();
+					int cantidadArrestos = jugador.obtenerCantidadDeArrestos();
+					jugador.finalize();
+				
+					JugadorDetective jugador = new JugadorDetective(ciudadesValidas.get(0), computadora);
+				}
+				*/
+			}
+				
 			int tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
 			boolean partidaTerminada = false;
 			
@@ -117,8 +137,9 @@ public class PantallaPrincipal {
 		        	
 		        	Pista pistaObtenida = lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador);
 		        	if (pistaObtenida == juegoGanado){
-		        		//SUMARLE UN ARRESTO AL CHABON
+		        		jugador.agregarArresto();
 		        		partidaTerminada = true;
+		        		
 		        	} else if ( (pistaObtenida == ordenDeArrestoIncorrecta) | (pistaObtenida == ordenDeArrestoNoEmitida) ){
 		        		partidaTerminada = true;
 		        		
@@ -140,7 +161,7 @@ public class PantallaPrincipal {
 		        
 		    }
 			
-			System.out.println(" 1)_ Desea continuar jugando ? ");
+			System.out.println(" 1)_ Desea continuar jugando? ");
 			System.out.println(" 2)_ Fin del juego ");
 			
 			opcionElegida = entradaEscaner.nextInt(); 
