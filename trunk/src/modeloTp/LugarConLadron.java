@@ -67,7 +67,6 @@ public class LugarConLadron implements ILugar{
 			}
 			    return this.ordenDeArrestoIncorrecta;
 		}
-		
 		return this.ordenDeArrestoNoEmitida;
 	}
 
