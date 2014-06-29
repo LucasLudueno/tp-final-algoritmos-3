@@ -32,15 +32,16 @@ public class GeneradorDePartidas {
 		doc.getDocumentElement().normalize();
 		
 		Element elementoCiudades = (Element)doc.getElementsByTagName("Ciudades").item(0);						
+		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
 		
 		int i = 0;
 		while (elementoCiudades.getChildNodes().item(i) != null){
 			Ciudad ciudad = Ciudad.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));
-			ciudades.add( ciudad );
+			listaDeCiudades.add( ciudad );
 			i = i + 1;
 		}
 		
-		return ciudades;
+		return listaDeCiudades;
 	}
 	
 	public ArrayList<Lugar> generarLugaresDeUnaCiudad(String nombreDeLaCiudad) throws ParserConfigurationException, SAXException, IOException{
@@ -72,36 +73,8 @@ public class GeneradorDePartidas {
 		int valor;
 		
 		//Genero la lista de las ciudades que contiene el juego
-		listaDeCiudades.add(new Ciudad("Buenos Aires",8,5,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Madrid",12,10,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Londres",12,12,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Atenas",14,11,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Sidney",22,5,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Moscu",15,12,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Paris",13,11,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Tokio",22,10,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("El Cairo",14,10,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Rio De Janeiro",9,6,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Roma",13,11,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Oslo",13,13,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Montreal",8,12,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Nueva York",8,11,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Singapur",19,8,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Bagdad",15,10,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Estambul",15,11,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Katmandu",18,9,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Dubai",15,9,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("San Marino",13,10,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Nueva Delhi",17,9,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Ciudad de Mexico",5,9,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Lima",7,7,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Kigali",14,8,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Reykjavik",11,13,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Budapest",14,12,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Bamako",12,9,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Bangkok",19,9,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Moroni",15,7,null,null,null,null));
-		listaDeCiudades.add(new Ciudad("Puerto Moresby",22,7,null,null,null,null));
+		
+		listaDeCiudades = this.generarListaDeCiudades();
 		
 		while (listaDeCiudades.size() > 0){
 			valor = generador.nextInt(listaDeCiudades.size());
