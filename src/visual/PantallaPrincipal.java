@@ -105,10 +105,12 @@ public class PantallaPrincipal {
 		        	System.out.println("Ingrese vehiculo del sospechoso ");
 		        	String vehiculo = entradaEscaner.nextLine();
 		        	
-		        	if (jugador.emitirOrdenDeArresto(sexo, hobby, cabello, senia, vehiculo) == true) System.out.println("Orden de arresto emitida");
+		        	if (jugador.emitirOrdenDeArresto(sexo, hobby, cabello, senia, vehiculo) == true){
+		        		
+		        		System.out.println("Orden de arresto emitida contra "+jugador.obtenerNombreDeLadronBuscado());
+		        	}
 		        	else System.out.println("No Hay Suficientes pistas para obtener coincidencias");
-		        	
-		        	
+		
 		        }
 		        
 		        else {
