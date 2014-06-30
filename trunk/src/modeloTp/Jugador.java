@@ -36,9 +36,6 @@ public class Jugador {
 		this.cantidadDeArrestos = 0;
 	}
 
-	public void finalize() throws Throwable{
-		super.finalize();
-	}
 	public void agregarArresto(){
 		
 		this.cantidadDeArrestos = this.cantidadDeArrestos + 1;
