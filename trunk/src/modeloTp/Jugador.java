@@ -117,7 +117,11 @@ public class Jugador {
 	
 	private void reducirTiempo( Integer tiempo ){
 		
-		this.tiempoRestante = this.tiempoRestante - tiempo;
+		if( this.tiempoRestante <= tiempo){
+			tiempoRestante = 0;
+		} else {
+			this.tiempoRestante = this.tiempoRestante - tiempo;
+		}
 	}
 	
 	public String obtenerNombreDeLadronBuscado() {

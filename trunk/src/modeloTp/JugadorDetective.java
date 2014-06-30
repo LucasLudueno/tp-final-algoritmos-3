@@ -6,5 +6,5 @@ public class JugadorDetective extends Jugador{
 		super(ciudad, computadoraPolicial);
 		this.velocidad = 2;
 	}
-	
+
 }

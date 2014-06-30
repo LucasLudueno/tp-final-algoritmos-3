@@ -27,5 +27,11 @@ public class Pista {
 		Pista nuevaPista = new Pista(contenido);
 		return nuevaPista;
 	}
+
+	public void agregarContenido(String contenidoAAgregar) {
+		
+		this.contenido = this.contenido + contenidoAAgregar;
+		
+	}
 	
 }
