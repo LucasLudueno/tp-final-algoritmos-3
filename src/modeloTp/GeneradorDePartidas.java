@@ -24,7 +24,7 @@ public class GeneradorDePartidas {
 	private Pista mensajeJuegoGanado;
 	private Pista mensajeJuegoPerdidoPorOrdenIncorrecta;
 	private Pista mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto;
-	//private ArrayList<Pista> caracteristicasLadron;
+	private ArrayList<Pista> pistasSobreLadron;
 	
 	
 	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
@@ -33,7 +33,8 @@ public class GeneradorDePartidas {
 		this.mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto = ordenDeArrestoNoEmitida;
 		this.mensajeJuegoPerdidoPorOrdenIncorrecta = ordenDeArrestoIncorrecta;
 		this.ladronBuscado = this.obtenerUnLadronDeLaLista();
-				
+		this.pistasSobreLadron = this.generarPistasDelLadron();
+		
 		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
 		Random generadorRandom = new Random();
 		int posicionEnLista;
@@ -131,6 +132,16 @@ public class GeneradorDePartidas {
 			lugaresConPistasUtiles.remove(posicionEnLista);
 		}
 			
+		//Asigno una pista del ladron
+		if (this.pistasSobreLadron.size() > 0){
+			int posicionEnListaDeLugares = generadorRandom.nextInt(lugaresConPistasUtiles.size());
+			int posicionEnListaDePistasSobreLadron = generadorRandom.nextInt(this.pistasSobreLadron.size());
+			Pista pistaSobreLadron = this.pistasSobreLadron.get(posicionEnListaDePistasSobreLadron);
+			lugaresConPistasUtiles.get(posicionEnListaDeLugares).reemplazarPistas( pistaSobreLadron );
+			this.pistasSobreLadron.remove(posicionEnListaDePistasSobreLadron);
+		}
+		
+		// asigno los lugares a la ciudad actual del recorrido del ladron
 		for(int j=0; j < lugaresConPistasUtiles.size(); j++){
 			recorridoLadron.get(pasoActualSobreLadron).agregarLugar(lugaresConPistasUtiles.get(j));
 		}
@@ -315,9 +326,6 @@ public class GeneradorDePartidas {
 		
 		return ladrones;
     }
-	
-	
-	
 	
 	private Ladron obtenerUnLadronDeLaLista() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		Random generador = new Random();

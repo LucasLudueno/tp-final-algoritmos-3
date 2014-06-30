@@ -108,6 +108,7 @@ public class Jugador {
 		
 		if (posiblesLadrones.size() == 1){
 			this.nombreDelLadronBuscado = ( (Ladron)posiblesLadrones.get(0) ).obtenerNombre();
+			
 			return true;
 		}
 	

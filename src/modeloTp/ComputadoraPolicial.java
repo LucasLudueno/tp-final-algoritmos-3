@@ -21,11 +21,11 @@ public class ComputadoraPolicial {
 				
 		for(Ladron sospechoso: this.sospechosos){
 	          
-			if ( (sexo == null) || ( sexo.equals(sospechoso.obtenerSexo())  ) ){
-				if( (hobby == null) || ( hobby.equals(sospechoso.obtenerHobby() )) ){
-					if( (cabello == null) || ( cabello.equals(sospechoso.obtenerCabello() )) ){
-						if( (senia == null) || ( senia.equals(sospechoso.obtenerSenia() ) )){
-							if( (vehiculo == null) || ( vehiculo.equals(sospechoso.obtenerVehiculo() ) )){
+			if ( (sexo == null) || ( sexo.equals(sospechoso.obtenerSexo())  ) || (sexo.equals("vacio") )){
+				if( (hobby == null) || ( hobby.equals(sospechoso.obtenerHobby() )) || (hobby.equals("vacio") ) ){
+					if( (cabello == null) || ( cabello.equals(sospechoso.obtenerCabello() )) || (cabello.equals("vacio") ) ){
+						if( (senia == null) || ( senia.equals(sospechoso.obtenerSenia() ) )|| (senia.equals("vacio") ) ){
+							if( (vehiculo == null) || ( vehiculo.equals(sospechoso.obtenerVehiculo() ) )|| (vehiculo.equals("vacio") ) ){
 								
 								posiblesLadrones.add(sospechoso);
 							}

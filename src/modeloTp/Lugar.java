@@ -68,5 +68,11 @@ public class Lugar implements ILugar{
 		
 		return new Lugar(nombre,pistaFacil,pistaMedia,pistaDificil);
 	}
+
+	public void reemplazarPistas(Pista pistaAReemplazar) {
+		this.pistaFacil = pistaAReemplazar;
+		this.pistaMedia = pistaAReemplazar;
+		this.pistaDificil = pistaAReemplazar;
+	}
 	
 }
