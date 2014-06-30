@@ -26,6 +26,7 @@ public class GeneradorDePartidas {
 	private Pista mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto;
 	//private ArrayList<Pista> caracteristicasLadron;
 	
+	
 	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		
 		this.mensajeJuegoGanado = juegoGanado;
@@ -34,21 +35,21 @@ public class GeneradorDePartidas {
 		this.ladronBuscado = this.obtenerUnLadronDeLaLista();
 				
 		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
-		Random generador = new Random();
-		int valor;
+		Random generadorRandom = new Random();
+		int posicionEnLista;
 		
-		//Genero la lista de las ciudades que contiene el juego
+		//Genero la lista de las ciudades que contiene el juego de manera al azar
 		
 		listaDeCiudades = this.generarListaDeCiudades();
 		
 		while (listaDeCiudades.size() > 0){
-			valor = generador.nextInt(listaDeCiudades.size());
-			ciudades.add(listaDeCiudades.get(valor));
-			listaDeCiudades.remove(valor);
+			posicionEnLista = generadorRandom.nextInt(listaDeCiudades.size());
+			ciudades.add(listaDeCiudades.get(posicionEnLista));
+			listaDeCiudades.remove(posicionEnLista);
 		}
 		this.generarRelacionEntreCiudades();
 		this.generarRecorridoLadron();
-		this.generarLugaresConPistasALasCiudades();
+		this.asignarLugaresConPistasUtilesALaProximaCiudadDelRecorridoDelLadron();
 	}
 	
 	public ArrayList<Ciudad> obtenerCiudades(){
@@ -91,52 +92,50 @@ public class GeneradorDePartidas {
 		}
 	}
 
+		
 	private void generarRecorridoLadron(){
-		Random generador = new Random();
+		Random generadorRandom = new Random();
 		
 		//Tomo aleatoriamente una ciudad de la lista
-		recorridoLadron.add(ciudades.get(generador.nextInt(ciudades.size())));
+		recorridoLadron.add(ciudades.get(generadorRandom.nextInt(ciudades.size())));
 		
 		//Tomo un camino aleatorio para formar el recorrido del ladron
 		for (int i=0; i < 5; i++){
 			recorridoLadron.add(recorridoLadron.get(i).obtenerCiudadesAViajar().get(0));
 		}
 	}
-	
+		
 	public void pasarALaSiguienteCiudadDelRecorrido() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		if(pasoActualSobreLadron < recorridoLadron.size()-2){
 			pasoActualSobreLadron++;
-			this.generarLugaresConPistasALasCiudades();
+			this.asignarLugaresConPistasUtilesALaProximaCiudadDelRecorridoDelLadron();
 		} else {
 			this.generarUltimosLugares();
 		}
 	}
 	
-	private void generarLugaresConPistasALasCiudades() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+	private void asignarLugaresConPistasUtilesALaProximaCiudadDelRecorridoDelLadron() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		this.asignarLugaresPorLosCualesNoPasoElLadron();
 				
-		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
-		Random generador = new Random();
+		ArrayList<Lugar> lugaresConPistasUtiles = new ArrayList<Lugar>();
+		Random generadorRandom = new Random();
 		
 		//Genero los lugares con sus pistas para cada ciudad
 		recorridoLadron.get(pasoActualSobreLadron).obtenerLugares().clear();
 		
 		String nombreSiguienteCiudad = recorridoLadron.get(pasoActualSobreLadron+1).obtenerNombre();
-		lugares = this.generarLugaresDeUnaCiudad(nombreSiguienteCiudad);
+		lugaresConPistasUtiles = this.generarLugaresDeUnaCiudad(nombreSiguienteCiudad);
 					
-		while (lugares.size() > 3){
-			int valor = generador.nextInt(lugares.size());
-			lugares.remove(valor);
+		while (lugaresConPistasUtiles.size() > 3){
+			int posicionEnLista = generadorRandom.nextInt(lugaresConPistasUtiles.size());
+			lugaresConPistasUtiles.remove(posicionEnLista);
 		}
 			
-		for(int j=0; j < lugares.size(); j++){
-			recorridoLadron.get(pasoActualSobreLadron).obtenerLugares().add(lugares.get(j));
+		for(int j=0; j < lugaresConPistasUtiles.size(); j++){
+			recorridoLadron.get(pasoActualSobreLadron).agregarLugar(lugaresConPistasUtiles.get(j));
 		}
-		lugares.clear();
+		lugaresConPistasUtiles.clear();
 	}
-
-	
-	
 	
 	private void asignarLugaresPorLosCualesNoPasoElLadron() throws ParserConfigurationException, SAXException, IOException{
 		Random generadorRandom = new Random();
