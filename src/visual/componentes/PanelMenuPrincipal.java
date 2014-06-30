@@ -32,7 +32,7 @@ public class PanelMenuPrincipal {
 		menuPrincipal.add(campoDeTexto);
 		
 		JButton botonSiguiente = new JButton("Siguiente");
-		botonSiguiente.addActionListener(new CargarNuevaPartida(ventana,campoDeTexto));
+		botonSiguiente.addActionListener(new CapturadorDeNombre(ventana,campoDeTexto));
 		botonSiguiente.setBounds(130,255,100,30);
 		menuPrincipal.add(botonSiguiente);
 		

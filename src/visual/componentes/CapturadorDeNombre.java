@@ -11,31 +11,22 @@ import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
-import modeloTp.GeneradorDePartidas;
-
-public class CargarNuevaPartida implements ActionListener {
+public class CapturadorDeNombre implements ActionListener {
 	
-	JTextField campo;
-	JFrame ventana;
-	GeneradorDePartidas juego;
+	private JTextField campo;
+	private JFrame ventana;
 	
-	public CargarNuevaPartida(JFrame unaVentana, JTextField unCampo) throws ParserConfigurationException, TransformerException, SAXException, IOException{
-		this.campo = unCampo;
+	public CapturadorDeNombre(JFrame unaVentana, JTextField unCampo){
 		this.ventana = unaVentana;
-		this.juego = new GeneradorDePartidas(null, null, null);
+		this.campo = unCampo;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		PanelBienvenidaJugador panelBienvenida;
-		
-		//PUSE ESTO DE ATRAPAR LA EXCEPCION PARA QUE NO TIRE ERROR, HAY QUE VER COMO SACARLO.
+
+		PanelBienvenidaJugador panelBienvenida = null;
 		try {
-			panelBienvenida = new PanelBienvenidaJugador(campo.getText(),juego.obtenerRecorridoLadron().get(0).obtenerNombre(),juego.obtenerLadronBuscado().obtenerSexo());
-			ventana.getContentPane().removeAll();
-			ventana.getContentPane().add(panelBienvenida.obtenerPanel());
-			ventana.revalidate();
+			panelBienvenida = new PanelBienvenidaJugador(ventana,campo);
 		} catch (ParserConfigurationException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -49,7 +40,11 @@ public class CargarNuevaPartida implements ActionListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
+		
+		ventana.getContentPane().removeAll();
+		ventana.getContentPane().add(panelBienvenida.obtenerPanel());
+		ventana.revalidate();
 		
 	}
-
 }
