@@ -27,7 +27,7 @@ import modeloTp.Pista;
 
 public class Serializador {
 
-	//Test
+	//@Test
 	public void serializadorDeListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 
 	
@@ -99,36 +99,36 @@ public class Serializador {
 
 		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 					
-		ciudades.add(new Ciudad("Buenos Aires",1,1,null,null,null,null));
-		ciudades.add(new Ciudad("Madrid",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Londres",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Atenas",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Sidney",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Moscu",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Paris",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Tokio",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("El Cairo",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Rio De Janeiro",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Roma",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Oslo",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Montreal",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Nueva York",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Singapur",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Bagdad",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Estambul",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Katmandu",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Dubai",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("San Marino",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Nueva Delhi",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Ciudad de Mexico",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Lima",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Kigali",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Reykjavik",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Budapest",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Bamako",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Bangkok",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Moroni",1,1,null,null,null,null));
-	    ciudades.add(new Ciudad("Puerto Moresby",1,1,null,null,null,null));				
+		ciudades.add(new Ciudad("Buenos Aires",1,1));
+		ciudades.add(new Ciudad("Madrid",1,1));
+	    ciudades.add(new Ciudad("Londres",1,1));
+	    ciudades.add(new Ciudad("Atenas",1,1));
+	    ciudades.add(new Ciudad("Sidney",1,1));
+	    ciudades.add(new Ciudad("Moscu",1,1));
+	    ciudades.add(new Ciudad("Paris",1,1));
+	    ciudades.add(new Ciudad("Tokio",1,1));
+	    ciudades.add(new Ciudad("El Cairo",1,1));
+	    ciudades.add(new Ciudad("Rio De Janeiro",1,1));
+	    ciudades.add(new Ciudad("Roma",1,1));
+	    ciudades.add(new Ciudad("Oslo",1,1));
+	    ciudades.add(new Ciudad("Montreal",1,1));
+	    ciudades.add(new Ciudad("Nueva York",1,1));
+	    ciudades.add(new Ciudad("Singapur",1,1));
+	    ciudades.add(new Ciudad("Bagdad",1,1));
+	    ciudades.add(new Ciudad("Estambul",1,1));
+	    ciudades.add(new Ciudad("Katmandu",1,1));
+	    ciudades.add(new Ciudad("Dubai",1,1));
+	    ciudades.add(new Ciudad("San Marino",1,1));
+	    ciudades.add(new Ciudad("Nueva Delhi",1,1));
+	    ciudades.add(new Ciudad("Ciudad de Mexico",1,1));
+	    ciudades.add(new Ciudad("Lima",1,1));
+	    ciudades.add(new Ciudad("Kigali",1,1));
+	    ciudades.add(new Ciudad("Reykjavik",1,1));
+	    ciudades.add(new Ciudad("Budapest",1,1));
+	    ciudades.add(new Ciudad("Bamako",1,1));
+	    ciudades.add(new Ciudad("Bangkok",1,1));
+	    ciudades.add(new Ciudad("Moroni",1,1));
+	    ciudades.add(new Ciudad("Puerto Moresby",1,1));				
 					
 	    //Asigno el elemento XML de la instancia al documento generado anteriormente
 	                

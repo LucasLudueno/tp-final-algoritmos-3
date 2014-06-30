@@ -16,27 +16,13 @@ public class Ciudad {
 	private ArrayList<Ciudad> ciudadesAViajar;
 	
 
-	public Ciudad(String nombre, int posicion_x, int posicion_y,ILugar lugar1,ILugar lugar2,ILugar lugar3, ArrayList<Ciudad> ciudadesAViajar){
+	public Ciudad(String nombre, int posicion_x, int posicion_y){
 		
 		this.nombre = nombre;
 		this.posicion_x = posicion_x;
 		this.posicion_y = posicion_y;
 		this.lugares = new ArrayList<ILugar>();
-		if (ciudadesAViajar == null){
-			this.ciudadesAViajar = new ArrayList<Ciudad>();
-		} else {
-			this.ciudadesAViajar = ciudadesAViajar;
-		}
-		
-		if (lugar1 != null){
-			this.lugares.add(lugar1);
-		}
-		if (lugar2 != null){
-			this.lugares.add(lugar2);
-		}
-		if (lugar3 != null){
-			this.lugares.add(lugar3);
-		}
+		this.ciudadesAViajar = new ArrayList<Ciudad>();
 	}
 	
 	public String obtenerNombre() {
@@ -69,16 +55,6 @@ public class Ciudad {
 		return this.lugares.size();
 	}
 
-	public Pista obtenerPista(Jugador jugador, ILugar lugar) {
-		
-		if (this.lugares.contains(lugar)){
-			jugador.restarTiempoPorEntrarALugar();
-			return ((this.lugares.get(this.lugares.indexOf(lugar))).devolverPista((JugadorNovato) jugador));
-		}
-		
-		else return null;
-	}
-
 	public ArrayList<ILugar> obtenerLugares() {
 		
 		return this.lugares;
@@ -97,13 +73,21 @@ public class Ciudad {
 		
 		Element elementoLugares = doc.createElement("Lugares");
 		elementoCiudad.appendChild(elementoLugares);
-		for (int i = 0 ; i < lugares.size() ; i++){
+		for (int i = 0 ; i < this.lugares.size() ; i++){
 			elementoLugares.appendChild(lugares.get(i).serializar(doc));
+		}
+		
+		Element elementoCiudadesAViajar = doc.createElement("CiudadesAViajar");
+		elementoCiudad.appendChild(elementoCiudadesAViajar);
+		for (int i = 0 ; i < this.ciudadesAViajar.size() ; i++){
+			elementoCiudadesAViajar.appendChild(lugares.get(i).serializar(doc));
 		}
 		
 		return elementoCiudad;
 	}
 
+	// IMPLEMENTAR LUEGO
+	
 	public static Ciudad cargarEstado(Element elementoCiudad) {
 		String nombre = elementoCiudad.getAttribute("nombre");
 		int posicion_x = Integer.valueOf(elementoCiudad.getAttribute("posicion_x"));
@@ -115,7 +99,7 @@ public class Ciudad {
 		//Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
 		//Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));
 		
-		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y,null,null,null,null);
+		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y);
 		
 		return unaCiudad;
 	}

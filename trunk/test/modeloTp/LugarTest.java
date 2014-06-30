@@ -22,7 +22,6 @@ import javax.xml.transform.stream.StreamResult;
 
 */
 
-import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -44,8 +43,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorNovato jugador = new JugadorNovato(BuenosAires, null);
+		JugadorNovato jugador = new JugadorNovato(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaFacil);
@@ -58,8 +56,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorDetective jugador = new JugadorDetective(BuenosAires, null);
+		JugadorDetective jugador = new JugadorDetective(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
@@ -72,8 +69,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorSargento jugador = new JugadorSargento(BuenosAires, null);
+		JugadorSargento jugador = new JugadorSargento(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaDificil);
@@ -86,8 +82,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		JugadorInvestigador jugador = new JugadorInvestigador(BuenosAires, null);
+		JugadorInvestigador jugador = new JugadorInvestigador(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
