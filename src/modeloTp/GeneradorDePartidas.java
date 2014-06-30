@@ -19,89 +19,12 @@ public class GeneradorDePartidas {
 	
 	private ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 	private ArrayList<Ciudad> recorridoLadron = new ArrayList<Ciudad>();
-	private int pasoActual = 0;
+	private int pasoActualSobreLadron = 0; //Esta variable indica la cantidad de ciudades que el jugador a visitado y habia pasado el ladron
 	private Ladron ladronBuscado;
 	private Pista mensajeJuegoGanado;
 	private Pista mensajeJuegoPerdidoPorOrdenIncorrecta;
 	private Pista mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto;
-	
-	
-	public ArrayList<Ciudad> generarListaDeCiudades() throws ParserConfigurationException, SAXException, IOException{
-		
-		File archivo = new File("ListaDeCiudades.xml");
-		
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
-		
-		Element elementoCiudades = (Element)doc.getElementsByTagName("Ciudades").item(0);						
-		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
-		
-		int i = 0;
-		while (elementoCiudades.getChildNodes().item(i) != null){
-			Ciudad ciudad = Ciudad.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));
-			listaDeCiudades.add( ciudad );
-			i = i + 1;
-		}
-		
-		return listaDeCiudades;
-	}
-	
-	public ArrayList<Lugar> generarLugaresDeUnaCiudad(String nombreDeLaCiudad) throws ParserConfigurationException, SAXException, IOException{
-		
-		File archivo = new File(nombreDeLaCiudad+".xml");
-		
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
-		
-		Element elementoCiudades = (Element)doc.getElementsByTagName("Lugares").item(0);						
-		
-		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
-		
-		int i = 0;
-		while (elementoCiudades.getChildNodes().item(i) != null){
-			Lugar lugar = Lugar.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));
-			lugares.add( lugar );
-			i = i + 1;
-		}
-		return lugares;
-	
-	}
-	
-	public ArrayList<Pista> generarPistasDelLadron() throws ParserConfigurationException, SAXException, IOException{
-		
-		File archivo = new File("PistasLadronPrehechas.xml");
-		
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
-		
-		Element elementoPistas = (Element)doc.getElementsByTagName("PistasLadron").item(0);						
-		
-		ArrayList<Pista> pistasLadron = new ArrayList<Pista>();
-		
-		Pista pistaCabelloLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(0));
-		Pista pistaHobbyLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(1));
-		Pista pistaSeniaLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(2));
-		Pista pistaVehiculoLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(3));
-		
-		pistaCabelloLadron.agregarContenido(ladronBuscado.obtenerCabello());
-		pistaHobbyLadron.agregarContenido(ladronBuscado.obtenerHobby());
-		pistaSeniaLadron.agregarContenido(ladronBuscado.obtenerSenia());
-		pistaVehiculoLadron.agregarContenido(ladronBuscado.obtenerVehiculo());
-		
-		pistasLadron.add(pistaCabelloLadron);
-		pistasLadron.add(pistaHobbyLadron);
-		pistasLadron.add(pistaSeniaLadron);
-		pistasLadron.add(pistaVehiculoLadron);
-		
-		return pistasLadron;
-		
-	}
+	//private ArrayList<Pista> caracteristicasLadron;
 	
 	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		
@@ -137,7 +60,7 @@ public class GeneradorDePartidas {
 	}
 	
 	public int obtenerPasoActual(){
-		return pasoActual;
+		return pasoActualSobreLadron;
 	}
 	
 	private void generarRelacionEntreCiudades(){
@@ -181,8 +104,8 @@ public class GeneradorDePartidas {
 	}
 	
 	public void pasarALaSiguienteCiudadDelRecorrido() throws ParserConfigurationException, TransformerException, SAXException, IOException{
-		if(pasoActual < recorridoLadron.size()-2){
-			pasoActual++;
+		if(pasoActualSobreLadron < recorridoLadron.size()-2){
+			pasoActualSobreLadron++;
 			this.generarLugaresConPistasALasCiudades();
 		} else {
 			this.generarUltimosLugares();
@@ -190,15 +113,15 @@ public class GeneradorDePartidas {
 	}
 	
 	private void generarLugaresConPistasALasCiudades() throws ParserConfigurationException, TransformerException, SAXException, IOException{
-		this.generarLugaresSinLadronALasCiudades();
+		this.asignarLugaresPorLosCualesNoPasoElLadron();
 				
 		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
 		Random generador = new Random();
 		
 		//Genero los lugares con sus pistas para cada ciudad
-		recorridoLadron.get(pasoActual).obtenerLugares().clear();
+		recorridoLadron.get(pasoActualSobreLadron).obtenerLugares().clear();
 		
-		String nombreSiguienteCiudad = recorridoLadron.get(pasoActual+1).obtenerNombre();
+		String nombreSiguienteCiudad = recorridoLadron.get(pasoActualSobreLadron+1).obtenerNombre();
 		lugares = this.generarLugaresDeUnaCiudad(nombreSiguienteCiudad);
 					
 		while (lugares.size() > 3){
@@ -207,69 +130,169 @@ public class GeneradorDePartidas {
 		}
 			
 		for(int j=0; j < lugares.size(); j++){
-			recorridoLadron.get(pasoActual).obtenerLugares().add(lugares.get(j));
+			recorridoLadron.get(pasoActualSobreLadron).obtenerLugares().add(lugares.get(j));
 		}
 		lugares.clear();
 	}
+
 	
-	private void generarLugaresSinLadronALasCiudades(){
-		Random generador = new Random();
-		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
+	
+	
+	private void asignarLugaresPorLosCualesNoPasoElLadron() throws ParserConfigurationException, SAXException, IOException{
+		Random generadorRandom = new Random();
+		ArrayList<Lugar> lugaresSinPistasUtiles = new ArrayList<Lugar>();
 		
-		for(int i=0; i < ciudades.size(); i++){
-			ciudades.get(i).obtenerLugares().clear();
-			lugares.add(new Lugar("Aeropuerto",new Pista("Lo siento, nunca he visto a esa persona."),new Pista("Lo siento, nunca he visto a esa persona."),new Pista("Lo siento, nunca he visto a esa persona.")));
-	        lugares.add(new Lugar("Puerto",new Pista("Pasa mucha gente por aqui. No he visto nada sospechoso."),new Pista("Pasa mucha gente por aqui. No he visto nada sospechoso."),new Pista("Pasa mucha gente por aqui. No he visto nada sospechoso.")));
-	        lugares.add(new Lugar("Banco",new Pista("Lo siento, no he visto a nadie que responda a esas senias."),new Pista("Lo siento, no he visto a nadie que responda a esas senias."),new Pista("Lo siento, no he visto a nadie que responda a esas senias.")));
-	        lugares.add(new Lugar("Bolsa",new Pista("Lo lamento, nunca he visto a la persona que buscas."),new Pista("Lo lamento, nunca he visto a la persona que buscas."),new Pista("Lo lamento, nunca he visto a la persona que buscas.")));
-	        lugares.add(new Lugar("Biblioteca",new Pista("No creo haber visto a una persona asi en la biblioteca."),new Pista("No creo haber visto a una persona asi en la biblioteca."),new Pista("No creo haber visto a una persona asi en la biblioteca.")));
+		for(int i=0; i < this.ciudades.size(); i++){
+			this.ciudades.get(i).obtenerLugares().clear();
+			lugaresSinPistasUtiles = this.generarLugaresPorLosCualesNoPasoElLadron();
 	        	
-	        	while (lugares.size() > 3){
-	        		int valor = generador.nextInt(lugares.size());
-					lugares.remove(valor);
-	        	}
+			while (lugaresSinPistasUtiles.size() > 3){
+				int valor = generadorRandom.nextInt(lugaresSinPistasUtiles.size());
+				lugaresSinPistasUtiles.remove(valor);
+	        
+			}
 			
-	        	for(int j=0; j < lugares.size(); j++){
-	        		ciudades.get(i).obtenerLugares().add(lugares.get(j));
-	        	}
-	        lugares.clear();
-		}
+        	for(int j=0; j < lugaresSinPistasUtiles.size(); j++){
+        		this.ciudades.get(i).obtenerLugares().add(lugaresSinPistasUtiles.get(j));
+        	}
+		}	
+        lugaresSinPistasUtiles.clear();
 	}
 	
-	private void generarUltimosLugares() throws ParserConfigurationException, TransformerException, SAXException, IOException{
-		//Asigno las acciones de la ultima ciudad
-		Random generador = new Random();
-		int valor;
+	
+	private ArrayList<Lugar> generarLugaresPorLosCualesNoPasoElLadron() throws ParserConfigurationException, SAXException, IOException{
+		File archivo = new File("Lugares sin pistas utiles.xml");
 		
-		ArrayList<String> listaDeLugares = new ArrayList<String>();
-		listaDeLugares.add("Aeropuerto");
-		listaDeLugares.add("Puerto");
-		listaDeLugares.add("Banco");
-		listaDeLugares.add("Bolsa");
-		listaDeLugares.add("Biblioteca");
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoLugares = (Element)doc.getElementsByTagName("LugaresSinPistasUtiles").item(0);						
+		ArrayList<Lugar> listaDeLugares = new ArrayList<Lugar>();
+		
+		int i = 0;
+		while (elementoLugares.getChildNodes().item(i) != null){
+			Lugar lugar = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(i));
+			listaDeLugares.add( lugar );
+			i = i + 1;
+		}
+		
+		return listaDeLugares;
+		
+	}
+	
+	
+	private void generarUltimosLugares() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+		Random generadorRandom = new Random();
+		int posicion;
+		
+		ArrayList<String> nombresDeLugares = new ArrayList<String>();
+		nombresDeLugares.add("Aeropuerto");
+		nombresDeLugares.add("Puerto");
+		nombresDeLugares.add("Banco");
+		nombresDeLugares.add("Bolsa");
+		nombresDeLugares.add("Biblioteca");
 		
 		ArrayList<ILugar> lugaresSospechosos = new ArrayList<ILugar>();
 		
-		valor = generador.nextInt(listaDeLugares.size());
-		lugaresSospechosos.add(new LugarConLadron(listaDeLugares.get(valor),this.ladronBuscado, this.mensajeJuegoGanado, this.mensajeJuegoPerdidoPorOrdenIncorrecta, this.mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto));
-		listaDeLugares.remove(valor);
+		posicion = generadorRandom.nextInt(nombresDeLugares.size());
+		lugaresSospechosos.add(new LugarConLadron(nombresDeLugares.get(posicion),this.ladronBuscado, this.mensajeJuegoGanado, this.mensajeJuegoPerdidoPorOrdenIncorrecta, this.mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto));
+		nombresDeLugares.remove(posicion);
 		
-		valor = generador.nextInt(listaDeLugares.size());
-		lugaresSospechosos.add(new LugarDondeAcuchillan(listaDeLugares.get(valor)));
-		listaDeLugares.remove(valor);
+		posicion = generadorRandom.nextInt(nombresDeLugares.size());
+		lugaresSospechosos.add(new LugarDondeAcuchillan(nombresDeLugares.get(posicion)));
+		nombresDeLugares.remove(posicion);
 		
-		valor = generador.nextInt(listaDeLugares.size());
-		lugaresSospechosos.add(new LugarDondeDisparan(listaDeLugares.get(valor)));
+		posicion = generadorRandom.nextInt(nombresDeLugares.size());
+		lugaresSospechosos.add(new LugarDondeDisparan(nombresDeLugares.get(posicion)));
 		
 		//Asigno los lugares a la ultima ciudad del recorrido
 		recorridoLadron.get(recorridoLadron.size()-1).obtenerLugares().clear();
 		while(lugaresSospechosos.size()>0){
-			valor = generador.nextInt(lugaresSospechosos.size());
-			recorridoLadron.get(recorridoLadron.size()-1).agregarLugar(lugaresSospechosos.get(valor));
-			lugaresSospechosos.remove(valor);			
+			posicion = generadorRandom.nextInt(lugaresSospechosos.size());
+			recorridoLadron.get(recorridoLadron.size()-1).agregarLugar(lugaresSospechosos.get(posicion));
+			lugaresSospechosos.remove(posicion);			
 		}
 	}
 	
+	
+	public ArrayList<Ciudad> generarListaDeCiudades() throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File("ListaDeCiudades.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoCiudades = (Element)doc.getElementsByTagName("Ciudades").item(0);						
+		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
+		
+		int i = 0;
+		while (elementoCiudades.getChildNodes().item(i) != null){
+			Ciudad ciudad = Ciudad.cargarEstado((Element) elementoCiudades.getChildNodes().item(i));
+			listaDeCiudades.add( ciudad );
+			i = i + 1;
+		}
+		
+		return listaDeCiudades;
+	}
+	
+	public ArrayList<Lugar> generarLugaresDeUnaCiudad(String nombreDeLaCiudad) throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File(nombreDeLaCiudad+".xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoLugares = (Element)doc.getElementsByTagName("Lugares").item(0);						
+		
+		ArrayList<Lugar> lugares = new ArrayList<Lugar>();
+		
+		int i = 0;
+		while (elementoLugares.getChildNodes().item(i) != null){
+			Lugar lugar = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(i));
+			lugares.add( lugar );
+			i = i + 1;
+		}
+		return lugares;
+	
+	}
+	
+	public ArrayList<Pista> generarPistasDelLadron() throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File("PistasLadronPrehechas.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoPistas = (Element)doc.getElementsByTagName("PistasLadron").item(0);						
+		
+		ArrayList<Pista> pistasLadron = new ArrayList<Pista>();
+		
+		Pista pistaCabelloLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(0));
+		Pista pistaHobbyLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(1));
+		Pista pistaSeniaLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(2));
+		Pista pistaVehiculoLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(3));
+		
+		pistaCabelloLadron.agregarContenido(ladronBuscado.obtenerCabello());
+		pistaHobbyLadron.agregarContenido(ladronBuscado.obtenerHobby());
+		pistaSeniaLadron.agregarContenido(ladronBuscado.obtenerSenia());
+		pistaVehiculoLadron.agregarContenido(ladronBuscado.obtenerVehiculo());
+		
+		pistasLadron.add(pistaCabelloLadron);
+		pistasLadron.add(pistaHobbyLadron);
+		pistasLadron.add(pistaSeniaLadron);
+		pistasLadron.add(pistaVehiculoLadron);
+		
+		return pistasLadron;
+		
+	}
 	
 	public ArrayList<Ladron> generarListaDeLadrones() throws ParserConfigurationException, TransformerException, SAXException, IOException{
     	
@@ -293,6 +316,9 @@ public class GeneradorDePartidas {
 		
 		return ladrones;
     }
+	
+	
+	
 	
 	private Ladron obtenerUnLadronDeLaLista() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		Random generador = new Random();
