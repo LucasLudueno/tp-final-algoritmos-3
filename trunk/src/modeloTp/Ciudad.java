@@ -10,8 +10,8 @@ import org.w3c.dom.Node;
 public class Ciudad {
 
 	private String nombre;
-	private int posicion_x;
-	private int posicion_y;
+	private int coordenada_x;
+	private int coordenada_y;
 	private ArrayList<ILugar> lugares;
 	private ArrayList<Ciudad> ciudadesAViajar;
 	
@@ -19,8 +19,8 @@ public class Ciudad {
 	public Ciudad(String nombre, int posicion_x, int posicion_y){
 		
 		this.nombre = nombre;
-		this.posicion_x = posicion_x;
-		this.posicion_y = posicion_y;
+		this.coordenada_x = posicion_x;
+		this.coordenada_y = posicion_y;
 		this.lugares = new ArrayList<ILugar>();
 		this.ciudadesAViajar = new ArrayList<Ciudad>();
 	}
@@ -30,22 +30,17 @@ public class Ciudad {
 		return this.nombre;
 	}
 	
-	public int obtenerPosicion_x() {
-		
-		return this.posicion_x;
-	}
-
 
 	public int obtenerPosicion_y() {
 		
-		return this.posicion_y;
+		return this.coordenada_y;
 	}
 
 
 	public int obtenerDistancia(Ciudad ciudad) {
 		
-		int diferencia_x = (this.posicion_x - ciudad.posicion_x)*(this.posicion_x - ciudad.posicion_x);
-		int diferencia_y = (this.posicion_y - ciudad.posicion_y)*(this.posicion_y - ciudad.posicion_y);
+		int diferencia_x = (this.coordenada_x - ciudad.coordenada_x)*(this.coordenada_x - ciudad.coordenada_x);
+		int diferencia_y = (this.coordenada_y - ciudad.coordenada_y)*(this.coordenada_y - ciudad.coordenada_y);
 		
 		return (int) Math.sqrt(diferencia_x + diferencia_y);
 						
@@ -68,8 +63,8 @@ public class Ciudad {
 	public Node serializar(Document doc) {
 		Element elementoCiudad = doc.createElement("Ciudad");
 		elementoCiudad.setAttribute("nombre",this.nombre);
-		elementoCiudad.setAttribute("posicion_x",String.valueOf(this.posicion_x));
-		elementoCiudad.setAttribute("posicion_y",String.valueOf(this.posicion_y));
+		elementoCiudad.setAttribute("posicion_x",String.valueOf(this.coordenada_x));
+		elementoCiudad.setAttribute("posicion_y",String.valueOf(this.coordenada_y));
 		
 		Element elementoLugares = doc.createElement("Lugares");
 		elementoCiudad.appendChild(elementoLugares);
@@ -129,6 +124,10 @@ public class Ciudad {
 		
 		this.ciudadesAViajar.add(ciudad);
 		
+	}
+
+	public int obtenerPosicion_x() {
+		return this.coordenada_x;
 	}
 	
 }
