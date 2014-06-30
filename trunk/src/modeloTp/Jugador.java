@@ -34,6 +34,7 @@ public class Jugador {
 		this.tiempoEmitirOrdenDeArresto = 3;
 		this.computadoraPolicial = computadoraPolicial;
 		this.cantidadDeArrestos = 0;
+		this.nombreDelLadronBuscado = null;
 	}
 
 	public void agregarArresto(){
