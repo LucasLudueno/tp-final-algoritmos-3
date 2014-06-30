@@ -23,7 +23,7 @@ public class LugarConLadron implements ILugar{
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado == ladronEscondido.obtenerNombre() ){
+			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
 				return this.juegoGanado;
 				
 			}else{

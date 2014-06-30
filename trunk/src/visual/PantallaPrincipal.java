@@ -25,8 +25,8 @@ public class PantallaPrincipal {
 		JugadorNovato jugador;
 		
 		Pista juegoGanado = new Pista("Has atrapado al ladron, has ganado la partida");
-		Pista ordenDeArrestoIncorrecta = new Pista("La orden de arresto emitida fue incorrecta, has perdido la partida");
-		Pista ordenDeArrestoNoEmitida = new Pista("La orden de arresto emitida fue incorrecta, has perdido la partida");
+		Pista ordenDeArrestoIncorrecta = new Pista("La orden de arresto emitida fue incorrecta, el ladron ha escapado y has perdido la partida");
+		Pista ordenDeArrestoNoEmitida = new Pista("No se ha emitido ninguna orden de arresto, el ladron ha escapado y has perdido la partida");
 		
 		@SuppressWarnings("resource")
 		Scanner entradaEscaner = new Scanner (System.in);
@@ -74,7 +74,27 @@ public class PantallaPrincipal {
 			int tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
 			boolean partidaTerminada = false;
 			
-			//ACA HAY QUE ESCRIBIR LO QUE EL LADRON ROBO, DE QUE SEXO ES, BLA BLA..
+			//System.out.println("Tu nombre no aparece en los ficheros de la Interpol. Has sido identificado/a como " + unCampo.getText() + "."
+			System.out.println("");
+			System.out.println("");
+			//System.out.println("Tu graduacion actual es: "+jugador,obtenerRango());
+			System.out.println("");
+			System.out.println("");
+			System.out.println("NOTICIAS");
+			System.out.println("");
+			System.out.println("Tesoro nacional robado en "+ jugador.obtenerCiudadActual().obtenerNombre() );
+			System.out.println("");
+			System.out.println( "Un sospechoso de sexo " + juego.obtenerLadronBuscado().obtenerSexo() + " ha sido visto en el lugar del crimen." );
+			System.out.println("");
+			System.out.println("");
+			System.out.println("Tu mision:");
+			System.out.println("");
+			System.out.println("Perseguir al ladron desde " + jugador.obtenerCiudadActual().obtenerNombre()  + " hasta su escondite y arrestarlo." );
+			System.out.println("");
+			System.out.println("Tienes que arrestar al ladron antes del domingo a las 17 hs (154 horas)");
+			System.out.println("");
+			System.out.println("");
+			//System.out.println("Buena suerte, " jugador.obtenerNombre() + ".");
 			
 			while (partidaTerminada != true){
 				
@@ -83,7 +103,7 @@ public class PantallaPrincipal {
 			 	System.out.println("");
 				System.out.print("Ciudad actual: "+jugador.obtenerCiudadActual().obtenerNombre());
 				System.out.print(" / ");
-				System.out.println("Tiempo restante: "+jugador.obtenerTiempoRestante());
+				System.out.println("Tiempo restante: "+jugador.obtenerTiempoRestante() + " Horas");
 				System.out.println("");
 				System.out.println("1)_ "+lugaresEnLaCiudad.get(0).obtenerNombre());
 				System.out.println("2)_ "+lugaresEnLaCiudad.get(1).obtenerNombre());
@@ -113,7 +133,8 @@ public class PantallaPrincipal {
 		        	}
 		        	
 		        } else if( opcionElegida == 4){
-		        	
+		        	System.out.println("Ingrese las caracteristicas del ladron, si alguna no la sabe ingrese 'vacio' ");
+		        	System.out.println("");
 		        	System.out.println("Ingrese sexo del sospechoso ");
 		        	String sexo = entradaEscaner.nextLine();
 		        	System.out.println("Ingrese hobby del sospechoso ");
