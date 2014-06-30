@@ -4,7 +4,7 @@ public class JugadorNovato extends Jugador{
 
 	public JugadorNovato(Ciudad ciudad, ComputadoraPolicial computadoraPolicial) {
 		super(ciudad, computadoraPolicial);
-		this.velocidad = 1;
+		this.velocidad = 190;
 	}
 
 }
