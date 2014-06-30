@@ -108,7 +108,7 @@ public class GeneradorDePartidas {
 		this.mensajeJuegoGanado = juegoGanado;
 		this.mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto = ordenDeArrestoNoEmitida;
 		this.mensajeJuegoPerdidoPorOrdenIncorrecta = ordenDeArrestoIncorrecta;
-		this.ladronBuscado = null;
+		this.ladronBuscado = this.obtenerUnLadronDeLaLista();
 				
 		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
 		Random generador = new Random();
@@ -304,6 +304,6 @@ public class GeneradorDePartidas {
 	}
 	
 	public Ladron obtenerLadronBuscado() throws ParserConfigurationException, TransformerException, SAXException, IOException{
-		return this.obtenerUnLadronDeLaLista();
+		return ladronBuscado;
 	}
 }
