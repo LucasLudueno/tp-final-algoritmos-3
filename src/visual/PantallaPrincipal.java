@@ -143,10 +143,7 @@ public class PantallaPrincipal {
 		        	} else if ( (pistaObtenida == ordenDeArrestoIncorrecta) | (pistaObtenida == ordenDeArrestoNoEmitida) ){
 		        		partidaTerminada = true;
 		        		
-		        	} else {
-		        		jugador.restarTiempoPorEntrarALugar();
 		        	}
-		        	
 		        	System.out.println(pistaObtenida.obtenerContenido());
 		        	entradaEscaner.nextLine();
 		        }

@@ -21,18 +21,22 @@ public class Lugar implements ILugar{
 	}
 	
 	public Pista devolverPista(JugadorNovato jugador) {
+		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaFacil;
 	}
 	
-	public Pista devolverPista(JugadorDetective jugador){	
+	public Pista devolverPista(JugadorDetective jugador){
+		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaMedia;
 	}
 	
-	public Pista devolverPista(JugadorInvestigador jugador){	
+	public Pista devolverPista(JugadorInvestigador jugador){
+		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaMedia;
 	}
 	
-	public Pista devolverPista(JugadorSargento jugador){	
+	public Pista devolverPista(JugadorSargento jugador){
+		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaDificil;
 	}
 

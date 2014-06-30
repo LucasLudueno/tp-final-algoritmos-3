@@ -51,6 +51,7 @@ public class Jugador {
 	
 	public void restarTiempoPorEntrarALugar(){
 		reducirTiempo(tiempoPorEntrarALugar);
+		
 		if (this.tiempoPorEntrarALugar < 3){
 			this.tiempoPorEntrarALugar = this.tiempoPorEntrarALugar + 1;
 		}

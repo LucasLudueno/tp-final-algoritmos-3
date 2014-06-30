@@ -37,7 +37,7 @@ public class JugadorTest {
 	public void deberiaCrearseElJugadorConLosParametrosIntroducidos() {
 
 		
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new Jugador(BuenosAires, null);
 		
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
@@ -48,8 +48,8 @@ public class JugadorTest {
 	@Test
 	public void deberiaCambiarseLaCiudadEnDondeEstaElJugador() throws ExcepcionNoHayMasTiempo {
 
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		Ciudad Paris = new Ciudad("Paris",5,5,null,null,null, new ArrayList<Ciudad>());
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad Paris = new Ciudad("Paris",5,5);
 		Jugador jugador = new JugadorNovato(BuenosAires, null);
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
 		
@@ -62,8 +62,8 @@ public class JugadorTest {
 	@Test(expected=ExcepcionNoHayMasTiempo.class)
 	public void deberiaLanzarLaExcepcionCuandoNoHayMasTiempoParaViajarYNoCambiarDeCiudad() throws ExcepcionNoHayMasTiempo {
 
-		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
-		Ciudad Paris = new Ciudad("Paris",5000,5000,null,null,null, new ArrayList<Ciudad>());
+		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
+		Ciudad Paris = new Ciudad("Paris",5000,5000);
 		Jugador jugador = new JugadorNovato(BuenosAires, null);
 		
 		jugador.viajar(Paris);
@@ -74,7 +74,7 @@ public class JugadorTest {
 	
 	@Test
 	public void herirAJugadorConCuchilloDeberiaReducirElTiempoDelJugador2Horas(){
-		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
+		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new JugadorNovato(buenosAires, null);
 		
 		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
@@ -86,7 +86,7 @@ public class JugadorTest {
 	
 	@Test
 	public void herirAJugadorConArmaDeFuegoDeberiaReducirElTiempoDelJugador4Horas(){
-		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1,null,null,null, new ArrayList<Ciudad>());
+		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new JugadorNovato(buenosAires, null);
 		
 		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
