@@ -14,6 +14,7 @@ public class LugarDondeAcuchillan implements ILugar{
 	}
 	
 	public Pista devolverPista(JugadorNovato jugador) {
+		
 		jugador.recibirCuchillazo();
 		return this.avisoCuchillazo;
 	}

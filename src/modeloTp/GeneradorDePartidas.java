@@ -71,6 +71,38 @@ public class GeneradorDePartidas {
 	
 	}
 	
+	public ArrayList<Pista> generarPistasDelLadron() throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File("PistasLadronPrehechas.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoPistas = (Element)doc.getElementsByTagName("PistasLadron").item(0);						
+		
+		ArrayList<Pista> pistasLadron = new ArrayList<Pista>();
+		
+		Pista pistaCabelloLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(0));
+		Pista pistaHobbyLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(1));
+		Pista pistaSeniaLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(2));
+		Pista pistaVehiculoLadron = Pista.cargarEstado((Element) elementoPistas.getChildNodes().item(3));
+		
+		pistaCabelloLadron.agregarContenido(ladronBuscado.obtenerCabello());
+		pistaHobbyLadron.agregarContenido(ladronBuscado.obtenerHobby());
+		pistaSeniaLadron.agregarContenido(ladronBuscado.obtenerSenia());
+		pistaVehiculoLadron.agregarContenido(ladronBuscado.obtenerVehiculo());
+		
+		pistasLadron.add(pistaCabelloLadron);
+		pistasLadron.add(pistaHobbyLadron);
+		pistasLadron.add(pistaSeniaLadron);
+		pistasLadron.add(pistaVehiculoLadron);
+		
+		return pistasLadron;
+		
+	}
+	
 	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		
 		this.mensajeJuegoGanado = juegoGanado;
