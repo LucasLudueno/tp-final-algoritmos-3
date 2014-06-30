@@ -93,13 +93,29 @@ public class Ciudad {
 		int posicion_x = Integer.valueOf(elementoCiudad.getAttribute("posicion_x"));
 		int posicion_y = Integer.valueOf(elementoCiudad.getAttribute("posicion_y"));
 		
+		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y);
+		
+		Element elementoLugares = (Element)elementoCiudad.getElementsByTagName("Lugares").item(0);
+		int i=0;
+		while ( (Element) elementoLugares.getChildNodes().item(i) != null ){
+			unaCiudad.agregarLugar( Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(i) ) );
+			
+		}
+		
+		Element elementoCiudadesAViajar = (Element)elementoCiudad.getElementsByTagName("CiudadesAViajar").item(0);
+		int j=0;
+		while ( (Element) elementoCiudadesAViajar.getChildNodes().item(j) != null ){
+			unaCiudad.agregarCiudadAViajar( Ciudad.cargarEstado((Element) elementoCiudadesAViajar.getChildNodes().item(j) ) );
+			
+		}
+		
 		//Element elementoLugares = (Element)elementoCiudad.getElementsByTagName("Lugares").item(0);
 		
 		//Lugar lugarUno = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(0));
 		//Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
 		//Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));
 		
-		Ciudad unaCiudad = new Ciudad(nombre,posicion_x,posicion_y);
+		
 		
 		return unaCiudad;
 	}
