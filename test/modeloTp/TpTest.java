@@ -6,13 +6,12 @@ import org.junit.Test;
 import org.junit.Assert;
 
 import modeloTp.Ciudad;
-import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.Jugador;
 
 public class TpTest{
 
 	@Test
-	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta() throws ExcepcionNoHayMasTiempo{
+	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta(){
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Jugador jugador = new Jugador(null,BuenosAires, null);
@@ -23,7 +22,7 @@ public class TpTest{
 	}
 
 	@Test
-	public void deberiaBajarElTiempoDelJugadorSiViajaAOtraCiudad() throws ExcepcionNoHayMasTiempo{
+	public void deberiaBajarElTiempoDelJugadorSiViajaAOtraCiudad(){
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",340,990);
 		Ciudad Paris = new Ciudad("Paris",330, 1910 );
@@ -36,7 +35,7 @@ public class TpTest{
 	}
 		 
 	@Test
-	public void deberianCambiarLasPistasDeLosLugaresSiCambioDeCiudad() throws ExcepcionNoHayMasTiempo{
+	public void deberianCambiarLasPistasDeLosLugaresSiCambioDeCiudad(){
 		Pista pistaFacilAeropuertoBsAs = new Pista("pistaFacilBsAs");
 		Pista pistaMediaAeropuertoBsAs = new Pista("pistaMediaBsAs");
 		Pista pistaDificilAeropuertoBsAs = new Pista("pistaDificilBsAs");
@@ -115,7 +114,7 @@ public class TpTest{
 	
 	
 	@Test
-	public void jugadorNovatoNoAtrapaAlLadronCasoGrupo2() throws ExcepcionNoHayMasTiempo{
+	public void jugadorNovatoNoAtrapaAlLadronCasoGrupo2(){
 		Ladron ladron = new Ladron("Carmen San Diego", "femenino", "tennis", "rubio", "cicatriz", "ninguno");
 		Ladron sospechoso = new Ladron("John Wayne", "masculino", "alpinismo", "rubio", "cicatriz", "ninguno");
 		ArrayList<Ladron> sospechosos = new ArrayList<Ladron>();
@@ -178,7 +177,7 @@ public class TpTest{
 	}
 	
 	@Test
-	public void jugadorDetectiveNoAtrapaAlLadronCasoGrupo1SeQuedaSinTiempo() throws ExcepcionNoHayMasTiempo{
+	public void jugadorDetectiveNoAtrapaAlLadronCasoGrupo1SeQuedaSinTiempo(){
 		
 		Pista pistaFacilMuseoVeracruz = new Pista( "Era alto y de contextura delgada");		
 		Lugar museoVeracruz = new Lugar( "museo", pistaFacilMuseoVeracruz, null, null);

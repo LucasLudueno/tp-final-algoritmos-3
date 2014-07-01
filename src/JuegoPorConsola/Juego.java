@@ -11,7 +11,7 @@ import org.xml.sax.SAXException;
 
 import modeloTp.Ciudad;
 import modeloTp.ComputadoraPolicial;
-import modeloTp.ExcepcionNoHayMasTiempo;
+
 import modeloTp.ILugar;
 import modeloTp.Jugador;
 import modeloTp.Novato;
@@ -20,8 +20,8 @@ import modeloTp.Pista;
 public class Juego {
 
 	public static void main(String[] args) throws ParserConfigurationException,
-			TransformerException, SAXException, IOException,
-			ExcepcionNoHayMasTiempo {
+			TransformerException, SAXException, IOException
+			{
 
 		Jugador jugador;
 
@@ -114,7 +114,7 @@ public class Juego {
 					+ jugador.obtenerCiudadActual().obtenerNombre()
 					+ " hasta su escondite y arrestarlo.");
 			System.out.println("");
-			System.out.println("Tienes 154 horas para atrapar al ladron");
+			System.out.println("Tienes "+ jugador.obtenerTiempoRestante() + " horas para atrapar al ladron");
 			System.out.println("");
 			System.out.println("");
 			System.out

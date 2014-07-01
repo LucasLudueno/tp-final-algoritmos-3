@@ -27,7 +27,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;
 import modeloTp.Ciudad;
-import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.Jugador;
 
 public class JugadorTest {
@@ -45,7 +44,7 @@ public class JugadorTest {
 	} 
 	
 	@Test
-	public void deberiaCambiarseLaCiudadEnDondeEstaElJugador() throws ExcepcionNoHayMasTiempo {
+	public void deberiaCambiarseLaCiudadEnDondeEstaElJugador(){
 
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Ciudad Paris = new Ciudad("Paris",5,5);
