@@ -49,7 +49,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		nombreCiudadActual.setForeground(Color.WHITE);
 		panelCiudades.add(nombreCiudadActual);
 		
-		ImageIcon imagenBotonCiudades = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonCiudadViajar_img.jpg");
+		ImageIcon imagenBotonCiudades = new ImageIcon("src/visual/recursos/AlgoThieftBotonCiudadViajar_img.jpg");
 		
 		valor = generadorNumeros.nextInt(listaValores.size());
 		JButton botonCiudadUno = new JButton(unJugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(listaValores.get(valor)).obtenerNombre());
@@ -87,25 +87,25 @@ public class PanelCiudadesAViajar implements ActionListener{
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadTres);
 		
-		ImageIcon imagenBotonSalida = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonSalida_img.jpg");
+		ImageIcon imagenBotonSalida = new ImageIcon("src/visual/recursos/AlgoThieftBotonSalida_img.jpg");
 		JButton botonSalida = new JButton(imagenBotonSalida);
 		botonSalida.setBounds(39,380,179,49);
 		botonSalida.setEnabled(false);
 		panelCiudades.add(botonSalida);
 		
-		ImageIcon imagenBotonInvestigar = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonInvestigar_img.jpg");
+		ImageIcon imagenBotonInvestigar = new ImageIcon("src/visual/recursos/AlgoThieftBotonInvestigar_img.jpg");
 		JButton botonInvestigar = new JButton(imagenBotonInvestigar);
 		botonInvestigar.setBounds(258,380,179,49);
 		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario));
 		panelCiudades.add(botonInvestigar);
 		
-		ImageIcon imagenBotonComputadora = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonComputadora_img.jpg");
+		ImageIcon imagenBotonComputadora = new ImageIcon("src/visual/recursos/AlgoThieftBotonComputadora_img.jpg");
 		JButton botonComputadora = new JButton(imagenBotonComputadora);
 		botonComputadora.setBounds(477,380,179,49);
 		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario));
 		panelCiudades.add(botonComputadora);
 		
-		ImageIcon imagenFondo = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftPantallaViajar_img.jpg");
+		ImageIcon imagenFondo = new ImageIcon("src/visual/recursos/AlgoThieftPantallaViajar_img.jpg");
 		JLabel fondo = new JLabel(imagenFondo);
 		fondo.setBounds(0,0,695,450);
 		panelCiudades.add(fondo);

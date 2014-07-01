@@ -33,7 +33,7 @@ public class PanelBienvenidaJugador {
 		bienvenidaJugador.setLayout(null);
 		JLabel bienvenido = new JLabel("Bienvenido, " + unCampo.getText());
 		bienvenido.setFont(new Font("Arial",Font.BOLD,20));
-		bienvenido.setBounds(20,35,300,30);
+		bienvenido.setBounds(20,35,660,30);
 		bienvenidaJugador.add(bienvenido);
 		
 		JTextArea areaTexto = new JTextArea(
@@ -72,7 +72,7 @@ public class PanelBienvenidaJugador {
 		botonComenzar.addActionListener(new CargadorPantallaLugares(unaVentana,juego,jugador,calendario));
 		bienvenidaJugador.add(botonComenzar);
 		
-		ImageIcon imagen = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftPantallaBienvenida_img.jpg");
+		ImageIcon imagen = new ImageIcon("src/visual/recursos/AlgoThieftPantallaBienvenida_img.jpg");
 		JLabel fondo = new JLabel(imagen);
 		fondo.setBounds(0,0,695,450);
 		bienvenidaJugador.add(fondo);
