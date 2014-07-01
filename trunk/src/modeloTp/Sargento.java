@@ -4,7 +4,8 @@ public class Sargento extends Rango{
 
 	public Sargento() {
 		
-		this.velocidad = 4;
+		this.nombre = "Sargento";
+		this.velocidad = 1500;
 	}
 
 	public Pista pedirPista(ILugar lugar, Jugador jugador){

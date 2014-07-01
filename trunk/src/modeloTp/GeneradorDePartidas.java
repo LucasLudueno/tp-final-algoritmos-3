@@ -347,6 +347,8 @@ public class GeneradorDePartidas {
 		
 		Random generadorRandom = new Random();
 		int posicion = generadorRandom.nextInt( objetosVarios.size() );
+		this.objetoRobado = objetosVarios.get(posicion);
+		
 		if (objetosComunes.contains(objetosVarios.get(posicion) )){
 			return this.ladronBuscado.decidirCantidadDeCiudadesAEscapar((ObjetoComun) objetosVarios.get(posicion));
 
