@@ -101,6 +101,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		ImageIcon imagenBotonComputadora = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonComputadora_img.png");
 		JButton botonComputadora = new JButton(imagenBotonComputadora);
 		botonComputadora.setBounds(477,380,179,49);
+		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario));
 		panelCiudades.add(botonComputadora);
 		
 		ImageIcon imagenFondo = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftPantallaViajar_img.png");
