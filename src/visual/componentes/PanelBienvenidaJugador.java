@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 
 import modeloTp.ComputadoraPolicial;
 import modeloTp.GeneradorDePartidas;
-import modeloTp.JugadorNovato;
+import modeloTp.Jugador;
 
 public class PanelBienvenidaJugador {
 	
@@ -26,7 +26,7 @@ public class PanelBienvenidaJugador {
 	public PanelBienvenidaJugador(JFrame unaVentana, JTextField unCampo) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas juego = new GeneradorDePartidas(null,null,null);
 		ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
-		JugadorNovato jugador = new JugadorNovato(juego.obtenerRecorridoLadron().get(0), computadora);
+		Jugador jugador = new Jugador(juego.obtenerRecorridoLadron().get(0), computadora);
 		Calendario calendario = new Calendario();
 		
 		bienvenidaJugador.setLayout(null);

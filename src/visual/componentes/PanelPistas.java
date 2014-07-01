@@ -12,7 +12,6 @@ import javax.swing.JTextArea;
 
 import modeloTp.GeneradorDePartidas;
 import modeloTp.Jugador;
-import modeloTp.JugadorNovato;
 
 public class PanelPistas{
 	
@@ -26,7 +25,7 @@ public class PanelPistas{
 		lugares.setFont(new Font("Arial",Font.BOLD,16));
 		panelPistas.add(lugares);
 		
-		JTextArea contenidoPista = new JTextArea(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar).devolverPista((JugadorNovato) unJugador).obtenerContenido());
+		JTextArea contenidoPista = new JTextArea((unJugador.obtenerRango().pedirPista(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar),unJugador)).obtenerContenido());
 		contenidoPista.setOpaque(false);
 		contenidoPista.setFocusable(false);
 		contenidoPista.setFont(new Font("Arial",Font.BOLD,14));

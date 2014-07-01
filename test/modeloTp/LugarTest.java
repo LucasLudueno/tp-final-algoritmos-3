@@ -43,10 +43,11 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		JugadorNovato jugador = new JugadorNovato(null, null);
+		Jugador jugador = new Jugador(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
+		Rango rangoJugador = jugador.obtenerRango();
 		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaFacil);
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto,jugador) == pistaFacil);
 	}
 	
 	@Test
@@ -56,10 +57,14 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		JugadorDetective jugador = new JugadorDetective(null, null);
+		Jugador jugador = new Jugador(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
+		for(int i=0;i < 10; i++) jugador.agregarArresto();
+		
+		Rango rangoJugador = jugador.obtenerRango();
+		
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto, jugador)== pistaMedia);
 	}
 	
 	@Test
@@ -69,10 +74,14 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		JugadorSargento jugador = new JugadorSargento(null, null);
+		Jugador jugador = new Jugador(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaDificil);
+		for(int i=0;i < 25; i++) jugador.agregarArresto();
+		
+		Rango rangoJugador = jugador.obtenerRango();
+		
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto, jugador) == pistaDificil);
 	}
 	
 	@Test
@@ -82,10 +91,14 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		JugadorInvestigador jugador = new JugadorInvestigador(null, null);
+		Jugador jugador = new Jugador(null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
-		Assert.assertTrue(aeropuerto.devolverPista(jugador) == pistaMedia);
+		for(int i=0;i < 15; i++) jugador.agregarArresto();
+		
+		Rango rangoJugador = jugador.obtenerRango();	
+		
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto, jugador) == pistaMedia);
 	}
 	
 	/*
