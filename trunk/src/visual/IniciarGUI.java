@@ -36,10 +36,16 @@ public class IniciarGUI {
 		JMenu menuArchivo = new JMenu("Archivo");
 		
 		JMenuItem nuevo = new JMenuItem("Nuevo");
+		nuevo.setEnabled(false);
 		menuArchivo.add(nuevo);
 		
 		JMenuItem guardar = new JMenuItem("Guardar");
+		guardar.setEnabled(false);
 		menuArchivo.add(guardar);
+		
+		JMenuItem cargar = new JMenuItem("Cargar");
+		cargar.setEnabled(false);
+		menuArchivo.add(cargar);
 		
 		JMenuItem salir = new JMenuItem("Salir");
 		salir.addActionListener(new ActionListener(){
