@@ -10,86 +10,76 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import modeloTp.GeneradorDePartidas;
 import modeloTp.Jugador;
+import modeloTp.JugadorNovato;
 
-public class PanelLugares implements ActionListener{
+public class PanelPistas implements ActionListener{
 	
-	private JPanel panelLugares = new JPanel();
+	private JPanel panelPistas = new JPanel();
 	private JFrame ventana;
 	
-	public PanelLugares(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
-		panelLugares.setLayout(null);
+	public PanelPistas(int numeroDeLugar, JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
+		panelPistas.setLayout(null);
 		
 		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
 		fecha.setBounds(510,33,150,40);
 		fecha.setFont(new Font("Arial",Font.BOLD,21));
 		fecha.setForeground(Color.WHITE);
-		panelLugares.add(fecha);
+		panelPistas.add(fecha);
 		
-		JLabel lugares = new JLabel("Lugares a investigar:");
-		lugares.setBounds(268,95,230,40);
+		JLabel lugares = new JLabel(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar).obtenerNombre());
+		lugares.setBounds(30,95,230,40);
 		lugares.setFont(new Font("Arial",Font.BOLD,16));
-		panelLugares.add(lugares);
+		panelPistas.add(lugares);
+		
+		JTextArea contenidoPista = new JTextArea(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar).devolverPista((JugadorNovato) unJugador).obtenerContenido());
+		contenidoPista.setOpaque(false);
+		contenidoPista.setFocusable(false);
+		contenidoPista.setFont(new Font("Arial",Font.BOLD,14));
+		contenidoPista.setBounds(30,140,630,200);
+		contenidoPista.setLineWrap(true);
+		contenidoPista.setWrapStyleWord(true);
+		panelPistas.add(contenidoPista);
 		
 		JLabel nombreCiudadActual = new JLabel(unJugador.obtenerCiudadActual().obtenerNombre());
 		nombreCiudadActual.setBounds(30,33,330,40);
 		nombreCiudadActual.setFont(new Font("Arial",Font.BOLD,21));
 		nombreCiudadActual.setForeground(Color.WHITE);
-		panelLugares.add(nombreCiudadActual);
-		
-		ImageIcon imagenBotonLugarUno = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(0).obtenerNombre()+"_img.png");
-		JButton botonLugarUno = new JButton(imagenBotonLugarUno);
-		botonLugarUno.setBounds(70,150,153,152);
-		botonLugarUno.addActionListener(new PanelPistas(0,unaVentana,generador,unJugador,calendario));
-		panelLugares.add(botonLugarUno);
-		
-		ImageIcon imagenBotonLugarDos = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(1).obtenerNombre()+"_img.png");
-		JButton botonLugarDos = new JButton(imagenBotonLugarDos);
-		botonLugarDos.setBounds(270,150,153,152);
-		botonLugarDos.addActionListener(new PanelPistas(1,unaVentana,generador,unJugador,calendario));
-		panelLugares.add(botonLugarDos);
-		
-		ImageIcon imagenBotonLugarTres = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(2).obtenerNombre()+"_img.png");
-		JButton botonLugarTres = new JButton(imagenBotonLugarTres);
-		botonLugarTres.setBounds(470,150,153,152);
-		botonLugarTres.addActionListener(new PanelPistas(2,unaVentana,generador,unJugador,calendario));
-		panelLugares.add(botonLugarTres);
+		panelPistas.add(nombreCiudadActual);
 		
 		ImageIcon imagenBotonSalida = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonSalida_img.png");
 		JButton botonSalida = new JButton(imagenBotonSalida);
 		botonSalida.setBounds(39,380,179,49);
 		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario));
-		panelLugares.add(botonSalida);
+		panelPistas.add(botonSalida);
 		
 		ImageIcon imagenBotonInvestigar = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonInvestigar_img.png");
 		JButton botonInvestigar = new JButton(imagenBotonInvestigar);
 		botonInvestigar.setBounds(258,380,179,49);
-		botonInvestigar.setEnabled(false);
-		panelLugares.add(botonInvestigar);
+		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario));
+		panelPistas.add(botonInvestigar);
 		
 		ImageIcon imagenBotonComputadora = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonComputadora_img.png");
 		JButton botonComputadora = new JButton(imagenBotonComputadora);
 		botonComputadora.setBounds(477,380,179,49);
-		panelLugares.add(botonComputadora);
+		panelPistas.add(botonComputadora);
 		
 		ImageIcon imagenFondo = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftPantallaLugares_img.png");
 		JLabel fondo = new JLabel(imagenFondo);
 		fondo.setBounds(0,0,695,450);
-		panelLugares.add(fondo);
+		panelPistas.add(fondo);
 		
 		this.ventana = unaVentana;
 	}
 	
-	public JPanel obtenerPanel(){
-		return panelLugares;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		ventana.getContentPane().removeAll();
-		ventana.getContentPane().add(panelLugares);
+		ventana.getContentPane().add(panelPistas);
 		ventana.revalidate();
 	}
+
 }
