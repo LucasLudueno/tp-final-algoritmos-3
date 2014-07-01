@@ -15,7 +15,7 @@ public class TpTest{
 	public void noDeberiaBajarElTiempoDelJugadorSiViajaALaMismaCiudadQueEsta() throws ExcepcionNoHayMasTiempo{
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		Jugador jugador = new Jugador(BuenosAires, null);
+		Jugador jugador = new Jugador(null,BuenosAires, null);
 		
 		jugador.viajar(BuenosAires);
 		
@@ -27,7 +27,7 @@ public class TpTest{
 	
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",340,990);
 		Ciudad Paris = new Ciudad("Paris",330, 1910 );
-		Jugador jugador = new Jugador(BuenosAires, null);
+		Jugador jugador = new Jugador(null,BuenosAires, null);
 		
 		int tiempoInicial = jugador.obtenerTiempoRestante();
 		jugador.viajar(Paris);
@@ -48,7 +48,7 @@ public class TpTest{
 		Lugar aeropuertoLondres = new Lugar("Aeropuerto", pistaFacilAeropuertoLondres, pistaMediaAeropuertoLondres, pistaDificilAeropuertoLondres);
 		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1);
 		Ciudad londres = new Ciudad("Londres",6,11);
-		Jugador jugador = new Jugador(buenosAires, null);
+		Jugador jugador = new Jugador(null,buenosAires, null);
 		
 		buenosAires.agregarLugar(aeropuertoBuenosAires);
 		londres.agregarLugar(aeropuertoLondres);
@@ -76,7 +76,7 @@ public class TpTest{
 		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1);
 		buenosAires.agregarLugar(aeropuertoBsAs);
 		buenosAires.agregarLugar(bolsaBsAs);
-		Jugador jugador = new Jugador(buenosAires, null);
+		Jugador jugador = new Jugador(null,buenosAires, null);
 		Rango rangoJugador = jugador.obtenerRango();
 		
 		Assert.assertTrue(rangoJugador.pedirPista(jugador.obtenerCiudadActual().obtenerLugares().get(0),jugador) == pistaFacilAeropuertoBsAs);
@@ -96,7 +96,7 @@ public class TpTest{
 		Lugar bolsaBsAs = new Lugar("Bolsa",pistaFacilBolsaBsAs, null, null);
 		Lugar bibliotecaBsAs = new Lugar("Biblioteca",pistaFacilBibliotecaBsAs, null, null);
 
-		Jugador jugador = new Jugador(null, null);
+		Jugador jugador = new Jugador(null,null, null);
 		Novato  rangoJugador = (Novato) jugador.obtenerRango();
 		
 		Integer tiempoActualJugador = jugador.obtenerTiempoRestante();
@@ -151,7 +151,7 @@ public class TpTest{
 				
 		
 		//Aca comienza lo que seria la prueba, lo demas se deberia cargar del XML
-		Jugador jugador = new Jugador(buenosAires, computadora);
+		Jugador jugador = new Jugador(null,buenosAires, computadora);
 		Novato rangoJugador = (Novato)jugador.obtenerRango();
 		
 		Ciudad ciudadActual = jugador.obtenerCiudadActual();
@@ -186,7 +186,7 @@ public class TpTest{
 		veracruz.agregarLugar(museoVeracruz);	
 		
 		//Aca comienza lo que seria la prueba, lo demas se deberia cargar del XML
-		Jugador jugador = new Jugador(veracruz, null);
+		Jugador jugador = new Jugador(null,veracruz, null);
 		Novato rangoJugador = (Novato)jugador.obtenerRango();
 		
 		Ciudad ciudadActual = jugador.obtenerCiudadActual();

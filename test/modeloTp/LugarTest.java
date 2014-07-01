@@ -43,7 +43,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Jugador jugador = new Jugador(null, null);
+		Jugador jugador = new Jugador(null,null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		Rango rangoJugador = jugador.obtenerRango();
 		
@@ -57,7 +57,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Jugador jugador = new Jugador(null, null);
+		Jugador jugador = new Jugador(null,null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		for(int i=0;i < 10; i++) jugador.agregarArresto();
@@ -74,7 +74,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Jugador jugador = new Jugador(null, null);
+		Jugador jugador = new Jugador(null,null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		for(int i=0;i < 25; i++) jugador.agregarArresto();
@@ -91,7 +91,7 @@ public class LugarTest{
 		Pista pistaMedia = new Pista("b");
 		Pista pistaDificil = new Pista("c");
 		
-		Jugador jugador = new Jugador(null, null);
+		Jugador jugador = new Jugador(null,null, null);
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		
 		for(int i=0;i < 15; i++) jugador.agregarArresto();

@@ -10,7 +10,6 @@ import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
-import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.GeneradorDePartidas;
 import modeloTp.Jugador;
 
@@ -32,11 +31,10 @@ public class CargarNuevaCiudad implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		try {
-			jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(valor));
-		} catch (ExcepcionNoHayMasTiempo e1) {
+		jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(valor));
+		if (jugador.obtenerTiempoRestante() == 0){
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			return; // ACA CAMBIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		}
 		
 		if(generador.obtenerPasoActual() < (generador.obtenerRecorridoLadron().size()-1)){
