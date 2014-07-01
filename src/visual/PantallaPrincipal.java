@@ -47,7 +47,9 @@ public class PantallaPrincipal {
 			juegoTerminado = true;
 		}
 		
-		String nombreDelJugador = "Lucas";
+		System.out.println("Ingrese su nombre: ");
+		System.out.println("");
+		String nombreDelJugador = entradaEscaner.next();
 		
 		while (juegoTerminado != true){
 			
@@ -77,8 +79,7 @@ public class PantallaPrincipal {
 			int tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
 			boolean partidaTerminada = false;
 			
-			//System.out.println("Tu nombre no aparece en los ficheros de la Interpol. Has sido identificado/a como " + unCampo.getText() + "."
-			System.out.println("");
+			System.out.println("Has sido identificado/a como " + jugador.obtenerNombre() + ".");
 			System.out.println("");
 			System.out.println("Tu graduacion actual es: " + jugador.obtenerRango().obtenerNombre() );
 			System.out.println("");
@@ -99,7 +100,7 @@ public class PantallaPrincipal {
 			System.out.println("Tienes 154 horas para atrapar al ladron");
 			System.out.println("");
 			System.out.println("");
-			//System.out.println("Buena suerte, " jugador.obtenerNombre() + ".");
+			System.out.println("Buena suerte, " + jugador.obtenerNombre() + ".");
 			
 			while (partidaTerminada != true){
 				
@@ -155,7 +156,7 @@ public class PantallaPrincipal {
 		        	if (jugador.seEmitioOrdenDeArresto()){
 		        		System.out.println("Orden de arresto emitida contra "+jugador.obtenerNombreDeLadronBuscado());
 		        	}
-		        	else System.out.println("No Hay Suficientes pistas para obtener coincidencias");
+		        	else System.out.println("No se encontro una unica persona con esas caracteristicas. No se pudo emitir una orden de arresto");
 		
 		        }
 		        
