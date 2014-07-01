@@ -34,7 +34,7 @@ public class CargarNuevaCiudad implements ActionListener {
 		jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(valor));
 		if (jugador.obtenerTiempoRestante() == 0){
 			// TODO Auto-generated catch block
-			return; // ACA CAMBIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+			return;
 		}
 		
 		if(generador.obtenerPasoActual() < (generador.obtenerRecorridoLadron().size()-1)){
