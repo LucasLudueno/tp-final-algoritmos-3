@@ -15,7 +15,9 @@ import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
+import modeloTp.ComputadoraPolicial;
 import modeloTp.GeneradorDePartidas;
+import modeloTp.JugadorNovato;
 
 public class PanelBienvenidaJugador {
 	
@@ -23,6 +25,10 @@ public class PanelBienvenidaJugador {
 	
 	public PanelBienvenidaJugador(JFrame unaVentana, JTextField unCampo) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas juego = new GeneradorDePartidas(null,null,null);
+		ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
+		JugadorNovato jugador = new JugadorNovato(juego.obtenerRecorridoLadron().get(0), computadora);
+		Calendario calendario = new Calendario();
+		
 		bienvenidaJugador.setLayout(null);
 		JLabel bienvenido = new JLabel("Bienvenido, " + unCampo.getText());
 		bienvenido.setFont(new Font("Arial",Font.BOLD,20));
@@ -62,7 +68,7 @@ public class PanelBienvenidaJugador {
 		
 		JButton botonComenzar = new JButton("Comenzar");
 		botonComenzar.setBounds(296,370,100,30);
-		botonComenzar.addActionListener(new PanelLugares(unaVentana));
+		botonComenzar.addActionListener(new PanelLugares(unaVentana,juego,jugador,calendario));
 		bienvenidaJugador.add(botonComenzar);
 		
 		ImageIcon imagen = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftPantallaBienvenida_img.png");
