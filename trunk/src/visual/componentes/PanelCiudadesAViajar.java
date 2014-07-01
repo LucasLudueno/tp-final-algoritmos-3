@@ -57,7 +57,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		botonCiudadUno.setVerticalTextPosition(JButton.CENTER);
 		botonCiudadUno.setFont(new Font("Arial",Font.BOLD,16));
 		botonCiudadUno.setForeground(Color.WHITE);
-		botonCiudadUno.setBounds(66,185,161,74);
+		botonCiudadUno.setBounds(60,185,171,74);
 		botonCiudadUno.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario));
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadUno);
@@ -69,7 +69,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		botonCiudadDos.setVerticalTextPosition(JButton.CENTER);
 		botonCiudadDos.setFont(new Font("Arial",Font.BOLD,16));
 		botonCiudadDos.setForeground(Color.WHITE);
-		botonCiudadDos.setBounds(266,185,161,74);
+		botonCiudadDos.setBounds(260,185,171,74);
 		botonCiudadDos.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario));
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadDos);
@@ -81,7 +81,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		botonCiudadTres.setVerticalTextPosition(JButton.CENTER);
 		botonCiudadTres.setFont(new Font("Arial",Font.BOLD,16));
 		botonCiudadTres.setForeground(Color.WHITE);
-		botonCiudadTres.setBounds(466,185,161,74);
+		botonCiudadTres.setBounds(460,185,171,74);
 		botonCiudadTres.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario));
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadTres);

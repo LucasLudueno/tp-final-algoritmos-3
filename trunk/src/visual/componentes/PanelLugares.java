@@ -42,19 +42,19 @@ public class PanelLugares implements ActionListener{
 		ImageIcon imagenBotonLugarUno = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(0).obtenerNombre()+"_img.png");
 		JButton botonLugarUno = new JButton(imagenBotonLugarUno);
 		botonLugarUno.setBounds(70,150,153,152);
-		botonLugarUno.addActionListener(new PanelPistas(0,unaVentana,generador,unJugador,calendario));
+		botonLugarUno.addActionListener(new CargarPista(0,unaVentana,generador,unJugador,calendario));
 		panelLugares.add(botonLugarUno);
 		
 		ImageIcon imagenBotonLugarDos = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(1).obtenerNombre()+"_img.png");
 		JButton botonLugarDos = new JButton(imagenBotonLugarDos);
 		botonLugarDos.setBounds(270,150,153,152);
-		botonLugarDos.addActionListener(new PanelPistas(1,unaVentana,generador,unJugador,calendario));
+		botonLugarDos.addActionListener(new CargarPista(1,unaVentana,generador,unJugador,calendario));
 		panelLugares.add(botonLugarDos);
 		
 		ImageIcon imagenBotonLugarTres = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(2).obtenerNombre()+"_img.png");
 		JButton botonLugarTres = new JButton(imagenBotonLugarTres);
 		botonLugarTres.setBounds(470,150,153,152);
-		botonLugarTres.addActionListener(new PanelPistas(2,unaVentana,generador,unJugador,calendario));
+		botonLugarTres.addActionListener(new CargarPista(2,unaVentana,generador,unJugador,calendario));
 		panelLugares.add(botonLugarTres);
 		
 		ImageIcon imagenBotonSalida = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftBotonSalida_img.png");

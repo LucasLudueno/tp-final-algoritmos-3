@@ -2,8 +2,6 @@ package visual.componentes;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,19 +14,12 @@ import modeloTp.GeneradorDePartidas;
 import modeloTp.Jugador;
 import modeloTp.JugadorNovato;
 
-public class PanelPistas implements ActionListener{
+public class PanelPistas{
 	
 	private JPanel panelPistas = new JPanel();
-	private JFrame ventana;
 	
 	public PanelPistas(int numeroDeLugar, JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
 		panelPistas.setLayout(null);
-		
-		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
-		fecha.setBounds(510,33,150,40);
-		fecha.setFont(new Font("Arial",Font.BOLD,21));
-		fecha.setForeground(Color.WHITE);
-		panelPistas.add(fecha);
 		
 		JLabel lugares = new JLabel(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar).obtenerNombre());
 		lugares.setBounds(30,95,230,40);
@@ -43,6 +34,12 @@ public class PanelPistas implements ActionListener{
 		contenidoPista.setLineWrap(true);
 		contenidoPista.setWrapStyleWord(true);
 		panelPistas.add(contenidoPista);
+		
+		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
+		fecha.setBounds(510,33,150,40);
+		fecha.setFont(new Font("Arial",Font.BOLD,21));
+		fecha.setForeground(Color.WHITE);
+		panelPistas.add(fecha);
 		
 		JLabel nombreCiudadActual = new JLabel(unJugador.obtenerCiudadActual().obtenerNombre());
 		nombreCiudadActual.setBounds(30,33,330,40);
@@ -71,15 +68,9 @@ public class PanelPistas implements ActionListener{
 		JLabel fondo = new JLabel(imagenFondo);
 		fondo.setBounds(0,0,695,450);
 		panelPistas.add(fondo);
-		
-		this.ventana = unaVentana;
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		ventana.getContentPane().removeAll();
-		ventana.getContentPane().add(panelPistas);
-		ventana.revalidate();
+	public JPanel obtenerPanel(){
+		return panelPistas;
 	}
-
 }
