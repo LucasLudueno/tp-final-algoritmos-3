@@ -130,12 +130,17 @@ public class PantallaPrincipal {
 		        	System.out.println("3)_ "+jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(2).obtenerNombre());
 		        	
 		        	jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(entradaEscaner.nextInt()-1));	        	
-		        	entradaEscaner.nextLine();
-		        	
-		        	if(juego.obtenerPasoActual() < (juego.obtenerRecorridoLadron().size()-1)){
-		        		if(jugador.obtenerCiudadActual() == ciudadesValidas.get(juego.obtenerPasoActual()+1)){
-		        			juego.pasarALaSiguienteCiudadDelRecorrido();
-		        		}
+		        	if (jugador.obtenerTiempoRestante() != 0){
+			        	entradaEscaner.nextLine();
+			        	
+			        	if(juego.obtenerPasoActual() < (juego.obtenerRecorridoLadron().size()-1)){
+			        		if(jugador.obtenerCiudadActual() == ciudadesValidas.get(juego.obtenerPasoActual()+1)){
+			        			juego.pasarALaSiguienteCiudadDelRecorrido();
+			        		}
+			        	}
+		        	} else {
+		        		System.out.println("El jugador se ha quedado sin tiempo. Ha perdido la partida");
+						partidaTerminada = true;
 		        	}
 		        	
 		        } else if( opcionElegida == 4){
@@ -153,34 +158,50 @@ public class PantallaPrincipal {
 		        	String vehiculo = entradaEscaner.nextLine();
 		        	
 		        	jugador.emitirOrdenDeArresto(sexo, hobby, cabello, senia, vehiculo);
-		        	if (jugador.seEmitioOrdenDeArresto()){
-		        		System.out.println("Orden de arresto emitida contra "+jugador.obtenerNombreDeLadronBuscado());
+		        	if (jugador.obtenerTiempoRestante() != 0){
+			        	if (jugador.seEmitioOrdenDeArresto()){
+			        		System.out.println("Orden de arresto emitida contra "+jugador.obtenerNombreDeLadronBuscado());
+			        	}
+			        	else System.out.println("No se encontro una unica persona con esas caracteristicas. No se pudo emitir una orden de arresto");
+		        	
+		        	} else {
+		        		System.out.println("El jugador se ha quedado sin tiempo. Ha perdido la partida");
+						partidaTerminada = true;
 		        	}
-		        	else System.out.println("No se encontro una unica persona con esas caracteristicas. No se pudo emitir una orden de arresto");
-		
 		        }
 		        
 		        else {
 		        	
 		        	Pista pistaObtenida = lugaresEnLaCiudad.get(opcionElegida-1).verPistaSegunRango((Novato) jugador.obtenerRango(), jugador);
-		        	if (pistaObtenida == juegoGanado){
-		        		jugador.agregarArresto();
-		        		partidaTerminada = true;
-		        		
-		        	} else if ( (pistaObtenida == ordenDeArrestoIncorrecta) | (pistaObtenida == ordenDeArrestoNoEmitida) ){
-		        		partidaTerminada = true;
-		        		
+		        	if (jugador.obtenerTiempoRestante() != 0){
+			        	if (pistaObtenida == juegoGanado){
+			        		jugador.agregarArresto();
+			        		partidaTerminada = true;
+			        		
+			        	} else if ( (pistaObtenida == ordenDeArrestoIncorrecta) | (pistaObtenida == ordenDeArrestoNoEmitida) ){
+			        		partidaTerminada = true;
+			        		
+			        	}
+			        	System.out.println(pistaObtenida.obtenerContenido());
+			        	entradaEscaner.nextLine();
+		        	} else {
+		        		System.out.println("El jugador se ha quedado sin tiempo. Ha perdido la partida");
+						partidaTerminada = true;
 		        	}
-		        	System.out.println(pistaObtenida.obtenerContenido());
-		        	entradaEscaner.nextLine();
 		        }
 		       
 		        
 				if( ( tiempoAntesDeDormir - jugador.obtenerTiempoRestante() > 17) & (partidaTerminada != true)  ) { 
 		        	
-		        	tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
-		        	jugador.dormir();
-		        	System.out.println("El jugador esta durmiendo");
+					jugador.dormir();
+					if (jugador.obtenerTiempoRestante() != 0){
+						System.out.println("El jugador esta durmiendo");
+			        	tiempoAntesDeDormir = jugador.obtenerTiempoRestante();
+			        	
+					} else {
+			        	System.out.println("El jugador se ha quedado sin tiempo. Ha perdido la partida");
+						partidaTerminada = true;
+					}
 		        }
 		        
 		    }
