@@ -4,7 +4,8 @@ public class Novato extends Rango{
 
 	public Novato() {
 		
-		this.velocidad = 190;
+		this.nombre = "Novato";
+		this.velocidad = 900;
 	}
 
 	public Pista pedirPista(ILugar lugar, Jugador jugador){

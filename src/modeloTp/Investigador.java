@@ -4,7 +4,8 @@ public class Investigador extends Rango{
 
 	public Investigador() {
 		
-		this.velocidad = 3;
+		this.nombre = "Investigador";
+		this.velocidad = 1300;
 	}
 
 	public Pista pedirPista(ILugar lugar,Jugador jugador){

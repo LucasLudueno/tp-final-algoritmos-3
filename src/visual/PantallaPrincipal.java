@@ -29,6 +29,7 @@ public class PantallaPrincipal {
 		Pista ordenDeArrestoIncorrecta = new Pista("La orden de arresto emitida fue incorrecta, el ladron ha escapado y has perdido la partida");
 		Pista ordenDeArrestoNoEmitida = new Pista("No se ha emitido ninguna orden de arresto, el ladron ha escapado y has perdido la partida");
 		
+		@SuppressWarnings("resource")
 		Scanner entradaEscaner = new Scanner (System.in);
 		
 		int opcionElegida = 0;
@@ -77,12 +78,14 @@ public class PantallaPrincipal {
 			//System.out.println("Tu nombre no aparece en los ficheros de la Interpol. Has sido identificado/a como " + unCampo.getText() + "."
 			System.out.println("");
 			System.out.println("");
-			//System.out.println("Tu graduacion actual es: "+jugador,obtenerRango());
+			System.out.println("Tu graduacion actual es: " + jugador.obtenerRango().obtenerNombre() );
 			System.out.println("");
 			System.out.println("");
 			System.out.println("NOTICIAS");
 			System.out.println("");
 			System.out.println("Tesoro nacional robado en "+ jugador.obtenerCiudadActual().obtenerNombre() );
+			System.out.println("");
+			System.out.println("El objeto Robado ha sido identificado como: "+ juego.obtenerObjetoRobado().obtenerNombre() );
 			System.out.println("");
 			System.out.println( "Un sospechoso de sexo " + juego.obtenerLadronBuscado().obtenerSexo() + " ha sido visto en el lugar del crimen." );
 			System.out.println("");
@@ -91,7 +94,7 @@ public class PantallaPrincipal {
 			System.out.println("");
 			System.out.println("Perseguir al ladron desde " + jugador.obtenerCiudadActual().obtenerNombre()  + " hasta su escondite y arrestarlo." );
 			System.out.println("");
-			System.out.println("Tienes que arrestar al ladron antes del domingo a las 17 hs (154 horas)");
+			System.out.println("Tienes 154 horas para atrapar al ladron");
 			System.out.println("");
 			System.out.println("");
 			//System.out.println("Buena suerte, " jugador.obtenerNombre() + ".");
