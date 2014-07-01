@@ -47,6 +47,8 @@ public class PantallaPrincipal {
 			juegoTerminado = true;
 		}
 		
+		String nombreDelJugador = "Lucas";
+		
 		while (juegoTerminado != true){
 			
 			GeneradorDePartidas juego = new GeneradorDePartidas(juegoGanado, ordenDeArrestoIncorrecta, ordenDeArrestoNoEmitida);	
@@ -56,11 +58,11 @@ public class PantallaPrincipal {
 			ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
 			
 			if (primeraPartida){
-				jugador = new Jugador(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+				jugador = new Jugador(nombreDelJugador, ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
 				primeraPartida = false;
 
 			} else {
-				jugador = new Jugador(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+				jugador = new Jugador(nombreDelJugador, ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
 
 				/*if (jugador.obtenerCantidadDeArrestos() > 3){
 					String nombreDelJugador = jugador.obtenerNombre();
@@ -149,8 +151,8 @@ public class PantallaPrincipal {
 		        	System.out.println("Ingrese vehiculo del sospechoso ");
 		        	String vehiculo = entradaEscaner.nextLine();
 		        	
-		        	if (jugador.emitirOrdenDeArresto(sexo, hobby, cabello, senia, vehiculo) == true){
-		        		
+		        	jugador.emitirOrdenDeArresto(sexo, hobby, cabello, senia, vehiculo);
+		        	if (jugador.seEmitioOrdenDeArresto()){
 		        		System.out.println("Orden de arresto emitida contra "+jugador.obtenerNombreDeLadronBuscado());
 		        	}
 		        	else System.out.println("No Hay Suficientes pistas para obtener coincidencias");

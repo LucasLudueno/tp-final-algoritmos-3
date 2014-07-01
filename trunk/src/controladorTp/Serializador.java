@@ -98,37 +98,37 @@ public class Serializador {
 		Document doc = db.newDocument();
 
 		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
-					
-		ciudades.add(new Ciudad("Buenos Aires",340, 990));
-		ciudades.add(new Ciudad("Madrid",800, 30));
-	    ciudades.add(new Ciudad("Londres",910, 30));
-	    ciudades.add(new Ciudad("Atenas",750, 240));
-	    ciudades.add(new Ciudad("Sidney", 330, 1910 ));
-	    ciudades.add(new Ciudad("Moscu", 550, 950));
-	    ciudades.add(new Ciudad("Paris", 880, 20));
-	    ciudades.add(new Ciudad("Tokio", 350, 1790));
-	    ciudades.add(new Ciudad("El Cairo",290 ,710));
-	    ciudades.add(new Ciudad("Rio De Janeiro",210, 810));
-	    ciudades.add(new Ciudad("Roma",810, 120));
-	    ciudades.add(new Ciudad("Oslo",990, 100));
-	    ciudades.add(new Ciudad("Montreal", 45, 1130));
-	    ciudades.add(new Ciudad("Nueva York",420, 1130));
-	    ciudades.add(new Ciudad("Singapur",1620, 103));
-	    ciudades.add(new Ciudad("Bagdad", 330, 740));
-	    ciudades.add(new Ciudad("Estambul", 810, 400));
-	    ciudades.add(new Ciudad("Katmandu", 270, 1450));
-	    ciudades.add(new Ciudad("Dubai",170, 830));
-	    ciudades.add(new Ciudad("San Marino", 830, 120));
-	    ciudades.add(new Ciudad("Nueva Delhi",280, 1170));
-	    ciudades.add(new Ciudad("Ciudad de Mexico",210, 1430));
-	    ciudades.add(new Ciudad("Lima",120, 1160));
-	    ciudades.add(new Ciudad("Kigali",720, 30));
-	    ciudades.add(new Ciudad("Reykjavik", 1004, 210));
-	    ciudades.add(new Ciudad("Budapest",879,190));
-	    ciudades.add(new Ciudad("Bamako",520, 70));
-	    ciudades.add(new Ciudad("Bangkok",130,1400));
-	    ciudades.add(new Ciudad("Moroni",110, 830));
-	    ciudades.add(new Ciudad("Puerto Moresby",90,1970));				
+		
+		ciudades.add(new Ciudad("Buenos Aires",3400, 3900));
+		ciudades.add(new Ciudad("Madrid",5000, 300));
+	    ciudades.add(new Ciudad("Londres",6100, 300));
+	    ciudades.add(new Ciudad("Atenas",450, 2400));
+	    ciudades.add(new Ciudad("Sidney", 3300, 161 ));
+	    ciudades.add(new Ciudad("Moscu", 5500, 650));
+	    ciudades.add(new Ciudad("Paris", 5800, 200));
+	    ciudades.add(new Ciudad("Tokio", 350, 1490));
+	    ciudades.add(new Ciudad("El Cairo",290 ,4100));
+	    ciudades.add(new Ciudad("Rio De Janeiro",2100, 510));
+	    ciudades.add(new Ciudad("Roma",510, 1200));
+	    ciudades.add(new Ciudad("Oslo",690, 1000));
+	    ciudades.add(new Ciudad("Montreal", 450, 8300));
+	    ciudades.add(new Ciudad("Nueva York",4200, 830));
+	    ciudades.add(new Ciudad("Singapur",132, 1030));
+	    ciudades.add(new Ciudad("Bagdad", 3300, 4400));
+	    ciudades.add(new Ciudad("Estambul", 5100, 4000));
+	    ciudades.add(new Ciudad("Katmandu", 2700, 115));
+	    ciudades.add(new Ciudad("Dubai",1700, 530));
+	    ciudades.add(new Ciudad("San Marino", 530, 1200));
+	    ciudades.add(new Ciudad("Nueva Delhi",2800, 870));
+	    ciudades.add(new Ciudad("Ciudad de Mexico",2100, 113));
+	    ciudades.add(new Ciudad("Lima",1200, 860));
+	    ciudades.add(new Ciudad("Kigali",4200, 300));
+	    ciudades.add(new Ciudad("Reykjavik", 704, 2100));
+	    ciudades.add(new Ciudad("Budapest",579,1900));
+	    ciudades.add(new Ciudad("Bamako",2200, 700));
+	    ciudades.add(new Ciudad("Bangkok",1300,110));
+	    ciudades.add(new Ciudad("Moroni",1100, 530));
+	    ciudades.add(new Ciudad("Puerto Moresby",900,167));				
 					
 	    //Asigno el elemento XML de la instancia al documento generado anteriormente
 	                

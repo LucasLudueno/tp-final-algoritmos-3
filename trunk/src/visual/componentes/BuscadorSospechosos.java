@@ -30,7 +30,8 @@ public class BuscadorSospechosos implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if (jugador.emitirOrdenDeArresto(String.valueOf(sexo.getSelectedItem()),String.valueOf(hobby.getSelectedItem()),String.valueOf(pelo.getSelectedItem()),String.valueOf(senias.getSelectedItem()),String.valueOf(coche.getSelectedItem())) == true){
+		jugador.emitirOrdenDeArresto(String.valueOf(sexo.getSelectedItem()),String.valueOf(hobby.getSelectedItem()),String.valueOf(pelo.getSelectedItem()),String.valueOf(senias.getSelectedItem()),String.valueOf(coche.getSelectedItem()));
+		if (jugador.seEmitioOrdenDeArresto()){
 			pantalla.setText("Orden de arresto emitida contra "+jugador.obtenerNombreDeLadronBuscado());
 		} else {
 			pantalla.setText("No Hay Suficientes pistas para obtener coincidencias");

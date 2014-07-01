@@ -10,6 +10,7 @@ import org.w3c.dom.Node;
 
 public class Jugador {
 
+	private String nombre;
 	private Ciudad ciudadActual;
 	private int tiempoRestante;
 	private int tiempoPorEntrarALugar;
@@ -23,8 +24,9 @@ public class Jugador {
 	private Rango rangoActual;
 	
 	
-	public Jugador(Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
+	public Jugador(String nombreDelJugador, Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
 		
+		this.nombre = nombreDelJugador;
 		this.ciudadActual = ciudad;
 		this.tiempoRestante = 154; 
 		this.tiempoPorEntrarALugar = 1;
@@ -38,6 +40,10 @@ public class Jugador {
 		this.rangoActual = new Novato();
 	}
 
+	public String obtenerNombre(){
+		return this.nombre;
+	}
+	
 	public void agregarArresto(){
 		
 		this.cantidadDeArrestos = this.cantidadDeArrestos + 1;
@@ -73,13 +79,15 @@ public class Jugador {
 		
 	}
 
-	public void viajar(Ciudad ciudad) throws ExcepcionNoHayMasTiempo {
+	public void viajar(Ciudad ciudad){
 		
-		if( this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual)) >= this.tiempoRestante ) throw new ExcepcionNoHayMasTiempo();
-		else this.tiempoRestante = this.tiempoRestante - this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual));
-		this.cambiarDeCiudad(ciudad);
-		this.tiempoPorEntrarALugar = 1;
+		int tiempoPorViajar = this.calcularTiempoDeViaje(ciudad.obtenerDistancia(this.ciudadActual));
+		this.reducirTiempo(tiempoPorViajar);
 		
+		if( this.tiempoRestante != 0 ){
+			this.cambiarDeCiudad(ciudad);
+			this.tiempoPorEntrarALugar = 1;
+		}
 	}
 
 	private int calcularTiempoDeViaje(int distancia) {
@@ -113,24 +121,23 @@ public class Jugador {
 		
 	}
 	
-	public boolean emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
+	public void emitirOrdenDeArresto(String sexo, String hobby, String cabello,  String senia, String vehiculo){
 		
 		reducirTiempo( this.tiempoEmitirOrdenDeArresto);
-		ArrayList<Ladron> posiblesLadrones = this.computadoraPolicial.buscarPosiblesLadrones(sexo, hobby, cabello, senia, vehiculo);
-		
-		if (posiblesLadrones.size() == 1){
-			this.nombreDelLadronBuscado = ( (Ladron)posiblesLadrones.get(0) ).obtenerNombre();
+		if( this.tiempoRestante != 0 ){
 			
-			return true;
+			ArrayList<Ladron> posiblesLadrones = this.computadoraPolicial.buscarPosiblesLadrones(sexo, hobby, cabello, senia, vehiculo);
+			
+			if (posiblesLadrones.size() == 1){
+				this.nombreDelLadronBuscado = ( (Ladron)posiblesLadrones.get(0) ).obtenerNombre();
+			}
 		}
-	
-		return false;
 	}
 	
 	private void reducirTiempo( Integer tiempo ){
 		
 		if( this.tiempoRestante <= tiempo){
-			tiempoRestante = 0;
+			this.tiempoRestante = 0;
 		} else {
 			this.tiempoRestante = this.tiempoRestante - tiempo;
 		}

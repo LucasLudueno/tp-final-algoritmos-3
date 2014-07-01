@@ -26,7 +26,8 @@ public class PanelBienvenidaJugador {
 	public PanelBienvenidaJugador(JFrame unaVentana, JTextField unCampo) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		GeneradorDePartidas juego = new GeneradorDePartidas(null,null,null);
 		ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
-		Jugador jugador = new Jugador(juego.obtenerRecorridoLadron().get(0), computadora);
+		Jugador jugador = new Jugador(null, juego.obtenerRecorridoLadron().get(0), computadora);
+		//ACA CAMBIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		Calendario calendario = new Calendario();
 		
 		bienvenidaJugador.setLayout(null);

@@ -37,7 +37,7 @@ public class JugadorTest {
 
 		
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
-		Jugador jugador = new Jugador(BuenosAires, null);
+		Jugador jugador = new Jugador(null,BuenosAires, null);
 		
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
 		Assert.assertTrue(jugador.obtenerTiempoRestante() == 154);
@@ -49,7 +49,7 @@ public class JugadorTest {
 
 		Ciudad BuenosAires = new Ciudad("Buenos Aires",1,1);
 		Ciudad Paris = new Ciudad("Paris",5,5);
-		Jugador jugador = new Jugador(BuenosAires, null);
+		Jugador jugador = new Jugador(null,BuenosAires, null);
 		Assert.assertTrue(jugador.obtenerCiudadActual() == BuenosAires);
 		
 		jugador.viajar(Paris);
@@ -75,7 +75,7 @@ public class JugadorTest {
 	@Test
 	public void herirAJugadorConCuchilloDeberiaReducirElTiempoDelJugador2Horas(){
 		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1);
-		Jugador jugador = new Jugador(buenosAires, null);
+		Jugador jugador = new Jugador(null,buenosAires, null);
 		
 		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
 		jugador.recibirCuchillazo();
@@ -87,7 +87,7 @@ public class JugadorTest {
 	@Test
 	public void herirAJugadorConArmaDeFuegoDeberiaReducirElTiempoDelJugador4Horas(){
 		Ciudad buenosAires = new Ciudad("Buenos Aires",1,1);
-		Jugador jugador = new Jugador(buenosAires, null);
+		Jugador jugador = new Jugador(null,buenosAires, null);
 		
 		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
 		jugador.recibirBalazo();
@@ -99,7 +99,7 @@ public class JugadorTest {
 	@Test
 	public void deberiaReducirElTiempoDelJugador8HorasSiEsteDuerme(){
 		
-		Jugador jugador = new Jugador(null, null);
+		Jugador jugador = new Jugador(null,null, null);
 		
 		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
 		jugador.dormir();
@@ -111,7 +111,7 @@ public class JugadorTest {
 	@Test
 	public void deberiaReducirEltiempoDelJugador3HorasSiSeEmiteOrdenDeArresto(){
 		
-		Jugador jugador = new Jugador(null, new ComputadoraPolicial( new ArrayList<Ladron>() ));
+		Jugador jugador = new Jugador(null,null, new ComputadoraPolicial( new ArrayList<Ladron>() ));
 		
 		Integer tiempoInicialJugador = jugador.obtenerTiempoRestante();
 		jugador.emitirOrdenDeArresto(null, null, null, null, null);
