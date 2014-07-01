@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import modeloTp.GeneradorDePartidas;
+import JuegoPorConsola.GeneradorDePartidas;
+
 import modeloTp.Jugador;
 
 public class PanelPistas{

@@ -36,7 +36,7 @@ public class PanelMenuPrincipal {
 		botonSiguiente.setBounds(130,255,100,30);
 		menuPrincipal.add(botonSiguiente);
 		
-		ImageIcon imagen = new ImageIcon("svn/trunk/src/visual/recursos/AlgoThieftMenuPrincipal_img.jpg");
+		ImageIcon imagen = new ImageIcon("src/visual/recursos/AlgoThieftMenuPrincipal_img.jpg");
 		JLabel fondo = new JLabel(imagen);
 		menuPrincipal.add(fondo);
 		

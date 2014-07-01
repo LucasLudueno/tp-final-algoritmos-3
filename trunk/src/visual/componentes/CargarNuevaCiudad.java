@@ -10,7 +10,8 @@ import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
-import modeloTp.GeneradorDePartidas;
+import JuegoPorConsola.GeneradorDePartidas;
+
 import modeloTp.Jugador;
 
 public class CargarNuevaCiudad implements ActionListener {

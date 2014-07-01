@@ -1,4 +1,4 @@
-package controladorTp;
+package JuegoPorConsola;
 
 //import org.junit.Test;
 

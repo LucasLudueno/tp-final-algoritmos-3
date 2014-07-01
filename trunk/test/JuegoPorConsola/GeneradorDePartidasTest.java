@@ -1,4 +1,4 @@
-package modeloTp;
+package JuegoPorConsola;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,9 +9,15 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import modeloTp.Ciudad;
+import modeloTp.Ladron;
+
 import org.junit.Test;
 import org.xml.sax.SAXException;
-import controladorTp.Serializador;
+
+import JuegoPorConsola.GeneradorDePartidas;
+import JuegoPorConsola.Serializador;
 
 public class GeneradorDePartidasTest {
 	
