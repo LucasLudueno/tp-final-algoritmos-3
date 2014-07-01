@@ -13,7 +13,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import modeloTp.ComputadoraPolicial;
-import modeloTp.GeneradorDePartidas;
+import JuegoPorConsola.GeneradorDePartidas;
 import modeloTp.Jugador;
 
 import org.xml.sax.SAXException;

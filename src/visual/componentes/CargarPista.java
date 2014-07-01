@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import modeloTp.GeneradorDePartidas;
+import JuegoPorConsola.GeneradorDePartidas;
+
 import modeloTp.Jugador;
 
 public class CargarPista implements ActionListener{

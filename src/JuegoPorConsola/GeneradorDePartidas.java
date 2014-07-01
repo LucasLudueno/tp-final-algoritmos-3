@@ -1,4 +1,4 @@
-package modeloTp;
+package JuegoPorConsola;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,19 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import modeloTp.Ciudad;
+import modeloTp.ILugar;
+import modeloTp.Ladron;
+import modeloTp.Lugar;
+import modeloTp.LugarConLadron;
+import modeloTp.LugarDondeAcuchillan;
+import modeloTp.LugarDondeDisparan;
+import modeloTp.ObjetoComun;
+import modeloTp.ObjetoMuyValioso;
+import modeloTp.ObjetoRobado;
+import modeloTp.ObjetoValioso;
+import modeloTp.Pista;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

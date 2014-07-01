@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
-import modeloTp.GeneradorDePartidas;
+import JuegoPorConsola.GeneradorDePartidas;
+
 import modeloTp.Jugador;
 
 public class PanelComputadora{

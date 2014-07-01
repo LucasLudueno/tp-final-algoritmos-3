@@ -15,8 +15,9 @@ import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
+import JuegoPorConsola.GeneradorDePartidas;
+
 import modeloTp.ComputadoraPolicial;
-import modeloTp.GeneradorDePartidas;
 import modeloTp.Jugador;
 
 public class PanelBienvenidaJugador {
