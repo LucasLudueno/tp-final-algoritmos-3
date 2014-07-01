@@ -14,7 +14,8 @@ import modeloTp.ComputadoraPolicial;
 import modeloTp.ExcepcionNoHayMasTiempo;
 import modeloTp.GeneradorDePartidas;
 import modeloTp.ILugar;
-import modeloTp.JugadorNovato;
+import modeloTp.Jugador;
+import modeloTp.Novato;
 import modeloTp.Pista;
 
 public class PantallaPrincipal {
@@ -22,13 +23,12 @@ public class PantallaPrincipal {
 	
 	public static void main (String[] args ) throws ParserConfigurationException, TransformerException, SAXException, IOException, ExcepcionNoHayMasTiempo{
 		
-		JugadorNovato jugador;
+		Jugador jugador;
 		
 		Pista juegoGanado = new Pista("Has atrapado al ladron, has ganado la partida");
 		Pista ordenDeArrestoIncorrecta = new Pista("La orden de arresto emitida fue incorrecta, el ladron ha escapado y has perdido la partida");
 		Pista ordenDeArrestoNoEmitida = new Pista("No se ha emitido ninguna orden de arresto, el ladron ha escapado y has perdido la partida");
 		
-		@SuppressWarnings("resource")
 		Scanner entradaEscaner = new Scanner (System.in);
 		
 		int opcionElegida = 0;
@@ -55,11 +55,11 @@ public class PantallaPrincipal {
 			ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
 			
 			if (primeraPartida){
-				jugador = new JugadorNovato(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+				jugador = new Jugador(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
 				primeraPartida = false;
 
 			} else {
-				jugador = new JugadorNovato(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
+				jugador = new Jugador(ciudadesValidas.get(0), computadora); // HAY QUE CAMBIAR CUANDO ASCIENDE DE RANGO
 
 				/*if (jugador.obtenerCantidadDeArrestos() > 3){
 					String nombreDelJugador = jugador.obtenerNombre();
@@ -156,7 +156,7 @@ public class PantallaPrincipal {
 		        
 		        else {
 		        	
-		        	Pista pistaObtenida = lugaresEnLaCiudad.get(opcionElegida-1).devolverPista(jugador);
+		        	Pista pistaObtenida = lugaresEnLaCiudad.get(opcionElegida-1).verPistaSegunRango((Novato) jugador.obtenerRango(), jugador);
 		        	if (pistaObtenida == juegoGanado){
 		        		jugador.agregarArresto();
 		        		partidaTerminada = true;

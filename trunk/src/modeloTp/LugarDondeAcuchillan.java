@@ -13,25 +13,28 @@ public class LugarDondeAcuchillan implements ILugar{
 		this.avisoCuchillazo = new Pista( "Has recibido un cuchillazo, el ladron no ha pasado por aqui" );
 	}
 	
-	public Pista devolverPista(JugadorNovato jugador) {
+	public Pista verPistaSegunRango(Novato rango, Jugador jugador) {
 		
 		jugador.recibirCuchillazo();
 		return this.avisoCuchillazo;
 	}
 		
-	public Pista  devolverPista(JugadorDetective jugador){	
+	public Pista verPistaSegunRango(Detective rango, Jugador jugador) {
+		
 		jugador.recibirCuchillazo();
 		return this.avisoCuchillazo;
 	}
+
+	public Pista verPistaSegunRango(Investigador rango, Jugador jugador) {
 	
-	public Pista  devolverPista(JugadorInvestigador jugador){	
-		jugador.recibirCuchillazo();
-		return this.avisoCuchillazo;
+	jugador.recibirCuchillazo();
+	return this.avisoCuchillazo;
 	}
-		
-	public Pista  devolverPista(JugadorSargento jugador){	
-		jugador.recibirCuchillazo();
-		return this.avisoCuchillazo;
+
+	public Pista verPistaSegunRango(Sargento rango, Jugador jugador) {
+	
+	jugador.recibirCuchillazo();
+	return this.avisoCuchillazo;
 	}
 
 	@Override

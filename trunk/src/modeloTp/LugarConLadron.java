@@ -19,7 +19,7 @@ public class LugarConLadron implements ILugar{
 		this.ordenDeArrestoIncorrecta = ordenDeArrestoIncorrecta;
 	}
 	
-	public Pista devolverPista(JugadorNovato jugador) {
+	public Pista verPistaSegunRango(Novato rango, Jugador jugador) {
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
@@ -34,44 +34,53 @@ public class LugarConLadron implements ILugar{
 		return this.ordenDeArrestoNoEmitida;
 	}
 		
-	public Pista devolverPista(JugadorDetective jugador){	
+	public Pista verPistaSegunRango(Detective rango, Jugador jugador) {
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado == ladronEscondido.obtenerNombre() ){
+			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
 				return this.juegoGanado;
+				
+			}else{
+				return this.ordenDeArrestoIncorrecta;
 			}
-			    return this.ordenDeArrestoIncorrecta;
+		}
+		
+		return this.ordenDeArrestoNoEmitida;
+	}
+
+	public Pista verPistaSegunRango(Investigador rango, Jugador jugador) {
+		
+		if ( jugador.seEmitioOrdenDeArresto() ){
+			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
+			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
+				return this.juegoGanado;
+				
+			}else{
+				return this.ordenDeArrestoIncorrecta;
+			}
 		}
 		
 		return this.ordenDeArrestoNoEmitida;
 	}
 	
-	public Pista devolverPista(JugadorInvestigador jugador){	
+	public Pista verPistaSegunRango(Sargento rango, Jugador jugador) {
 		
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado == ladronEscondido.obtenerNombre() ){
+			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
 				return this.juegoGanado;
+				
+			}else{
+				return this.ordenDeArrestoIncorrecta;
 			}
-			    return this.ordenDeArrestoIncorrecta;
 		}
 		
 		return this.ordenDeArrestoNoEmitida;
 	}
-		
-	public Pista devolverPista(JugadorSargento jugador){	
-		
-		if ( jugador.seEmitioOrdenDeArresto() ){
-			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado == ladronEscondido.obtenerNombre() ){
-				return this.juegoGanado;
-			}
-			    return this.ordenDeArrestoIncorrecta;
-		}
-		return this.ordenDeArrestoNoEmitida;
-	}
-
+	
+	
+	
 	@Override
 	public Node serializar(Document doc) {
 		// TODO Auto-generated method stub

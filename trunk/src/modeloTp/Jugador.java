@@ -19,8 +19,8 @@ public class Jugador {
 	private int tiempoEmitirOrdenDeArresto;
 	private String nombreDelLadronBuscado;
 	private ComputadoraPolicial computadoraPolicial;
-	protected int velocidad;
 	private int cantidadDeArrestos;
+	private Rango rangoActual;
 	
 	
 	public Jugador(Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
@@ -35,13 +35,25 @@ public class Jugador {
 		this.computadoraPolicial = computadoraPolicial;
 		this.cantidadDeArrestos = 0;
 		this.nombreDelLadronBuscado = null;
+		this.rangoActual = new Novato();
 	}
 
 	public void agregarArresto(){
 		
 		this.cantidadDeArrestos = this.cantidadDeArrestos + 1;
+		this.actualizarRango();
+		
 	}
 	
+	private void actualizarRango() {
+		
+		if(this.cantidadDeArrestos < 5) this.rangoActual = new Novato();
+		else if(this.cantidadDeArrestos < 10) this.rangoActual = new Detective();
+		else if(this.cantidadDeArrestos < 20) this.rangoActual = new Investigador();
+		else this.rangoActual = new Sargento();
+		
+	}
+
 	public int obtenerCantidadDeArrestos(){
 		
 		return this.cantidadDeArrestos;
@@ -72,7 +84,7 @@ public class Jugador {
 
 	private int calcularTiempoDeViaje(int distancia) {
 	
-		return (int)distancia/this.velocidad;
+		return (int)distancia/this.rangoActual.obtenerVelocidad();
 	}
 
 	public int obtenerTiempoRestante() {
@@ -131,6 +143,11 @@ public class Jugador {
 
 	public boolean seEmitioOrdenDeArresto() {
 		return (this.nombreDelLadronBuscado != null);
+	}
+
+	public Rango obtenerRango() {
+		
+		return this.rangoActual;
 	}
 
 	/*

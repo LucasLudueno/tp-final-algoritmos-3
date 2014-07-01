@@ -20,26 +20,28 @@ public class Lugar implements ILugar{
 
 	}
 	
-	public Pista devolverPista(JugadorNovato jugador) {
+	public Pista verPistaSegunRango(Novato rango, Jugador jugador) {
 		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaFacil;
 	}
+
 	
-	public Pista devolverPista(JugadorDetective jugador){
+	public Pista verPistaSegunRango(Detective rango, Jugador jugador) {
 		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaMedia;
 	}
 	
-	public Pista devolverPista(JugadorInvestigador jugador){
+	public Pista verPistaSegunRango(Investigador rango, Jugador jugador) {
 		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaMedia;
 	}
 	
-	public Pista devolverPista(JugadorSargento jugador){
+	public Pista verPistaSegunRango(Sargento rango, Jugador jugador) {
 		jugador.restarTiempoPorEntrarALugar();
 		return this.pistaDificil;
 	}
-
+	
+	
 	public String obtenerNombre() {
 		
 		return this.nombre;
@@ -74,5 +76,8 @@ public class Lugar implements ILugar{
 		this.pistaMedia = pistaAReemplazar;
 		this.pistaDificil = pistaAReemplazar;
 	}
+
+	
+	
 	
 }
