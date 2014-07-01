@@ -6,13 +6,16 @@ import org.w3c.dom.Node;
 
 public class Ladron {
 	
+	private int cantPaisesAEscaparPorRobarObjetoComun = 4;
+	private int cantPaisesAEscaparPorRobarObjetoValioso = 5;
+	private int cantPaisesAEscaparPorRobarObjetoMuyValioso = 7 ;
 	private String nombre;
 	private String sexo;
 	private String cabello;
 	private String hobby;
 	private String senia;
 	private String vehiculo;
-	
+		
 	public Ladron(String nombre, String sexo, String hobby, String cabello, String senia, String vehiculo){
 		this.nombre = nombre;
 		this.sexo = sexo;
@@ -51,7 +54,22 @@ public class Ladron {
 		
 		return this.vehiculo;
 	}
-
+	
+	public int decidirCantidadDeCiudadesAEscapar(ObjetoValioso objeto){
+		
+		return this.cantPaisesAEscaparPorRobarObjetoValioso;
+	}
+	
+	public int decidirCantidadDeCiudadesAEscapar(ObjetoMuyValioso objeto){
+		
+		return this.cantPaisesAEscaparPorRobarObjetoMuyValioso;
+	}
+	
+	public int decidirCantidadDeCiudadesAEscapar(ObjetoComun objeto){
+		
+		return this.cantPaisesAEscaparPorRobarObjetoComun;
+	}
+	
 	public Node serializar(Document doc) {
 		Element elementoLadron = doc.createElement("Ladron");
 		elementoLadron.setAttribute("nombre", this.nombre);
