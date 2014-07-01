@@ -25,6 +25,7 @@ public class GeneradorDePartidas {
 	private Pista mensajeJuegoPerdidoPorOrdenIncorrecta;
 	private Pista mensajeJuegoPerdidoPorNoEmitirOrdenDeArresto;
 	private ArrayList<Pista> pistasSobreLadron;
+	private ObjetoRobado objetoRobado;
 	
 	
 	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
@@ -34,7 +35,7 @@ public class GeneradorDePartidas {
 		this.mensajeJuegoPerdidoPorOrdenIncorrecta = ordenDeArrestoIncorrecta;
 		this.ladronBuscado = this.obtenerUnLadronDeLaLista();
 		this.pistasSobreLadron = this.generarPistasDelLadron();
-		
+				
 		ArrayList<Ciudad> listaDeCiudades = new ArrayList<Ciudad>();
 		Random generadorRandom = new Random();
 		int posicionEnLista;
@@ -49,10 +50,16 @@ public class GeneradorDePartidas {
 			listaDeCiudades.remove(posicionEnLista);
 		}
 		this.generarRelacionEntreCiudades();
-		this.generarRecorridoLadron();
+		
+		int cantidadDeCiudadesARecorrer = this.calcularCantidadCiudadesARecorrerPorLadron();
+		this.generarRecorridoLadron(cantidadDeCiudadesARecorrer);
 		this.asignarLugaresConPistasUtilesALaProximaCiudadDelRecorridoDelLadron();
 	}
 	
+	
+	public ObjetoRobado obtenerObjetoRobado(){
+		return this.objetoRobado;
+	}
 	public ArrayList<Ciudad> obtenerCiudades(){
 		return ciudades;
 	}
@@ -94,16 +101,16 @@ public class GeneradorDePartidas {
 	}
 
 		
-	private void generarRecorridoLadron(){
+	private void generarRecorridoLadron(int cantidadDeCiudadesARecorrer){
 		Random generadorRandom = new Random();
 		
 		//Tomo aleatoriamente una ciudad de la lista
 		recorridoLadron.add(ciudades.get(generadorRandom.nextInt(ciudades.size())));
 		
 		//Tomo un camino aleatorio para formar el recorrido del ladron
-		for (int i=0; i < 5; i++){
+		for (int i=0; i < cantidadDeCiudadesARecorrer; i++){
 			recorridoLadron.add(recorridoLadron.get(i).obtenerCiudadesAViajar().get(0));
-		}
+		} 
 	}
 		
 	public void pasarALaSiguienteCiudadDelRecorrido() throws ParserConfigurationException, TransformerException, SAXException, IOException{
@@ -326,6 +333,99 @@ public class GeneradorDePartidas {
 		
 		return ladrones;
     }
+	
+	private int calcularCantidadCiudadesARecorrerPorLadron() throws ParserConfigurationException, SAXException, IOException {
+		
+		ArrayList<ObjetoComun> objetosComunes = this.generarListaDeObjetosComunes();
+		ArrayList<ObjetoValioso> objetosValiosos = this.generarListaDeObjetosValiosos();
+		ArrayList<ObjetoMuyValioso> objetosMuyValiosos = this.generarListaDeObjetosMuyValiosos();
+		
+		ArrayList<ObjetoRobado> objetosVarios = new ArrayList<ObjetoRobado>();
+		objetosVarios.addAll(objetosComunes);
+		objetosVarios.addAll(objetosValiosos);
+		objetosVarios.addAll(objetosMuyValiosos);
+		
+		Random generadorRandom = new Random();
+		int posicion = generadorRandom.nextInt( objetosVarios.size() );
+		if (objetosComunes.contains(objetosVarios.get(posicion) )){
+			return this.ladronBuscado.decidirCantidadDeCiudadesAEscapar((ObjetoComun) objetosVarios.get(posicion));
+
+		} else if (objetosValiosos.contains(objetosVarios.get(posicion) )){
+			return this.ladronBuscado.decidirCantidadDeCiudadesAEscapar((ObjetoValioso) objetosVarios.get(posicion));
+
+		} else {
+			return this.ladronBuscado.decidirCantidadDeCiudadesAEscapar((ObjetoMuyValioso) objetosVarios.get(posicion));
+		}
+		
+	}
+	
+	private ArrayList<ObjetoValioso> generarListaDeObjetosValiosos() throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File("Objetos valiosos.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoObjeto = (Element)doc.getElementsByTagName("Objetos").item(0);						
+		
+		ArrayList<ObjetoValioso> objetos = new ArrayList<ObjetoValioso>();
+		
+		int i = 0;
+		while (elementoObjeto.getChildNodes().item(i) != null){
+			ObjetoValioso objeto = (ObjetoValioso) ObjetoValioso.cargarEstado((Element) elementoObjeto.getChildNodes().item(i));
+			objetos.add( objeto );
+			i = i + 1;
+		}
+		return objetos;
+	}
+	
+	private ArrayList<ObjetoMuyValioso> generarListaDeObjetosMuyValiosos() throws ParserConfigurationException, SAXException, IOException{
+			
+		File archivo = new File("Objetos muy valiosos.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoObjeto = (Element)doc.getElementsByTagName("Objetos").item(0);						
+		
+		ArrayList<ObjetoMuyValioso> objetos = new ArrayList<ObjetoMuyValioso>();
+		
+		int i = 0;
+		while (elementoObjeto.getChildNodes().item(i) != null){
+			ObjetoMuyValioso objeto = (ObjetoMuyValioso) ObjetoMuyValioso.cargarEstado((Element) elementoObjeto.getChildNodes().item(i));
+			objetos.add( objeto );
+			i = i + 1;
+		}
+		return objetos;
+	}
+	
+	
+	private ArrayList<ObjetoComun> generarListaDeObjetosComunes() throws ParserConfigurationException, SAXException, IOException{
+		
+		File archivo = new File("Objetos comunes.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Element elementoObjeto = (Element)doc.getElementsByTagName("Objetos").item(0);						
+		
+		ArrayList<ObjetoComun> objetos = new ArrayList<ObjetoComun>();
+		
+		int i = 0;
+		while (elementoObjeto.getChildNodes().item(i) != null){
+			ObjetoComun objeto = (ObjetoComun) ObjetoComun.cargarEstado((Element) elementoObjeto.getChildNodes().item(i));
+			objetos.add( objeto );
+			i = i + 1;
+		}
+		return objetos;
+	}
+	
 	
 	private Ladron obtenerUnLadronDeLaLista() throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		Random generador = new Random();
