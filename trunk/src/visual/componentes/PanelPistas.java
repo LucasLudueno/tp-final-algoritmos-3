@@ -26,7 +26,7 @@ public class PanelPistas{
 		lugares.setFont(new Font("Arial",Font.BOLD,16));
 		panelPistas.add(lugares);
 		
-		JTextArea contenidoPista = new JTextArea((unJugador.obtenerRango().pedirPista(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar),unJugador)).obtenerContenido());
+		JTextArea contenidoPista = new JTextArea(unJugador.visitar(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar) ).obtenerContenido());
 		contenidoPista.setOpaque(false);
 		contenidoPista.setFocusable(false);
 		contenidoPista.setFont(new Font("Arial",Font.BOLD,14));

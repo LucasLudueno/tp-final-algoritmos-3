@@ -5,13 +5,15 @@ import org.w3c.dom.Node;
 
 public interface ILugar {
 	
-	public Pista verPistaSegunRango(Novato rango, Jugador jugador);
+	public void registarSiEstaElLadron(Jugador jugador);
 	
-	public Pista verPistaSegunRango(Detective rango, Jugador jugador);
+	public Pista verPistaSegunRango(Novato rango);
 	
-	public Pista verPistaSegunRango(Investigador rango, Jugador jugador);
+	public Pista verPistaSegunRango(Detective rango);
 	
-	public Pista verPistaSegunRango(Sargento rango, Jugador jugador);
+	public Pista verPistaSegunRango(Investigador rango);
+	
+	public Pista verPistaSegunRango(Sargento rango);
 	
 	public Node serializar(Document doc);
 	

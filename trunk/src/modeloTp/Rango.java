@@ -5,7 +5,7 @@ public abstract class Rango {
 	protected String nombre;
 	protected int velocidad;
 
-	public abstract Pista pedirPista(ILugar iLugar, Jugador jugador);
+	public abstract Pista pedirPista(ILugar iLugar);
 
 	public int obtenerVelocidad() {
 		

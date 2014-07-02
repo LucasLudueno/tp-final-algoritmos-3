@@ -40,6 +40,15 @@ public class Jugador {
 		this.rangoActual = new Novato();
 	}
 
+	public Pista visitar(ILugar lugar){
+		
+		lugar.registarSiEstaElLadron(this);
+		return (this.rangoActual).pedirPista(lugar);
+	}
+	
+	
+	
+	
 	public String obtenerNombre(){
 		return this.nombre;
 	}

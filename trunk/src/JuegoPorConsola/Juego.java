@@ -14,7 +14,6 @@ import modeloTp.ComputadoraPolicial;
 
 import modeloTp.ILugar;
 import modeloTp.Jugador;
-import modeloTp.Novato;
 import modeloTp.Pista;
 
 public class Juego {
@@ -216,11 +215,8 @@ public class Juego {
 				}
 
 				else {
-
-					Pista pistaObtenida = lugaresEnLaCiudad.get(
-							opcionElegida - 1).verPistaSegunRango(
-							(Novato) jugador.obtenerRango(), jugador);
-					if (jugador.obtenerTiempoRestante() != 0) {
+					Pista pistaObtenida = jugador.visitar(lugaresEnLaCiudad.get(opcionElegida - 1));					if (jugador.obtenerTiempoRestante() != 0) {
+						
 						if (pistaObtenida == juegoGanado) {
 							jugador.agregarArresto();
 							partidaTerminada = true;

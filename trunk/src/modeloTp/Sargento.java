@@ -8,8 +8,8 @@ public class Sargento extends Rango{
 		this.velocidad = 1500;
 	}
 
-	public Pista pedirPista(ILugar lugar, Jugador jugador){
+	public Pista pedirPista(ILugar lugar){
 		
-		return lugar.verPistaSegunRango(this, jugador);
+		return lugar.verPistaSegunRango(this);
 	}	
 }

@@ -8,7 +8,7 @@ public class Novato extends Rango{
 		this.velocidad = 900;
 	}
 
-	public Pista pedirPista(ILugar lugar, Jugador jugador){
-		return lugar.verPistaSegunRango(this, jugador);
+	public Pista pedirPista(ILugar lugar){
+		return lugar.verPistaSegunRango(this);
 	}	
 }
