@@ -46,9 +46,6 @@ public class Jugador {
 		return (this.rangoActual).pedirPista(lugar);
 	}
 	
-	
-	
-	
 	public String obtenerNombre(){
 		return this.nombre;
 	}

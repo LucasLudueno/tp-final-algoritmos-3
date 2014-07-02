@@ -30,9 +30,9 @@ public class LugarConLadron implements ILugar{
 			}else{
 				this.pistaSobreSituacion = this.ordenDeArrestoIncorrecta;
 			}
+		} else {
+			this.pistaSobreSituacion = this.ordenDeArrestoNoEmitida;
 		}
-		
-		this.pistaSobreSituacion = this.ordenDeArrestoNoEmitida;
 	}
 	
 	public Pista verPistaSegunRango(Novato rango) {
