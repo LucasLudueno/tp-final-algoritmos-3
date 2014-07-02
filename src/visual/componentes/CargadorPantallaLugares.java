@@ -29,8 +29,6 @@ public class CargadorPantallaLugares implements ActionListener{
 		JMenu archivo = (JMenu) ventana.getJMenuBar().getComponent(0);
 		archivo.getItem(0).setEnabled(true);
 		archivo.getItem(0).addActionListener(new CargarSiguienteCaso(ventana,jugador.obtenerNombre()));
-		archivo.getItem(1).setEnabled(true);
-		archivo.getItem(2).setEnabled(true);
 		PanelLugares panel = new PanelLugares(ventana,generador,jugador,calendario);
 		
 		ventana.getContentPane().removeAll();

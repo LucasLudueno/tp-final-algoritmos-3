@@ -16,19 +16,22 @@ import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
 
 import JuegoPorConsola.GeneradorDePartidas;
-
 import modeloTp.ComputadoraPolicial;
 import modeloTp.Jugador;
+import modeloTp.Pista;
 
 public class PanelBienvenidaJugador {
 	
 	private JPanel bienvenidaJugador = new JPanel();
 	
 	public PanelBienvenidaJugador(JFrame unaVentana, JTextField unCampo) throws ParserConfigurationException, TransformerException, SAXException, IOException{
-		GeneradorDePartidas juego = new GeneradorDePartidas(null,null,null);
+		GeneradorDePartidas juego = new GeneradorDePartidas(
+				new Pista("Has atrapado al ladron, has ganado la partida"),
+				new Pista("La orden de arresto emitida fue incorrecta, el ladron ha escapado y has perdido la partida"),
+				new Pista("No se ha emitido ninguna orden de arresto, el ladron ha escapado y has perdido la partida"));
 		ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
 		Jugador jugador = new Jugador(unCampo.getText(), juego.obtenerRecorridoLadron().get(0), computadora);
-		Calendario calendario = new Calendario();
+		Calendario calendario = new Calendario(jugador.obtenerTiempoRestante());
 		
 		bienvenidaJugador.setLayout(null);
 		JLabel bienvenido = new JLabel("Bienvenido, " + unCampo.getText());
