@@ -170,8 +170,7 @@ public class TpTest{
 		ciudadActual = jugador.obtenerCiudadActual();
 		lugaresCiudadActual = ciudadActual.obtenerLugares();
 		
-		//Assert.assertTrue(  jugador.visitar(lugaresCiudadActual.get(0) ).obtenerContenido().equals(ordenDeArrestoIncorrecta.obtenerContenido()) );
-		//System.out.println(jugador.visitar(lugaresCiudadActual.get(0)).obtenerContenido()	);
+		Assert.assertTrue(  jugador.visitar(lugaresCiudadActual.get(0) ).obtenerContenido().equals(ordenDeArrestoIncorrecta.obtenerContenido()) );
 	}
 	
 	@Test
