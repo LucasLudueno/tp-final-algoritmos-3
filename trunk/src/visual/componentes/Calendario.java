@@ -7,8 +7,9 @@ public class Calendario {
 	private ArrayList<String> diasDeSemana = new ArrayList<String>();
 	private int hora;
 	private int diaActual;
+	private int tiempoDisponibleEnHoras;
 	
-	public Calendario(){
+	public Calendario(int tiempo){
 		diasDeSemana.add("Lunes");
 		diasDeSemana.add("Martes");
 		diasDeSemana.add("Miercoles");
@@ -19,6 +20,7 @@ public class Calendario {
 		
 		hora = 7;
 		diaActual = 0;
+		this.tiempoDisponibleEnHoras = tiempo;
 	}
 	
 	public int obtenerHora(){
@@ -29,16 +31,20 @@ public class Calendario {
 		return diasDeSemana.get(diaActual);
 	}
 	
-	@SuppressWarnings("static-access")
-	public void sumarTiempo(int unValor) throws InterruptedException{
-		while(unValor > 0){
-			Thread.currentThread().sleep(20);
+	public void sumarTiempo(int unValor){
+		int tiempo = (this.tiempoDisponibleEnHoras - unValor);
+		
+		while(tiempo > 0){
 			hora++;
-			if (hora > 24){
+			if (hora > 23){
 				hora = 0;
 				diaActual++;
 			}
-			unValor--;			
+			tiempo--;		
+		}
+		this.tiempoDisponibleEnHoras = unValor;
+		if (this.tiempoDisponibleEnHoras <= 0){
+			//System.exit(0);
 		}
 	}
 	

@@ -24,7 +24,7 @@ public class PanelLugares implements ActionListener{
 		panelLugares.setLayout(null);
 		
 		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
-		fecha.setBounds(510,33,150,40);
+		fecha.setBounds(480,33,200,40);
 		fecha.setFont(new Font("Arial",Font.BOLD,21));
 		fecha.setForeground(Color.WHITE);
 		panelLugares.add(fecha);

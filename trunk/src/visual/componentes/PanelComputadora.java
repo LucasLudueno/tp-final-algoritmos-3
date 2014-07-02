@@ -25,7 +25,7 @@ public class PanelComputadora{
 		panelComputadora.setLayout(null);
 		
 		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
-		fecha.setBounds(510,33,150,40);
+		fecha.setBounds(480,33,200,40);
 		fecha.setFont(new Font("Arial",Font.BOLD,21));
 		fecha.setForeground(Color.WHITE);
 		panelComputadora.add(fecha);
@@ -121,7 +121,7 @@ public class PanelComputadora{
 		
 		JButton botonBuscar = new JButton("Buscar");
 		botonBuscar.setBounds(350,305,300,28);
-		botonBuscar.addActionListener(new BuscadorSospechosos(unJugador,pantalla,opcionesSexo,opcionesHobby,opcionesPelo,opcionesSenias,opcionesCoche));
+		botonBuscar.addActionListener(new BuscadorSospechosos(unJugador,pantalla,fecha,calendario,opcionesSexo,opcionesHobby,opcionesPelo,opcionesSenias,opcionesCoche));
 		panelComputadora.add(botonBuscar);
 		
 		ImageIcon imagenBotonSalida = new ImageIcon("src/visual/recursos/AlgoThieftBotonSalida_img.jpg");

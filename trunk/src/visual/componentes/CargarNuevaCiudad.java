@@ -11,7 +11,6 @@ import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
 
 import JuegoPorConsola.GeneradorDePartidas;
-
 import modeloTp.Jugador;
 
 public class CargarNuevaCiudad implements ActionListener {
@@ -33,10 +32,7 @@ public class CargarNuevaCiudad implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		jugador.viajar(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(valor));
-		if (jugador.obtenerTiempoRestante() == 0){
-			// TODO Auto-generated catch block
-			return;
-		}
+		calendario.sumarTiempo(jugador.obtenerTiempoRestante());
 		
 		if(generador.obtenerPasoActual() < (generador.obtenerRecorridoLadron().size()-1)){
     		if(jugador.obtenerCiudadActual() == generador.obtenerRecorridoLadron().get(generador.obtenerPasoActual()+1)){
