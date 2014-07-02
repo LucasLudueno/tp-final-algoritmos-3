@@ -31,12 +31,4 @@ public class ObjetoRobado {
 		return elementoObjetoRobado;
 	}
 
-	/*
-	public ObjetoRobado cargarEstado(Element elementoObjetoRobado) {
-		
-		String nombre = elementoObjetoRobado.getAttribute("nombre");
-		String tipoDeObjeto = elementoObjetoRobado.getAttribute("tipoDeObjeto");
-		
-		return new ObjetoRobado(nombre, tipoDeObjeto);
-	}*/
 }

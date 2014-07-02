@@ -81,7 +81,6 @@ public class Ciudad {
 		return elementoCiudad;
 	}
 
-	// IMPLEMENTAR LUEGO
 	
 	public static Ciudad cargarEstado(Element elementoCiudad) {
 		String nombre = elementoCiudad.getAttribute("nombre");
@@ -103,14 +102,6 @@ public class Ciudad {
 			unaCiudad.agregarCiudadAViajar( Ciudad.cargarEstado((Element) elementoCiudadesAViajar.getChildNodes().item(j) ) );
 			
 		}
-		
-		//Element elementoLugares = (Element)elementoCiudad.getElementsByTagName("Lugares").item(0);
-		
-		//Lugar lugarUno = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(0));
-		//Lugar lugarDos = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(1));
-		//Lugar lugarTres = Lugar.cargarEstado((Element) elementoLugares.getChildNodes().item(2));
-		
-		
 		
 		return unaCiudad;
 	}

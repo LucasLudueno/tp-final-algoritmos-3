@@ -2,12 +2,6 @@ package modeloTp;
 
 import java.util.ArrayList;
 
-/*
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-*/
-
 public class Jugador {
 
 	private String nombre;
@@ -22,6 +16,7 @@ public class Jugador {
 	private ComputadoraPolicial computadoraPolicial;
 	private int cantidadDeArrestos;
 	private Rango rangoActual;
+	private Pista pistaVacia;
 	
 	
 	public Jugador(String nombreDelJugador, Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
@@ -38,12 +33,16 @@ public class Jugador {
 		this.cantidadDeArrestos = 0;
 		this.nombreDelLadronBuscado = null;
 		this.rangoActual = new Novato();
+		this.pistaVacia = new Pista("Vacia");
 	}
 
 	public Pista visitar(ILugar lugar){
 		
 		lugar.registarSiEstaElLadron(this);
-		return (this.rangoActual).pedirPista(lugar);
+		if (this.tiempoRestante != 0){
+			return (this.rangoActual).pedirPista(lugar);
+		}
+		return this.pistaVacia;
 	}
 	
 	public String obtenerNombre(){
@@ -163,35 +162,4 @@ public class Jugador {
 		return this.rangoActual;
 	}
 
-	/*
-	public Node serializar(Document doc) {
-		Element elementoJugador = doc.createElement("Jugador");
-		elementoJugador.setAttribute("velocidad", String.valueOf(this.velocidad));
-		
-		Element elementoCiudadActual = doc.createElement("CiudadActual");
-		elementoJugador.appendChild(elementoCiudadActual);
-		elementoCiudadActual.appendChild(this.ciudadActual.serializar(doc));
-		
-		Element elementoComputadora = doc.createElement("ComputadoraPolicial");
-		elementoJugador.appendChild(elementoComputadora);
-		elementoComputadora.appendChild(this.computadoraPolicial.serializar(doc));
-		
-		return elementoJugador;
-	}
-
-	public static Jugador cargarEstado(Document doc) {
-		Element elementoCiudadActual = (Element) doc.getElementsByTagName("CiudadActual").item(0);
-		Ciudad ciudadActual = Ciudad.cargarEstado((Element) elementoCiudadActual.getChildNodes().item(0));
-		
-		Element elementoComputadora = (Element) doc.getElementsByTagName("ComputadoraPolicial").item(0);
-		ComputadoraPolicial unaComputadora = ComputadoraPolicial.cargarEstado((Element) elementoComputadora.getChildNodes().item(0));
-		
-		Jugador unJugador = new Jugador(ciudadActual,unaComputadora);
-		
-		Element elementoJugador = (Element) doc.getElementsByTagName("Jugador").item(0);
-		unJugador.velocidad = Integer.valueOf(elementoJugador.getAttribute("velocidad"));
-		
-		return unJugador;
-	}
-	*/
 } 

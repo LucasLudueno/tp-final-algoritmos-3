@@ -138,7 +138,7 @@ public class Juego {
 
 				} else if (opcionElegida == 4) {
 					
-					System.out.println("Ingrese las caracteristicas del ladron, si alguna no la sabe ingrese 'vacio' ");
+					System.out.println("Ingrese las caracteristicas del ladron, si alguna no la sabe ingrese la palabra: vacio ");
 					System.out.println("");
 					System.out.println("Ingrese sexo del sospechoso ");
 					String sexo = entradaEscaner.nextLine();

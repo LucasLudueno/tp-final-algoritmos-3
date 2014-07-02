@@ -80,8 +80,5 @@ public class Lugar implements ILugar{
 		this.pistaMedia = pistaAReemplazar;
 		this.pistaDificil = pistaAReemplazar;
 	}
-
-	
-	
 	
 }
