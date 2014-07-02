@@ -127,11 +127,26 @@
 		<javac srcdir="src" destdir="${build}/classes" debug="no"></javac>
 	</target>
 
+	<target name="integracion-continua" depends="coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
+
 	<target name="empaquetar" depends="compilar.paquete">
-		<jar destfile="${build}/dist/titiritero.jar" basedir="${build}/classes"/>
+		<copydir src="src/visual/recursos/" dest="${build}/classes/visual/recursos" includes="**/*.jpg " />
+		<jar destfile="${build}/dist/AlgoThieft.jar" basedir="${build}/classes"/>
 	</target>
 
-	<target name="integracion-continua" depends="coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
+	<target name="ejecutar" depends="empaquetar">
+		<java classname="JuegoPorConsola.Juego" fork="false">
+			<classpath refid="classpath"/>
+			<classpath location="${build}/dist/AlgoThieft.jar" />
+		</java>
+	</target>
+
+	<target name="ejecutarGui" depends="empaquetar">
+		<java classname="visual.IniciarGUI" fork="true">
+			<classpath refid="classpath"/>
+			<classpath location="${build}/dist/AlgoThieft.jar" />
+		</java>
+	</target>
 
 
 </project>
