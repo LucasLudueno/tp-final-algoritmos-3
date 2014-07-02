@@ -14,17 +14,19 @@ public class CargarSiguienteCaso implements ActionListener{
 	
 	private JFrame ventana;
 	private String nombre;
+	private int arrestos;
 	
-	public CargarSiguienteCaso(JFrame unaVentana, String unNombre){
+	public CargarSiguienteCaso(JFrame unaVentana, String unNombre, int arrestos){
 		this.ventana = unaVentana;
 		this.nombre = unNombre;
+		this.arrestos = arrestos;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		PanelSiguienteCaso panel = null;
 		try {
-			panel = new PanelSiguienteCaso(ventana,nombre);
+			panel = new PanelSiguienteCaso(ventana,nombre,arrestos);
 		} catch (ParserConfigurationException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

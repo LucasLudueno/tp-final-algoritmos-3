@@ -14,14 +14,13 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import JuegoPorConsola.GeneradorDePartidas;
-
 import modeloTp.Jugador;
 
 public class PanelComputadora{
 	
 	private JPanel panelComputadora = new JPanel();
 	
-	public PanelComputadora(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
+	public PanelComputadora(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario, int arrestos){
 		panelComputadora.setLayout(null);
 		
 		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
@@ -127,13 +126,13 @@ public class PanelComputadora{
 		ImageIcon imagenBotonSalida = new ImageIcon("src/visual/recursos/AlgoThieftBotonSalida_img.jpg");
 		JButton botonSalida = new JButton(imagenBotonSalida);
 		botonSalida.setBounds(39,380,179,49);
-		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario));
+		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario,arrestos));
 		panelComputadora.add(botonSalida);
 		
 		ImageIcon imagenBotonInvestigar = new ImageIcon("src/visual/recursos/AlgoThieftBotonInvestigar_img.jpg");
 		JButton botonInvestigar = new JButton(imagenBotonInvestigar);
 		botonInvestigar.setBounds(258,380,179,49);
-		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario));
+		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario,arrestos));
 		panelComputadora.add(botonInvestigar);
 		
 		ImageIcon imagenBotonComputadora = new ImageIcon("src/visual/recursos/AlgoThieftBotonComputadora_img.jpg");

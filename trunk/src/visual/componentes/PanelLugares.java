@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import JuegoPorConsola.GeneradorDePartidas;
-
 import modeloTp.Jugador;
 
 public class PanelLugares implements ActionListener{
@@ -20,7 +19,7 @@ public class PanelLugares implements ActionListener{
 	private JPanel panelLugares = new JPanel();
 	private JFrame ventana;
 	
-	public PanelLugares(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
+	public PanelLugares(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario, int arrestos){
 		panelLugares.setLayout(null);
 		
 		JLabel fecha = new JLabel(calendario.obtenerDiaActual()+", "+calendario.obtenerHora()+":00 hs");
@@ -43,25 +42,25 @@ public class PanelLugares implements ActionListener{
 		ImageIcon imagenBotonLugarUno = new ImageIcon("src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(0).obtenerNombre()+"_img.jpg");
 		JButton botonLugarUno = new JButton(imagenBotonLugarUno);
 		botonLugarUno.setBounds(70,150,153,152);
-		botonLugarUno.addActionListener(new CargarPista(0,unaVentana,generador,unJugador,calendario));
+		botonLugarUno.addActionListener(new CargarPista(0,unaVentana,generador,unJugador,calendario,arrestos));
 		panelLugares.add(botonLugarUno);
 		
 		ImageIcon imagenBotonLugarDos = new ImageIcon("src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(1).obtenerNombre()+"_img.jpg");
 		JButton botonLugarDos = new JButton(imagenBotonLugarDos);
 		botonLugarDos.setBounds(270,150,153,152);
-		botonLugarDos.addActionListener(new CargarPista(1,unaVentana,generador,unJugador,calendario));
+		botonLugarDos.addActionListener(new CargarPista(1,unaVentana,generador,unJugador,calendario,arrestos));
 		panelLugares.add(botonLugarDos);
 		
 		ImageIcon imagenBotonLugarTres = new ImageIcon("src/visual/recursos/AlgoThieftBotonLugar"+unJugador.obtenerCiudadActual().obtenerLugares().get(2).obtenerNombre()+"_img.jpg");
 		JButton botonLugarTres = new JButton(imagenBotonLugarTres);
 		botonLugarTres.setBounds(470,150,153,152);
-		botonLugarTres.addActionListener(new CargarPista(2,unaVentana,generador,unJugador,calendario));
+		botonLugarTres.addActionListener(new CargarPista(2,unaVentana,generador,unJugador,calendario,arrestos));
 		panelLugares.add(botonLugarTres);
 		
 		ImageIcon imagenBotonSalida = new ImageIcon("src/visual/recursos/AlgoThieftBotonSalida_img.jpg");
 		JButton botonSalida = new JButton(imagenBotonSalida);
 		botonSalida.setBounds(39,380,179,49);
-		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario));
+		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario,arrestos));
 		panelLugares.add(botonSalida);
 		
 		ImageIcon imagenBotonInvestigar = new ImageIcon("src/visual/recursos/AlgoThieftBotonInvestigar_img.jpg");
@@ -73,7 +72,7 @@ public class PanelLugares implements ActionListener{
 		ImageIcon imagenBotonComputadora = new ImageIcon("src/visual/recursos/AlgoThieftBotonComputadora_img.jpg");
 		JButton botonComputadora = new JButton(imagenBotonComputadora);
 		botonComputadora.setBounds(477,380,179,49);
-		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario));
+		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario,arrestos));
 		panelLugares.add(botonComputadora);
 		
 		ImageIcon imagenFondo = new ImageIcon("src/visual/recursos/AlgoThieftPantallaLugares_img.jpg");
