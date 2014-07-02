@@ -34,7 +34,9 @@ public class Juego {
 		boolean primeraPartida = true;
 		int cantidadArrestosJugador = 0;
 		
+		@SuppressWarnings("unused")
 		Random generador = new Random();
+		@SuppressWarnings("unused")
 		int valor;
 
 		// MUESTRO POR PANTALLA EL MENU PRINCIPAL DEL JUEGO
@@ -118,6 +120,7 @@ public class Juego {
 
 				if (opcionElegida == 5) {
 					
+					/*
 					//Aca voy a mezclar la lista de ciudades a viajar para evitar que la ciudad correcta sea siempre la misma opcion
 					ArrayList<Ciudad> listaCiudades = new ArrayList<Ciudad>();
 					for (int i=0; i < 3; i++){
@@ -129,7 +132,7 @@ public class Juego {
 						valor = generador.nextInt(listaCiudades.size());
 						jugador.obtenerCiudadActual().obtenerCiudadesAViajar().add(listaCiudades.get(valor));
 						listaCiudades.remove(valor);
-					}
+					} */
 					
 					System.out.println("");
 					System.out.println("Ciudades a viajar:");
