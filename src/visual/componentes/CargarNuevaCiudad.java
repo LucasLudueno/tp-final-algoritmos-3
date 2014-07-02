@@ -19,13 +19,15 @@ public class CargarNuevaCiudad implements ActionListener {
 	private GeneradorDePartidas generador;
 	private Jugador jugador;
 	private Calendario calendario;
+	private int arrestos;
 	private int valor;
 	
-	public CargarNuevaCiudad(int valor, JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
+	public CargarNuevaCiudad(int valor, JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario, int arrestos){
 		this.ventana = unaVentana;
 		this.generador = generador;
 		this.jugador = unJugador;
 		this.calendario = calendario;
+		this.arrestos = arrestos;
 		this.valor = valor;
 	}
 
@@ -54,7 +56,7 @@ public class CargarNuevaCiudad implements ActionListener {
     		}
     	}
 		
-		PanelLugares panel = new PanelLugares(ventana,generador,jugador,calendario);
+		PanelLugares panel = new PanelLugares(ventana,generador,jugador,calendario,arrestos);
 		
 		ventana.getContentPane().removeAll();
 		ventana.getContentPane().add(panel.obtenerPanel());

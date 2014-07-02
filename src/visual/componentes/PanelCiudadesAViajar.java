@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import JuegoPorConsola.GeneradorDePartidas;
-
 import modeloTp.Jugador;
 
 public class PanelCiudadesAViajar implements ActionListener{
@@ -22,7 +21,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 	private JPanel panelCiudades = new JPanel();
 	private JFrame ventana;
 	
-	public PanelCiudadesAViajar(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
+	public PanelCiudadesAViajar(JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario, int arrestos){
 		Random generadorNumeros = new Random();
 		int valor;
 		ArrayList<Integer> listaValores = new ArrayList<Integer>();
@@ -59,7 +58,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		botonCiudadUno.setFont(new Font("Arial",Font.BOLD,16));
 		botonCiudadUno.setForeground(Color.WHITE);
 		botonCiudadUno.setBounds(60,185,171,74);
-		botonCiudadUno.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario));
+		botonCiudadUno.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario, arrestos));
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadUno);
 		
@@ -71,7 +70,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		botonCiudadDos.setFont(new Font("Arial",Font.BOLD,16));
 		botonCiudadDos.setForeground(Color.WHITE);
 		botonCiudadDos.setBounds(260,185,171,74);
-		botonCiudadDos.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario));
+		botonCiudadDos.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario, arrestos));
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadDos);
 		
@@ -83,7 +82,7 @@ public class PanelCiudadesAViajar implements ActionListener{
 		botonCiudadTres.setFont(new Font("Arial",Font.BOLD,16));
 		botonCiudadTres.setForeground(Color.WHITE);
 		botonCiudadTres.setBounds(460,185,171,74);
-		botonCiudadTres.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario));
+		botonCiudadTres.addActionListener(new CargarNuevaCiudad(listaValores.get(valor),unaVentana,generador,unJugador,calendario, arrestos));
 		listaValores.remove(valor);
 		panelCiudades.add(botonCiudadTres);
 		
@@ -96,13 +95,13 @@ public class PanelCiudadesAViajar implements ActionListener{
 		ImageIcon imagenBotonInvestigar = new ImageIcon("src/visual/recursos/AlgoThieftBotonInvestigar_img.jpg");
 		JButton botonInvestigar = new JButton(imagenBotonInvestigar);
 		botonInvestigar.setBounds(258,380,179,49);
-		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario));
+		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario, arrestos));
 		panelCiudades.add(botonInvestigar);
 		
 		ImageIcon imagenBotonComputadora = new ImageIcon("src/visual/recursos/AlgoThieftBotonComputadora_img.jpg");
 		JButton botonComputadora = new JButton(imagenBotonComputadora);
 		botonComputadora.setBounds(477,380,179,49);
-		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario));
+		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario, arrestos));
 		panelCiudades.add(botonComputadora);
 		
 		ImageIcon imagenFondo = new ImageIcon("src/visual/recursos/AlgoThieftPantallaViajar_img.jpg");

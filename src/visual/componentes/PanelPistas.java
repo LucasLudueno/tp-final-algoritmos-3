@@ -17,7 +17,7 @@ public class PanelPistas{
 	
 	private JPanel panelPistas = new JPanel();
 	
-	public PanelPistas(int numeroDeLugar, JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario){
+	public PanelPistas(int numeroDeLugar, JFrame unaVentana, GeneradorDePartidas generador, Jugador unJugador, Calendario calendario, int arrestos){
 		panelPistas.setLayout(null);
 		
 		JLabel lugares = new JLabel(unJugador.obtenerCiudadActual().obtenerLugares().get(numeroDeLugar).obtenerNombre());
@@ -51,19 +51,19 @@ public class PanelPistas{
 		ImageIcon imagenBotonSalida = new ImageIcon("src/visual/recursos/AlgoThieftBotonSalida_img.jpg");
 		JButton botonSalida = new JButton(imagenBotonSalida);
 		botonSalida.setBounds(39,380,179,49);
-		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario));
+		botonSalida.addActionListener(new PanelCiudadesAViajar(unaVentana,generador,unJugador,calendario,arrestos));
 		panelPistas.add(botonSalida);
 		
 		ImageIcon imagenBotonInvestigar = new ImageIcon("src/visual/recursos/AlgoThieftBotonInvestigar_img.jpg");
 		JButton botonInvestigar = new JButton(imagenBotonInvestigar);
 		botonInvestigar.setBounds(258,380,179,49);
-		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario));
+		botonInvestigar.addActionListener(new CargadorPantallaLugares(unaVentana,generador,unJugador,calendario,arrestos));
 		panelPistas.add(botonInvestigar);
 		
 		ImageIcon imagenBotonComputadora = new ImageIcon("src/visual/recursos/AlgoThieftBotonComputadora_img.jpg");
 		JButton botonComputadora = new JButton(imagenBotonComputadora);
 		botonComputadora.setBounds(477,380,179,49);
-		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario));
+		botonComputadora.addActionListener(new CargarComputadora(unaVentana,generador,unJugador,calendario,arrestos));
 		panelPistas.add(botonComputadora);
 		
 		ImageIcon imagenFondo = new ImageIcon("src/visual/recursos/AlgoThieftPantallaLugares_img.jpg");

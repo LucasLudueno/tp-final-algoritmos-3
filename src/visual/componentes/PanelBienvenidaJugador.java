@@ -32,6 +32,7 @@ public class PanelBienvenidaJugador {
 		ComputadoraPolicial computadora = new ComputadoraPolicial(juego.generarListaDeLadrones());
 		Jugador jugador = new Jugador(unCampo.getText(), juego.obtenerRecorridoLadron().get(0), computadora);
 		Calendario calendario = new Calendario(jugador.obtenerTiempoRestante());
+		int arrestos = 0;
 		
 		bienvenidaJugador.setLayout(null);
 		JLabel bienvenido = new JLabel("Bienvenido, " + unCampo.getText());
@@ -43,12 +44,14 @@ public class PanelBienvenidaJugador {
 				"Tu nombre no aparece en los ficheros de la Interpol. Has sido identificado/a como " + unCampo.getText() + "."
 				+ "\n"
 				+ "\n"
-				+ "Tu graduacion actual es: Novato."
+				+ "Tu graduacion actual es: " + jugador.obtenerRango().obtenerNombre() + "."
 				+ "\n"
 				+ "\n"
 				+ "NOTICIAS"
 				+ "\n"
 				+ "Tesoro nacional robado en " + juego.obtenerRecorridoLadron().get(0).obtenerNombre() + "."
+				+ "\n"
+				+ "El objeto Robado ha sido identificado como: " + juego.obtenerObjetoRobado().obtenerNombre() + "."
 				+ "\n"
 				+ "Un sospechoso de sexo " + juego.obtenerLadronBuscado().obtenerSexo() + " ha sido visto en el lugar del crimen."
 				+ "\n"
@@ -72,7 +75,7 @@ public class PanelBienvenidaJugador {
 		
 		JButton botonComenzar = new JButton("Comenzar");
 		botonComenzar.setBounds(296,370,100,30);
-		botonComenzar.addActionListener(new CargadorPantallaLugares(unaVentana,juego,jugador,calendario));
+		botonComenzar.addActionListener(new CargadorPantallaLugares(unaVentana,juego,jugador,calendario,arrestos));
 		bienvenidaJugador.add(botonComenzar);
 		
 		ImageIcon imagen = new ImageIcon("src/visual/recursos/AlgoThieftPantallaBienvenida_img.jpg");
