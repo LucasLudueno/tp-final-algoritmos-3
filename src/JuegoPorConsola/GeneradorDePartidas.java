@@ -1,6 +1,7 @@
 package JuegoPorConsola;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -28,6 +29,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
+
 public class GeneradorDePartidas {
 	
 	private ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
@@ -40,6 +42,26 @@ public class GeneradorDePartidas {
 	private ArrayList<Pista> pistasSobreLadron;
 	private ObjetoRobado objetoRobado;
 	
+	static final int cantidadDeLugaresPorCiudad = 3;
+	static final String nombreDeLugar1 = "Aeropuerto";
+	static final String nombreDeLugar2 = "Puerto";
+	static final String nombreDeLugar3 = "Banco";
+	static final String nombreDeLugar4 = "Bolsa";
+	static final String nombreDeLugar5 = "Biblioteca";
+	
+	static final String archivoObjetosComunes = "Objetos comunes.xml";
+	static final String archivoObjetosMuyValiosos = "Objetos muy valiosos.xml";
+	static final String archivoObjetosValiosos = "Objetos valiosos.xml";
+	static final String archivoLadrones = "ListaDeLadrones.xml";
+	static final String archivoPistasLadronPrehechas = "PistasLadronPrehechas.xml";
+	static final String archivoCiudades = "ListaDeCiudades.xml";
+	static final String archivoLugaresSinPistasUtiles = "Lugares sin pistas utiles.xml";
+	static final String tagLugaresSinPistasUtiles = "LugaresSinPistasUtiles";
+	static final String tagCiudades = "Ciudad";
+	static final String tagLugares = "Lugares";
+	static final String tagLadrones = "Ladrones";
+	static final String tagObjetos = "Objetos";
+	static final String tagPistasLadron = "PistasLadron";
 	
 	public GeneradorDePartidas(Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 		
@@ -147,7 +169,7 @@ public class GeneradorDePartidas {
 		String nombreSiguienteCiudad = recorridoLadron.get(pasoActualSobreLadron+1).obtenerNombre();
 		lugaresConPistasUtiles = this.generarLugaresDeUnaCiudad(nombreSiguienteCiudad);
 					
-		while (lugaresConPistasUtiles.size() > 3){
+		while (lugaresConPistasUtiles.size() > cantidadDeLugaresPorCiudad){
 			int posicionEnLista = generadorRandom.nextInt(lugaresConPistasUtiles.size());
 			lugaresConPistasUtiles.remove(posicionEnLista);
 		}
@@ -176,7 +198,7 @@ public class GeneradorDePartidas {
 			this.ciudades.get(i).obtenerLugares().clear();
 			lugaresSinPistasUtiles = this.generarLugaresPorLosCualesNoPasoElLadron();
 	        	
-			while (lugaresSinPistasUtiles.size() > 3){
+			while (lugaresSinPistasUtiles.size() > cantidadDeLugaresPorCiudad){
 				int valor = generadorRandom.nextInt(lugaresSinPistasUtiles.size());
 				lugaresSinPistasUtiles.remove(valor);
 	        
@@ -218,11 +240,11 @@ public class GeneradorDePartidas {
 		int posicion;
 		
 		ArrayList<String> nombresDeLugares = new ArrayList<String>();
-		nombresDeLugares.add("Aeropuerto");
-		nombresDeLugares.add("Puerto");
-		nombresDeLugares.add("Banco");
-		nombresDeLugares.add("Bolsa");
-		nombresDeLugares.add("Biblioteca");
+		nombresDeLugares.add(nombreDeLugar1);
+		nombresDeLugares.add(nombreDeLugar2);
+		nombresDeLugares.add(nombreDeLugar3);
+		nombresDeLugares.add(nombreDeLugar4);
+		nombresDeLugares.add(nombreDeLugar5);
 		
 		ArrayList<ILugar> lugaresSospechosos = new ArrayList<ILugar>();
 		
