@@ -18,6 +18,9 @@ public class Jugador {
 	private Rango rangoActual;
 	private Pista pistaVacia;
 	
+	static final int arrestosParaCambiarADetective = 5;
+	static final int arrestosParaCambiarAInvestigador = 10;
+	static final int arrestosParaCambiarASargento = 20;
 	
 	public Jugador(String nombreDelJugador, Ciudad ciudad, ComputadoraPolicial computadoraPolicial){
 		
@@ -34,6 +37,7 @@ public class Jugador {
 		this.nombreDelLadronBuscado = null;
 		this.rangoActual = new Novato();
 		this.pistaVacia = new Pista("Vacia");
+		
 	}
 
 	public Pista visitar(ILugar lugar){
@@ -58,9 +62,9 @@ public class Jugador {
 	
 	private void actualizarRango() {
 		
-		if(this.cantidadDeArrestos < 5) this.rangoActual = new Novato();
-		else if(this.cantidadDeArrestos < 10) this.rangoActual = new Detective();
-		else if(this.cantidadDeArrestos < 20) this.rangoActual = new Investigador();
+		if(this.cantidadDeArrestos < arrestosParaCambiarADetective) this.rangoActual = new Novato();
+		else if(this.cantidadDeArrestos < arrestosParaCambiarAInvestigador) this.rangoActual = new Detective();
+		else if(this.cantidadDeArrestos < arrestosParaCambiarASargento) this.rangoActual = new Investigador();
 		else this.rangoActual = new Sargento();
 		
 	}
