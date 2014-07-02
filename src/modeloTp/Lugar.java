@@ -20,24 +20,28 @@ public class Lugar implements ILugar{
 
 	}
 	
-	public Pista verPistaSegunRango(Novato rango, Jugador jugador) {
+	public void registarSiEstaElLadron(Jugador jugador){
 		jugador.restarTiempoPorEntrarALugar();
+	}
+	
+	public Pista verPistaSegunRango(Novato rango) {
+		
 		return this.pistaFacil;
 	}
 
 	
-	public Pista verPistaSegunRango(Detective rango, Jugador jugador) {
-		jugador.restarTiempoPorEntrarALugar();
+	public Pista verPistaSegunRango(Detective rango) {
+		
 		return this.pistaMedia;
 	}
 	
-	public Pista verPistaSegunRango(Investigador rango, Jugador jugador) {
-		jugador.restarTiempoPorEntrarALugar();
+	public Pista verPistaSegunRango(Investigador rango) {
+		
 		return this.pistaMedia;
 	}
 	
-	public Pista verPistaSegunRango(Sargento rango, Jugador jugador) {
-		jugador.restarTiempoPorEntrarALugar();
+	public Pista verPistaSegunRango(Sargento rango) {
+	
 		return this.pistaDificil;
 	}
 	

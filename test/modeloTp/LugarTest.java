@@ -47,7 +47,7 @@ public class LugarTest{
 		Lugar aeropuerto = new Lugar("Aeropuerto",pistaFacil, pistaMedia, pistaDificil);
 		Rango rangoJugador = jugador.obtenerRango();
 		
-		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto,jugador) == pistaFacil);
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto) == pistaFacil);
 	}
 	
 	@Test
@@ -64,7 +64,7 @@ public class LugarTest{
 		
 		Rango rangoJugador = jugador.obtenerRango();
 		
-		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto, jugador)== pistaMedia);
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto)== pistaMedia);
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class LugarTest{
 		
 		Rango rangoJugador = jugador.obtenerRango();
 		
-		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto, jugador) == pistaDificil);
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto) == pistaDificil);
 	}
 	
 	@Test
@@ -98,7 +98,7 @@ public class LugarTest{
 		
 		Rango rangoJugador = jugador.obtenerRango();	
 		
-		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto, jugador) == pistaMedia);
+		Assert.assertTrue(rangoJugador.pedirPista(aeropuerto) == pistaMedia);
 	}
 	
 	/*

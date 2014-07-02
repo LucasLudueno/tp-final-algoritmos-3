@@ -14,26 +14,31 @@ public class LugarDondeDisparan implements ILugar{
 
 	}
 
-	
-	public Pista verPistaSegunRango(Novato rango, Jugador jugador) {
+	public void registarSiEstaElLadron(Jugador jugador){
+		
 		jugador.recibirBalazo();
-		return this.avisoDisparo;
 	}
 	
-	public Pista verPistaSegunRango(Detective rango, Jugador jugador) {
-		jugador.recibirBalazo();
+	public Pista verPistaSegunRango(Novato rango) {
+		
 		return this.avisoDisparo;
 	}
-	
-	public Pista verPistaSegunRango(Investigador rango, Jugador jugador) {
-		jugador.recibirBalazo();
+		
+	public Pista verPistaSegunRango(Detective rango) {
+	;
 		return this.avisoDisparo;
 	}
-	
-	public Pista verPistaSegunRango(Sargento rango, Jugador jugador) {
-		jugador.recibirBalazo();
+
+	public Pista verPistaSegunRango(Investigador rango) {
+
 		return this.avisoDisparo;
 	}
+
+	public Pista verPistaSegunRango(Sargento rango) {
+
+		return this.avisoDisparo;
+	}
+
 	
 	@Override
 	public Node serializar(Document doc) {

@@ -10,6 +10,7 @@ public class LugarConLadron implements ILugar{
 	private Pista juegoGanado;
 	private Pista ordenDeArrestoNoEmitida;
 	private Pista ordenDeArrestoIncorrecta;
+	private Pista pistaSobreSituacion;
 	
 	public LugarConLadron(String unNombre, Ladron ladron, Pista juegoGanado, Pista ordenDeArrestoIncorrecta, Pista ordenDeArrestoNoEmitida){
 		this.ladronEscondido = ladron;
@@ -17,68 +18,42 @@ public class LugarConLadron implements ILugar{
 		this.juegoGanado = juegoGanado;
 		this.ordenDeArrestoNoEmitida = ordenDeArrestoNoEmitida;
 		this.ordenDeArrestoIncorrecta = ordenDeArrestoIncorrecta;
+		this.pistaSobreSituacion = null;
 	}
 	
-	public Pista verPistaSegunRango(Novato rango, Jugador jugador) {
-		
+	public void registarSiEstaElLadron(Jugador jugador){
 		if ( jugador.seEmitioOrdenDeArresto() ){
 			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
 			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
-				return this.juegoGanado;
+				this.pistaSobreSituacion = this.juegoGanado;
 				
 			}else{
-				return this.ordenDeArrestoIncorrecta;
+				this.pistaSobreSituacion = this.ordenDeArrestoIncorrecta;
 			}
 		}
 		
-		return this.ordenDeArrestoNoEmitida;
+		this.pistaSobreSituacion = this.ordenDeArrestoNoEmitida;
+	}
+	
+	public Pista verPistaSegunRango(Novato rango) {
+		
+		return this.pistaSobreSituacion;
 	}
 		
-	public Pista verPistaSegunRango(Detective rango, Jugador jugador) {
+	public Pista verPistaSegunRango(Detective rango) {
 		
-		if ( jugador.seEmitioOrdenDeArresto() ){
-			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
-				return this.juegoGanado;
-				
-			}else{
-				return this.ordenDeArrestoIncorrecta;
-			}
-		}
-		
-		return this.ordenDeArrestoNoEmitida;
+		return this.pistaSobreSituacion;
 	}
 
-	public Pista verPistaSegunRango(Investigador rango, Jugador jugador) {
+	public Pista verPistaSegunRango(Investigador rango) {
 		
-		if ( jugador.seEmitioOrdenDeArresto() ){
-			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
-				return this.juegoGanado;
-				
-			}else{
-				return this.ordenDeArrestoIncorrecta;
-			}
-		}
-		
-		return this.ordenDeArrestoNoEmitida;
+		return this.pistaSobreSituacion;
 	}
 	
-	public Pista verPistaSegunRango(Sargento rango, Jugador jugador) {
+	public Pista verPistaSegunRango(Sargento rango) {
 		
-		if ( jugador.seEmitioOrdenDeArresto() ){
-			String nombreDeLadronBuscado = jugador.obtenerNombreDeLadronBuscado();
-			if ( nombreDeLadronBuscado.equals(ladronEscondido.obtenerNombre() ) ){
-				return this.juegoGanado;
-				
-			}else{
-				return this.ordenDeArrestoIncorrecta;
-			}
-		}
-		
-		return this.ordenDeArrestoNoEmitida;
+		return this.pistaSobreSituacion;
 	}
-	
 	
 	
 	@Override
