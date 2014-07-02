@@ -2,6 +2,7 @@ package JuegoPorConsola;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,7 +12,6 @@ import org.xml.sax.SAXException;
 
 import modeloTp.Ciudad;
 import modeloTp.ComputadoraPolicial;
-
 import modeloTp.ILugar;
 import modeloTp.Jugador;
 import modeloTp.Pista;
@@ -33,6 +33,9 @@ public class Juego {
 		boolean juegoTerminado = false;
 		boolean primeraPartida = true;
 		int cantidadArrestosJugador = 0;
+		
+		Random generador = new Random();
+		int valor;
 
 		// MUESTRO POR PANTALLA EL MENU PRINCIPAL DEL JUEGO
 		System.out.println(" 1)_ Inicio de juego");
@@ -114,7 +117,18 @@ public class Juego {
 				entradaEscaner.nextLine();
 
 				if (opcionElegida == 5) {
-
+					ArrayList<Ciudad> listaCiudades = new ArrayList<Ciudad>();
+					for (int i=0; i < 3; i++){
+						listaCiudades.add(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(i));
+					}
+					
+					jugador.obtenerCiudadActual().obtenerCiudadesAViajar().clear();
+					while (listaCiudades.size() > 0){
+						valor = generador.nextInt(listaCiudades.size());
+						jugador.obtenerCiudadActual().obtenerCiudadesAViajar().add(listaCiudades.get(valor));
+						listaCiudades.remove(valor);
+					}
+					
 					System.out.println("");
 					System.out.println("Ciudades a viajar:");
 					System.out.println("");
