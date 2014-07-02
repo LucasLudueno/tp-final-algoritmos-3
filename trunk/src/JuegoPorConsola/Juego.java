@@ -117,6 +117,8 @@ public class Juego {
 				entradaEscaner.nextLine();
 
 				if (opcionElegida == 5) {
+					
+					//Aca voy a mezclar la lista de ciudades a viajar para evitar que la ciudad correcta sea siempre la misma opcion
 					ArrayList<Ciudad> listaCiudades = new ArrayList<Ciudad>();
 					for (int i=0; i < 3; i++){
 						listaCiudades.add(jugador.obtenerCiudadActual().obtenerCiudadesAViajar().get(i));
